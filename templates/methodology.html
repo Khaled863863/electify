@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+{% block title %}Methodology — Electify{% endblock %}
+{% block content %}
+
+<section class="hero-gradient border-b border-line">
+  <div class="max-w-3xl mx-auto px-6 sm:px-8 pt-14 sm:pt-20 pb-16">
+    <div class="pill mb-4">Behind the data</div>
+    <h1 class="text-4xl sm:text-6xl font-medium tracking-tight leading-[1.05]">How we decide what's "easy"</h1>
+    <p class="mt-5 text-lg text-ink-soft leading-relaxed">Electify aggregates what AUB students have reported about their electives. Nothing here is official — we surface the signal and let you decide.</p>
+  </div>
+</section>
+
+<section>
+  <div class="max-w-3xl mx-auto px-6 sm:px-8 pt-12 pb-24 space-y-14">
+
+    <div>
+      <h2 class="text-2xl font-medium tracking-tight">Where the data comes from</h2>
+      <p class="mt-4 text-ink-soft leading-relaxed">Electify aggregates several student-collected guides and crowdsourced reviews built up over recent semesters, plus live submissions from the people using the site. The raw contributors and their files are kept private.</p>
+    </div>
+
+    <div>
+      <h2 class="text-2xl font-medium tracking-tight">How merging works</h2>
+      <p class="mt-4 text-ink-soft leading-relaxed">Each course is keyed by its AUB course code (e.g. <code class="mono bg-line px-1.5 py-0.5 rounded text-xs">ECON 203</code>). When contributors disagree about the professor or grading style, both are kept and tagged. Ease scores are a single representative number per course, not an average. Community submissions show the average of all student-submitted ratings.</p>
+    </div>
+
+    <div>
+      <h2 class="text-2xl font-medium tracking-tight">Attributes</h2>
+      <p class="mt-4 text-ink-soft leading-relaxed">Course-attribute tags are taken directly from the AUB general-education program (Fall 2023 onward) and cross-checked against the official list. Student-reported tags that conflict with AUB are overridden.</p>
+    </div>
+
+    <div>
+      <h2 class="text-2xl font-medium tracking-tight">What Electify is not</h2>
+      <ul class="mt-5 space-y-2.5 text-ink-soft">
+        <li class="flex gap-3"><span class="text-ink-dim">·</span><span>Not affiliated with the American University of Beirut.</span></li>
+        <li class="flex gap-3"><span class="text-ink-dim">·</span><span>Not a replacement for the official AUB course catalogue, which is the only authoritative source for prerequisites, attributes, and offerings.</span></li>
+        <li class="flex gap-3"><span class="text-ink-dim">·</span><span>Not a guarantee that any course will be easy <em class="text-ink">for you</em>. Workload depends on the professor, the semester, and your background.</span></li>
+      </ul>
+    </div>
+
+    <div>
+      <h2 class="text-2xl font-medium tracking-tight">Reporting issues</h2>
+      <p class="mt-4 text-ink-soft leading-relaxed">If you spot inaccurate info — a prof who no longer teaches the course, a wrong prerequisite, a misplaced attribute — use the "Report an inaccuracy" link on each course page. Corrections are folded in on the next build.</p>
+    </div>
+
+  </div>
+</section>
+
+{% endblock %}

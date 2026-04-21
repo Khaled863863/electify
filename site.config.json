@@ -1,0 +1,7 @@
+{
+  "_comment": "Electify config. Fill these once you create your Google Form (see DEPLOY.md step 4) and after you deploy to Cloudflare Pages.",
+  "form_embed_url": "https://docs.google.com/forms/d/e/1FAIpQLSfXCkO4eonEIPmgkRL1p7c9I7zr8ZG2dMdxyXMBNOyGF6XrHQ/viewform?embedded=true",
+  "sheet_csv_url": "https://docs.google.com/spreadsheets/d/e/2PACX-1vR2oHVxYdC7qkUeuQX8w9rv13c6zekqaRt4wCcjnlVb10RHHAB-TtHjdE5mBQG8jwo_TX2EBUtnlVh6/pub?gid=937412102&single=true&output=csv",
+  "cloudflare_analytics_token": "",
+  "ga4_measurement_id": ""
+}

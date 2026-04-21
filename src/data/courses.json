@@ -1,0 +1,2441 @@
+{
+  "generated_at": "2026-04-19T17:00:48",
+  "count": 73,
+  "courses": [
+    {
+      "code": "ACCT 210L",
+      "slug": "acct-210l",
+      "title": "",
+      "description": "",
+      "ease_score": null,
+      "grading": "",
+      "attributes": [],
+      "professors": [
+        {
+          "name": "Bassima Hout",
+          "terms": [
+            "Spring",
+            "Summer"
+          ],
+          "notes": []
+        }
+      ],
+      "student_reviews": [],
+      "master_notes": [],
+      "warnings": [],
+      "recommended": true,
+      "sources": [
+        "ccs_spring",
+        "ccs_summer"
+      ]
+    },
+    {
+      "code": "AGSC 205",
+      "slug": "agsc-205",
+      "title": "The Food Odyssey",
+      "description": "",
+      "ease_score": 9,
+      "grading": "A mix of Exams and Projects",
+      "attributes": [
+        "Cultures & Histories"
+      ],
+      "professors": [
+        {
+          "name": "Lina Jane and Shady Hamadeh",
+          "terms": [],
+          "notes": []
+        },
+        {
+          "name": "Lina Jaber",
+          "terms": [],
+          "notes": [
+            "Easy"
+          ]
+        }
+      ],
+      "student_reviews": [
+        {
+          "professor": "Lina jaber",
+          "best_for": "Students who like presentations",
+          "prerequisite": "No but you need to talk to the department to remove the restriction",
+          "structure": "Exams (Midterm, Final exam), Group project, Presentation",
+          "tip": "There is one exam (7 lectures to study w fi previous byeje metlo) and two presentations one individual w w one with a grp easy game"
+        },
+        {
+          "professor": "Lina jaber",
+          "best_for": "Who likes to present",
+          "prerequisite": "No u need to contact the department to remove restriction",
+          "structure": "Exams (Midterm, Final exam), Presentation",
+          "tip": "There is one exam (7 lectures to study w fi previous byeje metlo) and two presentations one individual w w one with a grp easy game"
+        }
+      ],
+      "master_notes": [
+        {
+          "professor": "Lina Jaber",
+          "best_for": "Presentations",
+          "prerequisite": "Approval required",
+          "structure": "Exam + presentations",
+          "note": "Easy"
+        }
+      ],
+      "warnings": [],
+      "recommended": true,
+      "sources": [
+        "insight",
+        "xlsx",
+        "master"
+      ]
+    },
+    {
+      "code": "AHIS 203",
+      "slug": "ahis-203",
+      "title": "",
+      "description": "",
+      "ease_score": null,
+      "grading": "",
+      "attributes": [
+        "Cultures & Histories"
+      ],
+      "professors": [],
+      "student_reviews": [],
+      "master_notes": [],
+      "warnings": [
+        "Very heavy workload"
+      ],
+      "recommended": false,
+      "sources": [
+        "master"
+      ]
+    },
+    {
+      "code": "AHIS 221",
+      "slug": "ahis-221",
+      "title": "",
+      "description": "",
+      "ease_score": null,
+      "grading": "",
+      "attributes": [
+        "Cultures & Histories"
+      ],
+      "professors": [],
+      "student_reviews": [],
+      "master_notes": [],
+      "warnings": [
+        "Heavy workload"
+      ],
+      "recommended": false,
+      "sources": [
+        "master"
+      ]
+    },
+    {
+      "code": "ARAB 202",
+      "slug": "arab-202",
+      "title": "",
+      "description": "",
+      "ease_score": null,
+      "grading": "",
+      "attributes": [
+        "Understanding Communication"
+      ],
+      "professors": [
+        {
+          "name": "Samir Malti",
+          "terms": [
+            "Spring",
+            "Summer"
+          ],
+          "notes": []
+        }
+      ],
+      "student_reviews": [],
+      "master_notes": [],
+      "warnings": [],
+      "recommended": true,
+      "sources": [
+        "ccs_spring",
+        "ccs_summer"
+      ]
+    },
+    {
+      "code": "ARAB 210A",
+      "slug": "arab-210a",
+      "title": "",
+      "description": "",
+      "ease_score": null,
+      "grading": "",
+      "attributes": [
+        "Understanding Communication"
+      ],
+      "professors": [
+        {
+          "name": "Rachid el Daif",
+          "terms": [
+            "Spring"
+          ],
+          "notes": []
+        }
+      ],
+      "student_reviews": [],
+      "master_notes": [],
+      "warnings": [],
+      "recommended": true,
+      "sources": [
+        "ccs_spring"
+      ]
+    },
+    {
+      "code": "ARAB 211",
+      "slug": "arab-211",
+      "title": "",
+      "description": "",
+      "ease_score": null,
+      "grading": "",
+      "attributes": [
+        "Cultures & Histories"
+      ],
+      "professors": [],
+      "student_reviews": [
+        {
+          "professor": "-",
+          "best_for": "Students with excellent background and Jlede for i3rab and Arabic Grammar",
+          "prerequisite": "no",
+          "structure": "Exams (Midterm, Final exam)",
+          "tip": "Heavy arabic but recommended for Arabic lovers"
+        }
+      ],
+      "master_notes": [
+        {
+          "professor": "",
+          "best_for": "Strong Arabic grammar",
+          "prerequisite": "",
+          "structure": "Exams",
+          "note": "Heavy Arabic"
+        }
+      ],
+      "warnings": [],
+      "recommended": true,
+      "sources": [
+        "xlsx",
+        "master"
+      ]
+    },
+    {
+      "code": "ARAB 213",
+      "slug": "arab-213",
+      "title": "Introduction to Biblical Hebrew",
+      "description": "",
+      "ease_score": 7,
+      "grading": "Mostly Exams",
+      "attributes": [
+        "Cultures & Histories"
+      ],
+      "professors": [
+        {
+          "name": "Hussein Ghaddar",
+          "terms": [
+            "Spring"
+          ],
+          "notes": []
+        }
+      ],
+      "student_reviews": [],
+      "master_notes": [],
+      "warnings": [],
+      "recommended": true,
+      "sources": [
+        "insight",
+        "ccs_spring"
+      ]
+    },
+    {
+      "code": "ARAB 215",
+      "slug": "arab-215",
+      "title": "Introductory Syriac",
+      "description": "",
+      "ease_score": 10,
+      "grading": "Mostly Exams",
+      "attributes": [
+        "Cultures & Histories"
+      ],
+      "professors": [
+        {
+          "name": "Najm bou Fadel",
+          "terms": [],
+          "notes": []
+        }
+      ],
+      "student_reviews": [],
+      "master_notes": [],
+      "warnings": [],
+      "recommended": true,
+      "sources": [
+        "insight"
+      ]
+    },
+    {
+      "code": "ARAB 223",
+      "slug": "arab-223",
+      "title": "ARAB 223",
+      "description": "",
+      "ease_score": 9,
+      "grading": "Mostly",
+      "attributes": [
+        "Understanding Communication"
+      ],
+      "professors": [
+        {
+          "name": "Jihad al Mallah",
+          "terms": [],
+          "notes": []
+        }
+      ],
+      "student_reviews": [],
+      "master_notes": [],
+      "warnings": [],
+      "recommended": true,
+      "sources": [
+        "insight"
+      ]
+    },
+    {
+      "code": "ARAB 224",
+      "slug": "arab-224",
+      "title": "Arabic Stylistics & Metrics",
+      "description": "",
+      "ease_score": 9,
+      "grading": "A mix of Exams and Projects",
+      "attributes": [
+        "Cultures & Histories"
+      ],
+      "professors": [
+        {
+          "name": "Tarif Bazzi",
+          "terms": [],
+          "notes": []
+        }
+      ],
+      "student_reviews": [],
+      "master_notes": [],
+      "warnings": [],
+      "recommended": true,
+      "sources": [
+        "insight",
+        "ccs_summer"
+      ]
+    },
+    {
+      "code": "ARAB 231",
+      "slug": "arab-231",
+      "title": "The Ode",
+      "description": "",
+      "ease_score": 9,
+      "grading": "A mix of Exams and Projects",
+      "attributes": [
+        "Cultures & Histories"
+      ],
+      "professors": [
+        {
+          "name": "Najah Hawwa Attieh",
+          "terms": [],
+          "notes": []
+        }
+      ],
+      "student_reviews": [],
+      "master_notes": [],
+      "warnings": [],
+      "recommended": true,
+      "sources": [
+        "insight"
+      ]
+    },
+    {
+      "code": "ARAB 232",
+      "slug": "arab-232",
+      "title": "Arabic Poetry: The Making of the Early Canon",
+      "description": "",
+      "ease_score": 9,
+      "grading": "A mix of Exams and Projects",
+      "attributes": [
+        "Cultures & Histories"
+      ],
+      "professors": [
+        {
+          "name": "Najah Hawwa Attieh",
+          "terms": [],
+          "notes": []
+        }
+      ],
+      "student_reviews": [],
+      "master_notes": [],
+      "warnings": [],
+      "recommended": true,
+      "sources": [
+        "insight",
+        "ccs_spring"
+      ]
+    },
+    {
+      "code": "ARAB 235",
+      "slug": "arab-235",
+      "title": "Readers of al-Andalus",
+      "description": "",
+      "ease_score": 8,
+      "grading": "A mix of Exams and Projects",
+      "attributes": [
+        "Understanding Communication"
+      ],
+      "professors": [
+        {
+          "name": "Maher Jarrar",
+          "terms": [],
+          "notes": []
+        }
+      ],
+      "student_reviews": [],
+      "master_notes": [],
+      "warnings": [],
+      "recommended": true,
+      "sources": [
+        "insight"
+      ]
+    },
+    {
+      "code": "ARAB 237",
+      "slug": "arab-237",
+      "title": "Arabic Poetry and Modernity",
+      "description": "",
+      "ease_score": 9,
+      "grading": "Mostly Exams",
+      "attributes": [
+        "Understanding Communication"
+      ],
+      "professors": [
+        {
+          "name": "Jawdat Fakhreddine",
+          "terms": [],
+          "notes": []
+        }
+      ],
+      "student_reviews": [],
+      "master_notes": [],
+      "warnings": [],
+      "recommended": true,
+      "sources": [
+        "insight"
+      ]
+    },
+    {
+      "code": "ARAB 243",
+      "slug": "arab-243",
+      "title": "Arabic Rhetoric",
+      "description": "",
+      "ease_score": 10,
+      "grading": "A mix of Exams and Projects",
+      "attributes": [
+        "Understanding Communication"
+      ],
+      "professors": [
+        {
+          "name": "Najah Hawwa Attieh",
+          "terms": [],
+          "notes": []
+        }
+      ],
+      "student_reviews": [
+        {
+          "professor": "Najah Hawwa Attiyeh",
+          "best_for": "Students who love Arabic specifically literature",
+          "prerequisite": "No",
+          "structure": "Exams (Midterm, Final exam), Homework, Participation/ Attendance/ Class discussions",
+          "tip": null
+        },
+        {
+          "professor": "-",
+          "best_for": "Students who like participation in class and have some background in Arabic",
+          "prerequisite": "no",
+          "structure": "Exams (Midterm, Final exam), Participation/ Attendance/ Class discussions",
+          "tip": "The professor extremely likes participation and proactive mode"
+        }
+      ],
+      "master_notes": [
+        {
+          "professor": "Najah Hawwa",
+          "best_for": "Arabic literature",
+          "prerequisite": "",
+          "structure": "Exams + participation",
+          "note": ""
+        }
+      ],
+      "warnings": [],
+      "recommended": true,
+      "sources": [
+        "insight",
+        "xlsx",
+        "master"
+      ]
+    },
+    {
+      "code": "ARAB 246",
+      "slug": "arab-246",
+      "title": "The Lexicon of the Nahda",
+      "description": "",
+      "ease_score": 7,
+      "grading": "Mostly",
+      "attributes": [
+        "Understanding Communication"
+      ],
+      "professors": [
+        {
+          "name": "Jawdat Fakhreddine",
+          "terms": [
+            "Spring"
+          ],
+          "notes": []
+        }
+      ],
+      "student_reviews": [],
+      "master_notes": [],
+      "warnings": [],
+      "recommended": true,
+      "sources": [
+        "insight",
+        "ccs_spring"
+      ]
+    },
+    {
+      "code": "ARAB 247",
+      "slug": "arab-247",
+      "title": "",
+      "description": "",
+      "ease_score": null,
+      "grading": "",
+      "attributes": [
+        "Cultures & Histories"
+      ],
+      "professors": [
+        {
+          "name": "Enass Khansa",
+          "terms": [],
+          "notes": []
+        },
+        {
+          "name": "Maher Jarrar",
+          "terms": [],
+          "notes": []
+        }
+      ],
+      "student_reviews": [
+        {
+          "professor": "Enass Khansa",
+          "best_for": "Reading and Discossion",
+          "prerequisite": "I don't think so",
+          "structure": "Projects, Paper, Homework, Presentation, Participation/ Attendance/ Class discussions, Readings",
+          "tip": "The method of teaching the course may have been changed."
+        },
+        {
+          "professor": "Maher jarrar",
+          "best_for": "Students who like reading",
+          "prerequisite": "No",
+          "structure": "Exams (Midterm, Final exam), Participation/ Attendance/ Class discussions",
+          "tip": "Arabic reading"
+        }
+      ],
+      "master_notes": [
+        {
+          "professor": "Enass Khansa",
+          "best_for": "Reading and discussion",
+          "prerequisite": "",
+          "structure": "Projects + participation",
+          "note": ""
+        }
+      ],
+      "warnings": [],
+      "recommended": true,
+      "sources": [
+        "xlsx",
+        "master"
+      ]
+    },
+    {
+      "code": "ARAB 251",
+      "slug": "arab-251",
+      "title": "",
+      "description": "",
+      "ease_score": null,
+      "grading": "",
+      "attributes": [
+        "Understanding Communication",
+        "Cultures & Histories"
+      ],
+      "professors": [
+        {
+          "name": "Mariam el Ali",
+          "terms": [],
+          "notes": []
+        }
+      ],
+      "student_reviews": [
+        {
+          "professor": "Mariam el Ali",
+          "best_for": "Students who like discussions",
+          "prerequisite": "No",
+          "structure": "Exams (Midterm, Final exam), Presentation",
+          "tip": null
+        }
+      ],
+      "master_notes": [
+        {
+          "professor": "Mariam El Ali",
+          "best_for": "Discussion-based students",
+          "prerequisite": "",
+          "structure": "Midterm + Final + Presentation",
+          "note": ""
+        }
+      ],
+      "warnings": [],
+      "recommended": true,
+      "sources": [
+        "xlsx",
+        "master"
+      ]
+    },
+    {
+      "code": "ARAB 251AW",
+      "slug": "arab-251aw",
+      "title": "",
+      "description": "",
+      "ease_score": null,
+      "grading": "",
+      "attributes": [
+        "Understanding Communication"
+      ],
+      "professors": [
+        {
+          "name": "Hussein Ghaddar",
+          "terms": [
+            "Spring"
+          ],
+          "notes": []
+        }
+      ],
+      "student_reviews": [],
+      "master_notes": [],
+      "warnings": [],
+      "recommended": true,
+      "sources": [
+        "ccs_spring"
+      ]
+    },
+    {
+      "code": "ARAB 251W",
+      "slug": "arab-251w",
+      "title": "Nahda in Periodicals",
+      "description": "",
+      "ease_score": 9,
+      "grading": "A mix of Exams and",
+      "attributes": [
+        "Understanding Communication"
+      ],
+      "professors": [
+        {
+          "name": "Raghda Nahas El-Zein",
+          "terms": [],
+          "notes": []
+        }
+      ],
+      "student_reviews": [],
+      "master_notes": [],
+      "warnings": [],
+      "recommended": true,
+      "sources": [
+        "insight"
+      ]
+    },
+    {
+      "code": "AROL 221",
+      "slug": "arol-221",
+      "title": "",
+      "description": "",
+      "ease_score": null,
+      "grading": "",
+      "attributes": [
+        "Cultures & Histories"
+      ],
+      "professors": [
+        {
+          "name": "Paul Newson",
+          "terms": [],
+          "notes": [
+            "Notes are essential"
+          ]
+        }
+      ],
+      "student_reviews": [
+        {
+          "professor": "Paul Newson",
+          "best_for": "Memorization and discussion",
+          "prerequisite": "No",
+          "structure": "Exams (Midterm, Final exam), Readings",
+          "tip": "There's only one reading throughout the whole course and the exams are essays but done in class. taking notes during class is ESSENTIAL the prof does not provide a lot of notes."
+        }
+      ],
+      "master_notes": [
+        {
+          "professor": "Paul Newson",
+          "best_for": "Memorization and discussion",
+          "prerequisite": "",
+          "structure": "Exams",
+          "note": "Notes are essential"
+        }
+      ],
+      "warnings": [],
+      "recommended": true,
+      "sources": [
+        "xlsx",
+        "master"
+      ]
+    },
+    {
+      "code": "AROL 225",
+      "slug": "arol-225",
+      "title": "",
+      "description": "",
+      "ease_score": null,
+      "grading": "",
+      "attributes": [
+        "Cultures & Histories"
+      ],
+      "professors": [
+        {
+          "name": "Paul Newson",
+          "terms": [],
+          "notes": [
+            "Light"
+          ]
+        }
+      ],
+      "student_reviews": [
+        {
+          "professor": "Paul Newson",
+          "best_for": "Writing (a bit of memorization included)",
+          "prerequisite": "No",
+          "structure": "Exams (Midterm, Final exam), Participation/ Attendance/ Class discussions",
+          "tip": "It doesn’t include any concerning workload like projects or assignments or so. The exams are pretty simple and they can be studied for very easily just by reviewing the notes you took in class."
+        }
+      ],
+      "master_notes": [
+        {
+          "professor": "Paul Newson",
+          "best_for": "Writing",
+          "prerequisite": "",
+          "structure": "Exams",
+          "note": "Light"
+        }
+      ],
+      "warnings": [],
+      "recommended": true,
+      "sources": [
+        "xlsx",
+        "master"
+      ]
+    },
+    {
+      "code": "BIOL 210",
+      "slug": "biol-210",
+      "title": "",
+      "description": "",
+      "ease_score": null,
+      "grading": "",
+      "attributes": [
+        "Understanding the World"
+      ],
+      "professors": [],
+      "student_reviews": [],
+      "master_notes": [],
+      "warnings": [
+        "Requires consistency"
+      ],
+      "recommended": false,
+      "sources": [
+        "master"
+      ]
+    },
+    {
+      "code": "BUSS 215",
+      "slug": "buss-215",
+      "title": "",
+      "description": "",
+      "ease_score": null,
+      "grading": "",
+      "attributes": [
+        "Cultures & Histories",
+        "Human Values",
+        "Writing in the Discipline"
+      ],
+      "professors": [
+        {
+          "name": "Yasser Akkawi",
+          "terms": [
+            "Summer"
+          ],
+          "notes": []
+        }
+      ],
+      "student_reviews": [],
+      "master_notes": [],
+      "warnings": [],
+      "recommended": true,
+      "sources": [
+        "ccs_summer"
+      ]
+    },
+    {
+      "code": "BUSS 220",
+      "slug": "buss-220",
+      "title": "BUSS 220",
+      "description": "",
+      "ease_score": 10,
+      "grading": "A mix of Exams and",
+      "attributes": [
+        "Societies & Individuals"
+      ],
+      "professors": [
+        {
+          "name": "Lina Tannir",
+          "terms": [
+            "Spring"
+          ],
+          "notes": []
+        }
+      ],
+      "student_reviews": [],
+      "master_notes": [],
+      "warnings": [],
+      "recommended": true,
+      "sources": [
+        "insight",
+        "ccs_spring"
+      ]
+    },
+    {
+      "code": "CHEM 200",
+      "slug": "chem-200",
+      "title": "Basic Chemistry and Applications",
+      "description": "",
+      "ease_score": 7,
+      "grading": "Mostly Exams",
+      "attributes": [
+        "Understanding the World"
+      ],
+      "professors": [
+        {
+          "name": "Faraj Hasanayn",
+          "terms": [
+            "Spring",
+            "Summer"
+          ],
+          "notes": []
+        },
+        {
+          "name": "Pierre Karam",
+          "terms": [],
+          "notes": [
+            "Flexible"
+          ]
+        }
+      ],
+      "student_reviews": [
+        {
+          "professor": "Pierre karam",
+          "best_for": "This course is the best for who is curious how everything work in terms of chemistry.",
+          "prerequisite": "Nope",
+          "structure": "Participation/ Attendance/ Class discussions, It depends on how the students want and the situation but mostly quizzes and a final",
+          "tip": null
+        }
+      ],
+      "master_notes": [
+        {
+          "professor": "Pierre Karam",
+          "best_for": "Curious students",
+          "prerequisite": "",
+          "structure": "Participation + quizzes + final",
+          "note": "Flexible"
+        }
+      ],
+      "warnings": [],
+      "recommended": true,
+      "sources": [
+        "insight",
+        "ccs_spring",
+        "ccs_summer",
+        "xlsx",
+        "master"
+      ]
+    },
+    {
+      "code": "CHLA 212A",
+      "slug": "chla-212a",
+      "title": "",
+      "description": "",
+      "ease_score": null,
+      "grading": "",
+      "attributes": [
+        "Cultures & Histories",
+        "History of Ideas"
+      ],
+      "professors": [
+        {
+          "name": "Mohamad Nasser",
+          "terms": [
+            "Spring",
+            "Summer"
+          ],
+          "notes": []
+        }
+      ],
+      "student_reviews": [],
+      "master_notes": [],
+      "warnings": [],
+      "recommended": true,
+      "sources": [
+        "ccs_spring",
+        "ccs_summer"
+      ]
+    },
+    {
+      "code": "DCSN 200",
+      "slug": "dcsn-200",
+      "title": "",
+      "description": "",
+      "ease_score": null,
+      "grading": "",
+      "attributes": [],
+      "professors": [],
+      "student_reviews": [],
+      "master_notes": [],
+      "warnings": [
+        "Heavy word problems"
+      ],
+      "recommended": false,
+      "sources": [
+        "master"
+      ]
+    },
+    {
+      "code": "ECON 203",
+      "slug": "econ-203",
+      "title": "",
+      "description": "",
+      "ease_score": null,
+      "grading": "",
+      "attributes": [
+        "Societies & Individuals"
+      ],
+      "professors": [
+        {
+          "name": "Maya Kanaan",
+          "terms": [],
+          "notes": [
+            "Easier with this professor but not inherently easy"
+          ]
+        }
+      ],
+      "student_reviews": [
+        {
+          "professor": "Maya",
+          "best_for": "Memorization",
+          "prerequisite": "No",
+          "structure": "Exams (Midterm, Final exam), Homework",
+          "tip": null
+        },
+        {
+          "professor": "Maya Kanaan",
+          "best_for": "It is great for students who memorize and analyze",
+          "prerequisite": "No",
+          "structure": "Exams (Midterm, Final exam), Homework, Participation/ Attendance/ Class discussions",
+          "tip": null
+        }
+      ],
+      "master_notes": [
+        {
+          "professor": "Maya Kanaan",
+          "best_for": "General students",
+          "prerequisite": "",
+          "structure": "Homework + 3 exams",
+          "note": "Easier with this professor but not inherently easy"
+        }
+      ],
+      "warnings": [],
+      "recommended": true,
+      "sources": [
+        "xlsx",
+        "master"
+      ]
+    },
+    {
+      "code": "ECON 211",
+      "slug": "econ-211",
+      "title": "ECON 211",
+      "description": "",
+      "ease_score": 8,
+      "grading": "Mostly Exams",
+      "attributes": [
+        "Societies & Individuals"
+      ],
+      "professors": [
+        {
+          "name": "Usamah Ramadan",
+          "terms": [
+            "Spring",
+            "Summer"
+          ],
+          "notes": []
+        },
+        {
+          "name": "Raja Sabra",
+          "terms": [],
+          "notes": []
+        }
+      ],
+      "student_reviews": [
+        {
+          "professor": "Raja Sabra",
+          "best_for": null,
+          "prerequisite": "No",
+          "structure": "Exams (Midterm, Final exam), Homework",
+          "tip": null
+        }
+      ],
+      "master_notes": [],
+      "warnings": [],
+      "recommended": false,
+      "sources": [
+        "insight",
+        "ccs_spring",
+        "ccs_summer",
+        "xlsx",
+        "master"
+      ]
+    },
+    {
+      "code": "ECON 212",
+      "slug": "econ-212",
+      "title": "ECON 212",
+      "description": "",
+      "ease_score": 9,
+      "grading": "Mostly Exams",
+      "attributes": [
+        "Societies & Individuals"
+      ],
+      "professors": [
+        {
+          "name": "Malak Makki",
+          "terms": [
+            "Spring",
+            "Summer"
+          ],
+          "notes": []
+        }
+      ],
+      "student_reviews": [],
+      "master_notes": [],
+      "warnings": [],
+      "recommended": true,
+      "sources": [
+        "insight",
+        "ccs_spring",
+        "ccs_summer"
+      ]
+    },
+    {
+      "code": "EDUC 219",
+      "slug": "educ-219",
+      "title": "",
+      "description": "",
+      "ease_score": null,
+      "grading": "",
+      "attributes": [],
+      "professors": [
+        {
+          "name": "Hoda Baytiyeh",
+          "terms": [
+            "Summer"
+          ],
+          "notes": [
+            "Very easy A"
+          ]
+        }
+      ],
+      "student_reviews": [
+        {
+          "professor": "Hoda Baytiyeh",
+          "best_for": null,
+          "prerequisite": "No",
+          "structure": "Exams (Midterm, Final exam), Homework",
+          "tip": "This is a really easy and interesting elective. You learn fun things (e.g. doing an exam on excel) and then there is an assignment for each skill you cover (the assignment would be the same thing as the professor explains in class, and she gives you a full week to do it). It is very easy and doable to maintain an A+ provided you do exactly what the professor expects from you. There was one midterm that we did only last fall, but even then the professor told us that she is planning to remove it as well and keep the whole format of the course as graded assignments, so I don’t know whether there has been some modifications to the course or not."
+        }
+      ],
+      "master_notes": [
+        {
+          "professor": "Hoda Baytiyeh",
+          "best_for": "Practical skills",
+          "prerequisite": "",
+          "structure": "Assignments",
+          "note": "Very easy A"
+        }
+      ],
+      "warnings": [],
+      "recommended": true,
+      "sources": [
+        "ccs_summer",
+        "xlsx",
+        "master"
+      ]
+    },
+    {
+      "code": "EDUC 230",
+      "slug": "educ-230",
+      "title": "",
+      "description": "",
+      "ease_score": null,
+      "grading": "",
+      "attributes": [
+        "Societies & Individuals"
+      ],
+      "professors": [
+        {
+          "name": "Enja Osman",
+          "terms": [],
+          "notes": [
+            "Light workload"
+          ]
+        }
+      ],
+      "student_reviews": [
+        {
+          "professor": "Enja Osman",
+          "best_for": "This course mainly talks about teaching strategies and there is one written exam and everything else is just like small presentations creating a kahoot and the final is just creating a reflection as a ppt or e portfolio and the dr is really nice and understanding",
+          "prerequisite": "I don’t know",
+          "structure": "Exams (Midterm, Final exam), Projects, Homework, Group project, Presentation, Participation/ Attendance/ Class discussions, Readings",
+          "tip": "There are readings that you need to read before the written exam (you can only summarize the main points)"
+        }
+      ],
+      "master_notes": [
+        {
+          "professor": "Enja Osman",
+          "best_for": "Teaching and presentations",
+          "prerequisite": "",
+          "structure": "Exams + projects + participation",
+          "note": "Light workload"
+        }
+      ],
+      "warnings": [],
+      "recommended": true,
+      "sources": [
+        "xlsx",
+        "master"
+      ]
+    },
+    {
+      "code": "EDUC 231",
+      "slug": "educ-231",
+      "title": "",
+      "description": "",
+      "ease_score": null,
+      "grading": "",
+      "attributes": [
+        "Societies & Individuals"
+      ],
+      "professors": [
+        {
+          "name": "Ghazi Ghaith",
+          "terms": [
+            "Spring"
+          ],
+          "notes": []
+        }
+      ],
+      "student_reviews": [],
+      "master_notes": [],
+      "warnings": [],
+      "recommended": true,
+      "sources": [
+        "ccs_spring"
+      ]
+    },
+    {
+      "code": "EDUC 273",
+      "slug": "educ-273",
+      "title": "Sciences for Elementary Teachers 1",
+      "description": "",
+      "ease_score": 8,
+      "grading": "NA",
+      "attributes": [
+        "Understanding the World"
+      ],
+      "professors": [
+        {
+          "name": "Rula Baalbaki",
+          "terms": [],
+          "notes": []
+        }
+      ],
+      "student_reviews": [],
+      "master_notes": [],
+      "warnings": [],
+      "recommended": true,
+      "sources": [
+        "insight"
+      ]
+    },
+    {
+      "code": "ENGL 203",
+      "slug": "engl-203",
+      "title": "",
+      "description": "",
+      "ease_score": null,
+      "grading": "",
+      "attributes": [
+        "Understanding Communication"
+      ],
+      "professors": [],
+      "student_reviews": [],
+      "master_notes": [],
+      "warnings": [],
+      "recommended": true,
+      "sources": [
+        "ccs_spring",
+        "ccs_summer"
+      ]
+    },
+    {
+      "code": "ENGL 205",
+      "slug": "engl-205",
+      "title": "",
+      "description": "",
+      "ease_score": null,
+      "grading": "",
+      "attributes": [
+        "Cultures & Histories"
+      ],
+      "professors": [
+        {
+          "name": "DeVan Ard-Keyser",
+          "terms": [],
+          "notes": []
+        }
+      ],
+      "student_reviews": [
+        {
+          "professor": "DeVan Ard-Keyser",
+          "best_for": "Students who like reading and discussion",
+          "prerequisite": "ENGL203 might be a pre/co-requisite but i’m not sure",
+          "structure": "Projects, Quizzes, Participation/ Attendance/ Class discussions, + a final exam",
+          "tip": "the professor is recommended for any course he gives and not just this one, although this course is required for english majors so do with that what you will. (british literature I)"
+        }
+      ],
+      "master_notes": [
+        {
+          "professor": "DeVan Ard-Keyser",
+          "best_for": "Reading and discussion",
+          "prerequisite": "ENGL 203 maybe",
+          "structure": "Projects + quizzes",
+          "note": ""
+        }
+      ],
+      "warnings": [],
+      "recommended": true,
+      "sources": [
+        "xlsx",
+        "master"
+      ]
+    },
+    {
+      "code": "ENGL 207",
+      "slug": "engl-207",
+      "title": "",
+      "description": "",
+      "ease_score": null,
+      "grading": "",
+      "attributes": [
+        "Cultures & Histories"
+      ],
+      "professors": [
+        {
+          "name": "Syrine el Hout",
+          "terms": [],
+          "notes": []
+        }
+      ],
+      "student_reviews": [
+        {
+          "professor": "Syrine el Hout",
+          "best_for": "someone interested in english literature ( not obligatory tho)",
+          "prerequisite": "no",
+          "structure": "Paper, Quizzes",
+          "tip": "easy course. great professor"
+        }
+      ],
+      "master_notes": [],
+      "warnings": [],
+      "recommended": true,
+      "sources": [
+        "xlsx"
+      ]
+    },
+    {
+      "code": "ENGL 212",
+      "slug": "engl-212",
+      "title": "",
+      "description": "",
+      "ease_score": null,
+      "grading": "",
+      "attributes": [
+        "Cultures & Histories"
+      ],
+      "professors": [
+        {
+          "name": "Emelye Ard-Keyser",
+          "terms": [],
+          "notes": []
+        }
+      ],
+      "student_reviews": [
+        {
+          "professor": "Emelye Ard-Keyser",
+          "best_for": "Reading + discussion",
+          "prerequisite": "ENGL 203",
+          "structure": "Exams (Midterm, Final exam), Paper, Quizzes, Participation/ Attendance/ Class discussions, Readings,",
+          "tip": "It sounds like a lot but the only readings you have to do are Shakespeare, the quizzes are very simple they essentially boost your great. The midterm was supposed to be a test, but due to the war she required us to pick partners and have a recorded discussion about questions she gave us. The final is a paper, only about 1,700 words about anything we want about Shakespeare."
+        }
+      ],
+      "master_notes": [
+        {
+          "professor": "Emily Ard-Keyser",
+          "best_for": "Discussion and writing",
+          "prerequisite": "ENGL 203",
+          "structure": "Exams + paper",
+          "note": ""
+        }
+      ],
+      "warnings": [],
+      "recommended": true,
+      "sources": [
+        "xlsx",
+        "master"
+      ]
+    },
+    {
+      "code": "ENGL 214",
+      "slug": "engl-214",
+      "title": "",
+      "description": "",
+      "ease_score": null,
+      "grading": "",
+      "attributes": [
+        "Cultures & Histories"
+      ],
+      "professors": [
+        {
+          "name": "Christopher Nassar",
+          "terms": [
+            "Spring"
+          ],
+          "notes": [
+            "Easy if focused"
+          ]
+        }
+      ],
+      "student_reviews": [
+        {
+          "professor": "Christopher nassar",
+          "best_for": "Reading and writing",
+          "prerequisite": "No",
+          "structure": "Exams (Midterm, Final exam)",
+          "tip": "It is an easy course but if you concentrate to a certain extent so it’s easy not to get good grades."
+        }
+      ],
+      "master_notes": [
+        {
+          "professor": "Christopher Nassar",
+          "best_for": "Reading and writing",
+          "prerequisite": "",
+          "structure": "Exams",
+          "note": "Easy if focused"
+        }
+      ],
+      "warnings": [],
+      "recommended": true,
+      "sources": [
+        "ccs_spring",
+        "xlsx",
+        "master"
+      ]
+    },
+    {
+      "code": "ENGL 227",
+      "slug": "engl-227",
+      "title": "Introduction to Language",
+      "description": "",
+      "ease_score": 8,
+      "grading": "A mix of Exams and",
+      "attributes": [
+        "Cultures & Histories"
+      ],
+      "professors": [
+        {
+          "name": "Kassim Shaaban",
+          "terms": [
+            "Spring"
+          ],
+          "notes": []
+        }
+      ],
+      "student_reviews": [],
+      "master_notes": [],
+      "warnings": [],
+      "recommended": true,
+      "sources": [
+        "insight",
+        "ccs_spring"
+      ]
+    },
+    {
+      "code": "ENGL 233",
+      "slug": "engl-233",
+      "title": "Introduction to Translation",
+      "description": "",
+      "ease_score": 9,
+      "grading": "Mostly",
+      "attributes": [
+        "Cultures & Histories"
+      ],
+      "professors": [
+        {
+          "name": "Zinnia Shweiry",
+          "terms": [
+            "Spring"
+          ],
+          "notes": []
+        }
+      ],
+      "student_reviews": [],
+      "master_notes": [],
+      "warnings": [],
+      "recommended": true,
+      "sources": [
+        "insight",
+        "ccs_spring"
+      ]
+    },
+    {
+      "code": "GEOL 201",
+      "slug": "geol-201",
+      "title": "",
+      "description": "",
+      "ease_score": null,
+      "grading": "",
+      "attributes": [
+        "Understanding the World"
+      ],
+      "professors": [
+        {
+          "name": "Abdel Rahman",
+          "terms": [
+            "Spring",
+            "Summer"
+          ],
+          "notes": []
+        }
+      ],
+      "student_reviews": [],
+      "master_notes": [],
+      "warnings": [],
+      "recommended": true,
+      "sources": [
+        "ccs_spring",
+        "ccs_summer"
+      ]
+    },
+    {
+      "code": "HIST 214",
+      "slug": "hist-214",
+      "title": "Islamic History: Military Society in the Middle East,",
+      "description": "",
+      "ease_score": 8,
+      "grading": "A mix of Exams and",
+      "attributes": [
+        "Cultures & Histories"
+      ],
+      "professors": [
+        {
+          "name": "Tarek Abou Hussein",
+          "terms": [],
+          "notes": []
+        }
+      ],
+      "student_reviews": [],
+      "master_notes": [],
+      "warnings": [],
+      "recommended": true,
+      "sources": [
+        "insight"
+      ]
+    },
+    {
+      "code": "HIST 220E",
+      "slug": "hist-220e",
+      "title": "Local Histories: Ottoman Constantinople, from the",
+      "description": "",
+      "ease_score": 8,
+      "grading": "A mix of Exams and",
+      "attributes": [
+        "Cultures & Histories"
+      ],
+      "professors": [
+        {
+          "name": "Tarek Abou Hussein",
+          "terms": [],
+          "notes": []
+        }
+      ],
+      "student_reviews": [],
+      "master_notes": [],
+      "warnings": [],
+      "recommended": true,
+      "sources": [
+        "insight"
+      ]
+    },
+    {
+      "code": "HIST 227",
+      "slug": "hist-227",
+      "title": "HIST 227",
+      "description": "",
+      "ease_score": 9,
+      "grading": "Mostly Exams",
+      "attributes": [
+        "Cultures & Histories"
+      ],
+      "professors": [
+        {
+          "name": "Tarek Abou Hussein",
+          "terms": [],
+          "notes": []
+        }
+      ],
+      "student_reviews": [],
+      "master_notes": [],
+      "warnings": [],
+      "recommended": true,
+      "sources": [
+        "insight"
+      ]
+    },
+    {
+      "code": "HIST 237",
+      "slug": "hist-237",
+      "title": "HIST 237",
+      "description": "",
+      "ease_score": 8,
+      "grading": "A mix of Exams and",
+      "attributes": [
+        "Cultures & Histories"
+      ],
+      "professors": [
+        {
+          "name": "Tarek Abou Hussein",
+          "terms": [],
+          "notes": []
+        }
+      ],
+      "student_reviews": [],
+      "master_notes": [],
+      "warnings": [],
+      "recommended": true,
+      "sources": [
+        "insight"
+      ]
+    },
+    {
+      "code": "HIST 239",
+      "slug": "hist-239",
+      "title": "",
+      "description": "",
+      "ease_score": null,
+      "grading": "",
+      "attributes": [
+        "Cultures & Histories"
+      ],
+      "professors": [
+        {
+          "name": "Peter Kitlas",
+          "terms": [],
+          "notes": []
+        }
+      ],
+      "student_reviews": [
+        {
+          "professor": "Peter Kitlas",
+          "best_for": "Reading, discussion and presentation",
+          "prerequisite": "No",
+          "structure": "Quizzes, Group project, Presentation, Participation/ Attendance/ Class discussions, Readings",
+          "tip": "Take this course"
+        }
+      ],
+      "master_notes": [],
+      "warnings": [],
+      "recommended": true,
+      "sources": [
+        "xlsx"
+      ]
+    },
+    {
+      "code": "HIST 258BW",
+      "slug": "hist-258bw",
+      "title": "Topics Vary Each Semester, current: ST.Colonial",
+      "description": "",
+      "ease_score": 9,
+      "grading": "Mostly",
+      "attributes": [
+        "Social Inequalities"
+      ],
+      "professors": [
+        {
+          "name": "Peter Kitlas",
+          "terms": [],
+          "notes": []
+        }
+      ],
+      "student_reviews": [],
+      "master_notes": [],
+      "warnings": [],
+      "recommended": true,
+      "sources": [
+        "insight"
+      ]
+    },
+    {
+      "code": "HPCH 201",
+      "slug": "hpch-201",
+      "title": "",
+      "description": "",
+      "ease_score": null,
+      "grading": "",
+      "attributes": [
+        "Societies & Individuals"
+      ],
+      "professors": [
+        {
+          "name": "Faysal Kak",
+          "terms": [
+            "Spring"
+          ],
+          "notes": []
+        }
+      ],
+      "student_reviews": [],
+      "master_notes": [],
+      "warnings": [],
+      "recommended": true,
+      "sources": [
+        "ccs_spring"
+      ]
+    },
+    {
+      "code": "LDEM 267",
+      "slug": "ldem-267",
+      "title": "Introoduction Restoration Ecology",
+      "description": "",
+      "ease_score": 8,
+      "grading": "NA",
+      "attributes": [
+        "Understanding the World"
+      ],
+      "professors": [],
+      "student_reviews": [],
+      "master_notes": [],
+      "warnings": [],
+      "recommended": true,
+      "sources": [
+        "insight"
+      ]
+    },
+    {
+      "code": "MUSC 200",
+      "slug": "musc-200",
+      "title": "",
+      "description": "",
+      "ease_score": null,
+      "grading": "",
+      "attributes": [
+        "Quantitative Reasoning"
+      ],
+      "professors": [
+        {
+          "name": "Yasmina Sabbah",
+          "terms": [],
+          "notes": [
+            "Fun"
+          ]
+        }
+      ],
+      "student_reviews": [
+        {
+          "professor": "Yasmina Sabbah",
+          "best_for": "students who like logic and thinking, it’s very fun",
+          "prerequisite": "no",
+          "structure": "Exams (Midterm, Final exam), Participation/ Attendance/ Class discussions",
+          "tip": null
+        }
+      ],
+      "master_notes": [
+        {
+          "professor": "Yasmina Sabbah",
+          "best_for": "Logical thinking",
+          "prerequisite": "",
+          "structure": "Exams + participation",
+          "note": "Fun"
+        }
+      ],
+      "warnings": [],
+      "recommended": true,
+      "sources": [
+        "xlsx",
+        "master"
+      ]
+    },
+    {
+      "code": "MUSC 205",
+      "slug": "musc-205",
+      "title": "",
+      "description": "",
+      "ease_score": null,
+      "grading": "",
+      "attributes": [
+        "Cultures & Histories"
+      ],
+      "professors": [
+        {
+          "name": "Joelle Garro El Khoury",
+          "terms": [],
+          "notes": [
+            "Easy A"
+          ]
+        }
+      ],
+      "student_reviews": [],
+      "master_notes": [
+        {
+          "professor": "Joelle Garro El Khoury",
+          "best_for": "Anyone",
+          "prerequisite": "Music 200 optional",
+          "structure": "Quizzes + homework",
+          "note": "Easy A"
+        }
+      ],
+      "warnings": [],
+      "recommended": true,
+      "sources": [
+        "master"
+      ]
+    },
+    {
+      "code": "MUSC 230",
+      "slug": "musc-230",
+      "title": "",
+      "description": "",
+      "ease_score": null,
+      "grading": "",
+      "attributes": [
+        "Cultures & Histories"
+      ],
+      "professors": [
+        {
+          "name": "Joelle Garro El Khoury",
+          "terms": [],
+          "notes": []
+        }
+      ],
+      "student_reviews": [
+        {
+          "professor": "Joelle Khoury",
+          "best_for": "Students who enjoy listening to operas, watching opera films, discussing musical terminology",
+          "prerequisite": "No",
+          "structure": "Paper, Quizzes, Homework, Presentation",
+          "tip": null
+        }
+      ],
+      "master_notes": [
+        {
+          "professor": "Joelle Khoury",
+          "best_for": "Music lovers",
+          "prerequisite": "",
+          "structure": "Paper + quizzes",
+          "note": ""
+        }
+      ],
+      "warnings": [],
+      "recommended": true,
+      "sources": [
+        "xlsx",
+        "master"
+      ]
+    },
+    {
+      "code": "MUSIC 205",
+      "slug": "music-205",
+      "title": "",
+      "description": "",
+      "ease_score": null,
+      "grading": "",
+      "attributes": [
+        "Cultures & Histories"
+      ],
+      "professors": [
+        {
+          "name": "Joelle Garro El Khoury",
+          "terms": [],
+          "notes": []
+        }
+      ],
+      "student_reviews": [
+        {
+          "professor": "Joelle garro el khoury",
+          "best_for": "Anyone can take the course, no need to know about music",
+          "prerequisite": "Music 200 but if you know a bit in music you can talk to her and skip this course",
+          "structure": "Quizzes, Homework",
+          "tip": null
+        },
+        {
+          "professor": "Joelle Garro El Khoury",
+          "best_for": "Everyone can take the course, no need to be a musician, easiest A+ ever",
+          "prerequisite": "Music 200, but if you know a bit in music you can talk to her and she skips u this course",
+          "structure": "Quizzes, Homework",
+          "tip": null
+        }
+      ],
+      "master_notes": [],
+      "warnings": [],
+      "recommended": true,
+      "sources": [
+        "xlsx"
+      ]
+    },
+    {
+      "code": "MUSIC 221",
+      "slug": "music-221",
+      "title": "",
+      "description": "",
+      "ease_score": null,
+      "grading": "",
+      "attributes": [
+        "Cultures & Histories"
+      ],
+      "professors": [
+        {
+          "name": "Maya Maalouf",
+          "terms": [],
+          "notes": []
+        }
+      ],
+      "student_reviews": [
+        {
+          "professor": "Maya Maalouf",
+          "best_for": "students who are passionate about music or would we interested in learning more about it",
+          "prerequisite": "nope",
+          "structure": "Paper, Quizzes, Homework, Presentation, Participation/ Attendance/ Class discussions, Readings",
+          "tip": "This course is a very enjoyable. Going into it, i did expect it to be less demanding workload wise, as readings are assigned every week with double entry notes to be taken by hand on a notebook, but grading wise it is rewarding and even people who have no knowledge of music prior will find themselves comfortable throughout the semester. If you do the required work, show investment and interest and take things seriously, you should end up with an A/A+. Try to not skip class as every absence is marked."
+        }
+      ],
+      "master_notes": [],
+      "warnings": [],
+      "recommended": true,
+      "sources": [
+        "xlsx"
+      ]
+    },
+    {
+      "code": "PHIL 201",
+      "slug": "phil-201",
+      "title": "",
+      "description": "",
+      "ease_score": null,
+      "grading": "",
+      "attributes": [
+        "Cultures & Histories"
+      ],
+      "professors": [
+        {
+          "name": "Jana Kassab",
+          "terms": [
+            "Spring",
+            "Summer"
+          ],
+          "notes": []
+        }
+      ],
+      "student_reviews": [],
+      "master_notes": [],
+      "warnings": [],
+      "recommended": true,
+      "sources": [
+        "ccs_spring",
+        "ccs_summer"
+      ]
+    },
+    {
+      "code": "PHIL 210",
+      "slug": "phil-210",
+      "title": "",
+      "description": "",
+      "ease_score": null,
+      "grading": "",
+      "attributes": [
+        "Cultures & Histories",
+        "Human Values"
+      ],
+      "professors": [
+        {
+          "name": "Zeinab Sabra",
+          "terms": [
+            "Spring",
+            "Summer"
+          ],
+          "notes": []
+        }
+      ],
+      "student_reviews": [],
+      "master_notes": [],
+      "warnings": [],
+      "recommended": true,
+      "sources": [
+        "ccs_spring",
+        "ccs_summer"
+      ]
+    },
+    {
+      "code": "PHIL 211",
+      "slug": "phil-211",
+      "title": "",
+      "description": "",
+      "ease_score": null,
+      "grading": "",
+      "attributes": [
+        "Cultures & Histories"
+      ],
+      "professors": [],
+      "student_reviews": [],
+      "master_notes": [],
+      "warnings": [],
+      "recommended": true,
+      "sources": [
+        "ccs_summer"
+      ]
+    },
+    {
+      "code": "PHIL 214",
+      "slug": "phil-214",
+      "title": "",
+      "description": "",
+      "ease_score": null,
+      "grading": "",
+      "attributes": [
+        "Cultures & Histories"
+      ],
+      "professors": [],
+      "student_reviews": [],
+      "master_notes": [],
+      "warnings": [
+        "Requires depth"
+      ],
+      "recommended": false,
+      "sources": [
+        "master"
+      ]
+    },
+    {
+      "code": "PHIL 226",
+      "slug": "phil-226",
+      "title": "",
+      "description": "",
+      "ease_score": null,
+      "grading": "",
+      "attributes": [
+        "Cultures & Histories",
+        "Human Values"
+      ],
+      "professors": [],
+      "student_reviews": [],
+      "master_notes": [],
+      "warnings": [
+        "Strict grading"
+      ],
+      "recommended": false,
+      "sources": [
+        "master"
+      ]
+    },
+    {
+      "code": "PHYS 200",
+      "slug": "phys-200",
+      "title": "Understanding the Universe",
+      "description": "",
+      "ease_score": 9,
+      "grading": "Mostly Exams",
+      "attributes": [
+        "Understanding the World"
+      ],
+      "professors": [
+        {
+          "name": "Ola Malaeb",
+          "terms": [],
+          "notes": []
+        },
+        {
+          "name": "Ola Hosseiky",
+          "terms": [
+            "Spring",
+            "Summer"
+          ],
+          "notes": []
+        },
+        {
+          "name": "Samih Isber",
+          "terms": [],
+          "notes": [
+            "MCQ exams"
+          ]
+        }
+      ],
+      "student_reviews": [
+        {
+          "professor": "Samih isber",
+          "best_for": "Students who like astronomy and hate studying",
+          "prerequisite": "No",
+          "structure": "Exams (Midterm, Final exam), Paper",
+          "tip": "Great course for those who hate studying the chapter can be understood using chatgpt in a matter of 10 minutes exams are mcq type questions and computarized.\nPreferably know your professor before taking the course.\nAvoid samih isber !!"
+        },
+        {
+          "professor": "Ola",
+          "best_for": "Curious about the world, some basic physics",
+          "prerequisite": "No",
+          "structure": "Exams (Midterm, Final exam), Quizzes",
+          "tip": "If u attend, sit in front, and study 15 mins daily + 2-3 days before exam, A+"
+        }
+      ],
+      "master_notes": [
+        {
+          "professor": "Samih Isber",
+          "best_for": "Astronomy interest",
+          "prerequisite": "",
+          "structure": "Exams + paper",
+          "note": "MCQ exams"
+        }
+      ],
+      "warnings": [],
+      "recommended": true,
+      "sources": [
+        "insight",
+        "ccs_spring",
+        "ccs_summer",
+        "xlsx",
+        "master"
+      ]
+    },
+    {
+      "code": "PSPA 201",
+      "slug": "pspa-201",
+      "title": "PSPA 201",
+      "description": "",
+      "ease_score": 7,
+      "grading": "A mix of both Exams and",
+      "attributes": [
+        "Societies & Individuals"
+      ],
+      "professors": [
+        {
+          "name": "Vera Choulhadjian",
+          "terms": [],
+          "notes": []
+        },
+        {
+          "name": "Yeghia Tashjian",
+          "terms": [],
+          "notes": []
+        }
+      ],
+      "student_reviews": [
+        {
+          "professor": "Yeghia Tashjian",
+          "best_for": "a bit of memorizing and discussion",
+          "prerequisite": "no",
+          "structure": "Exams (Midterm, Final exam), Quizzes, Participation/ Attendance/ Class discussions",
+          "tip": null
+        }
+      ],
+      "master_notes": [
+        {
+          "professor": "Yeghia Tashjian",
+          "best_for": "Memorization and discussion",
+          "prerequisite": "",
+          "structure": "Exams + quizzes",
+          "note": ""
+        }
+      ],
+      "warnings": [],
+      "recommended": true,
+      "sources": [
+        "insight",
+        "xlsx",
+        "master"
+      ]
+    },
+    {
+      "code": "PSPA 202",
+      "slug": "pspa-202",
+      "title": "PSPA 202",
+      "description": "",
+      "ease_score": 8,
+      "grading": "A mix of both Exams and",
+      "attributes": [
+        "Societies & Individuals"
+      ],
+      "professors": [
+        {
+          "name": "Melissa Ajamian",
+          "terms": [],
+          "notes": []
+        },
+        {
+          "name": "Hiba Khodr",
+          "terms": [
+            "Summer"
+          ],
+          "notes": [
+            "Easy but boring"
+          ]
+        }
+      ],
+      "student_reviews": [
+        {
+          "professor": "Hiba khodeib",
+          "best_for": "Reading and listening",
+          "prerequisite": "No",
+          "structure": "Exams (Midterm, Final exam), Paper",
+          "tip": "It's very easy the professor gives like bunch of questions before the exam to study them and from this questions she make an exam but at the same time it's a bit boring class + reading are not obligated"
+        },
+        {
+          "professor": "Hiba khoder",
+          "best_for": "Reading but you can just skip them and memorize summary from ai",
+          "prerequisite": "No",
+          "structure": "Quizzes, Participation/ Attendance/ Class discussions",
+          "tip": "Its mainly reading chapters but 90% of students don’t read and just put them on chatgpt and get a +85 on the quiz and there are quiz one and quiz 2 whoch is a final but before final period 25% each and 10% attendance 10% participation 10%presentation 20% report/reflect/whatever about the presentation"
+        }
+      ],
+      "master_notes": [
+        {
+          "professor": "Hiba Khodeib",
+          "best_for": "Reading and listening",
+          "prerequisite": "",
+          "structure": "Exams + paper",
+          "note": "Easy but boring"
+        }
+      ],
+      "warnings": [],
+      "recommended": true,
+      "sources": [
+        "insight",
+        "ccs_summer",
+        "xlsx",
+        "master"
+      ]
+    },
+    {
+      "code": "PSPA 210",
+      "slug": "pspa-210",
+      "title": "",
+      "description": "",
+      "ease_score": null,
+      "grading": "",
+      "attributes": [
+        "Cultures & Histories"
+      ],
+      "professors": [
+        {
+          "name": "Samer Frangie",
+          "terms": [
+            "Spring"
+          ],
+          "notes": []
+        }
+      ],
+      "student_reviews": [],
+      "master_notes": [],
+      "warnings": [],
+      "recommended": true,
+      "sources": [
+        "ccs_spring"
+      ]
+    },
+    {
+      "code": "PSPA 272",
+      "slug": "pspa-272",
+      "title": "",
+      "description": "",
+      "ease_score": null,
+      "grading": "",
+      "attributes": [
+        "Societies & Individuals"
+      ],
+      "professors": [
+        {
+          "name": "Tania Haddad",
+          "terms": [],
+          "notes": [
+            "Easy grading"
+          ]
+        }
+      ],
+      "student_reviews": [
+        {
+          "professor": "Tania Haddad",
+          "best_for": "Students who like discussions, opinions, and projects",
+          "prerequisite": "No",
+          "structure": "Projects, Paper, Quizzes, Homework, Presentation, Participation/ Attendance/ Class discussions",
+          "tip": "Pretty easy, be good and friendly with the professor"
+        }
+      ],
+      "master_notes": [
+        {
+          "professor": "Tania Haddad",
+          "best_for": "Discussions and projects",
+          "prerequisite": "",
+          "structure": "Projects + participation",
+          "note": "Easy grading"
+        }
+      ],
+      "warnings": [],
+      "recommended": true,
+      "sources": [
+        "xlsx",
+        "master"
+      ]
+    },
+    {
+      "code": "PSPA 273",
+      "slug": "pspa-273",
+      "title": "Human Resources and Personnel Administration:",
+      "description": "",
+      "ease_score": 8,
+      "grading": "Mostly Exams",
+      "attributes": [
+        "Societies & Individuals"
+      ],
+      "professors": [
+        {
+          "name": "Rima Shaar",
+          "terms": [],
+          "notes": []
+        }
+      ],
+      "student_reviews": [],
+      "master_notes": [],
+      "warnings": [],
+      "recommended": true,
+      "sources": [
+        "insight"
+      ]
+    },
+    {
+      "code": "PSPA 277",
+      "slug": "pspa-277",
+      "title": "PSPA 277",
+      "description": "",
+      "ease_score": 8,
+      "grading": "A mix of both Exams and",
+      "attributes": [
+        "Societies & Individuals"
+      ],
+      "professors": [
+        {
+          "name": "Rima Shaar",
+          "terms": [],
+          "notes": []
+        }
+      ],
+      "student_reviews": [],
+      "master_notes": [],
+      "warnings": [],
+      "recommended": true,
+      "sources": [
+        "insight"
+      ]
+    },
+    {
+      "code": "SOAN 201",
+      "slug": "soan-201",
+      "title": "SOAN 201",
+      "description": "",
+      "ease_score": 8,
+      "grading": "Mostly Exams",
+      "attributes": [
+        "Social Inequalities",
+        "Societies & Individuals"
+      ],
+      "professors": [
+        {
+          "name": "Zeina Fathallah",
+          "terms": [],
+          "notes": []
+        },
+        {
+          "name": "Rima Rassi",
+          "terms": [
+            "Spring",
+            "Summer"
+          ],
+          "notes": []
+        },
+        {
+          "name": "Jad al Tayyan",
+          "terms": [],
+          "notes": []
+        }
+      ],
+      "student_reviews": [
+        {
+          "professor": "Jad Al Tayyan",
+          "best_for": "Students who want understand how society works",
+          "prerequisite": "No",
+          "structure": "Exams (Midterm, Final exam), Projects, Group project, Presentation, Participation/ Attendance/ Class discussions",
+          "tip": "You have to be active"
+        },
+        {
+          "professor": "Dr. Rima Rassi",
+          "best_for": "Any students",
+          "prerequisite": "No",
+          "structure": "Exams (Midterm, Final exam), Group project, Presentation, Participation/ Attendance/ Class discussions",
+          "tip": "Nothing, just go for it."
+        },
+        {
+          "professor": "Riman Rassi",
+          "best_for": "For students who don't like memorizinh",
+          "prerequisite": "No",
+          "structure": "Exams (Midterm, Final exam), During this war, she cancelled the midterm because not everyone is able to focus and study and she decided to do an easy paper instead.",
+          "tip": "Dr Rima explains the material very well, she's so kind and thoughtful. She does take the given circumstances into consideration, gives easy exams, and leneant with deadlines. خط lenient"
+        }
+      ],
+      "master_notes": [
+        {
+          "professor": "Rima Rassi",
+          "best_for": "Any student",
+          "prerequisite": "",
+          "structure": "Exams + project + participation",
+          "note": ""
+        }
+      ],
+      "warnings": [],
+      "recommended": true,
+      "sources": [
+        "insight",
+        "ccs_spring",
+        "ccs_summer",
+        "xlsx",
+        "master"
+      ]
+    },
+    {
+      "code": "SOAN 203",
+      "slug": "soan-203",
+      "title": "",
+      "description": "",
+      "ease_score": null,
+      "grading": "",
+      "attributes": [
+        "Cultures & Histories",
+        "Social Inequalities"
+      ],
+      "professors": [
+        {
+          "name": "Narod Seroujian",
+          "terms": [
+            "Spring",
+            "Summer"
+          ],
+          "notes": []
+        }
+      ],
+      "student_reviews": [],
+      "master_notes": [],
+      "warnings": [],
+      "recommended": true,
+      "sources": [
+        "ccs_spring",
+        "ccs_summer"
+      ]
+    },
+    {
+      "code": "SOAN 246",
+      "slug": "soan-246",
+      "title": "",
+      "description": "",
+      "ease_score": null,
+      "grading": "",
+      "attributes": [],
+      "professors": [
+        {
+          "name": "Alexandra Kassir",
+          "terms": [],
+          "notes": [
+            "Easy grading"
+          ]
+        }
+      ],
+      "student_reviews": [
+        {
+          "professor": "Alexandra Kassir",
+          "best_for": "Students who like reading and discussion.",
+          "prerequisite": "I dont think so, i took it as an elective inmy sophomore fall",
+          "structure": "Exams (Midterm, Final exam), Paper, Group project, Presentation, Participation/ Attendance/ Class discussions",
+          "tip": "The professor is not demanding at all,and she puts high grades as long as you show focus in class and participation in the discussions"
+        }
+      ],
+      "master_notes": [
+        {
+          "professor": "Alexandra Kassir",
+          "best_for": "Reading and discussion",
+          "prerequisite": "",
+          "structure": "Exams + paper + participation",
+          "note": "Easy grading"
+        }
+      ],
+      "warnings": [],
+      "recommended": true,
+      "sources": [
+        "xlsx",
+        "master"
+      ]
+    },
+    {
+      "code": "STAT 231",
+      "slug": "stat-231",
+      "title": "STAT 231",
+      "description": "",
+      "ease_score": 9,
+      "grading": "Mostly Exams",
+      "attributes": [
+        "Quantitative Reasoning"
+      ],
+      "professors": [],
+      "student_reviews": [],
+      "master_notes": [],
+      "warnings": [],
+      "recommended": true,
+      "sources": [
+        "insight"
+      ]
+    }
+  ]
+}

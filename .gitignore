@@ -1,0 +1,16 @@
+__pycache__/
+*.pyc
+.DS_Store
+.venv/
+node_modules/
+
+# data backups (pristine copy used by clean_data.py)
+src/data/*.bak
+
+# editor / OS noise
+.vscode/
+*.swp
+Thumbs.db
+
+# Claude Code local config (per-machine)
+.claude/

@@ -1,0 +1,166 @@
+{% extends "base.html" %}
+{% block content %}
+
+<!-- Hero -->
+<section class="hero-gradient border-b border-line">
+  <div class="max-w-6xl mx-auto px-6 sm:px-8 pt-20 sm:pt-28 pb-20 sm:pb-24">
+    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-surface border border-line shadow-xs text-xs text-ink-soft">
+      <span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
+      Live · {{ count }} electives indexed
+    </div>
+    <h1 class="mt-6 text-5xl sm:text-7xl leading-[1.02] font-medium tracking-tight max-w-4xl">
+      Easy electives at AUB,<br/>
+      <span class="text-ink-muted">in one place.</span>
+    </h1>
+    <p class="mt-6 text-lg text-ink-soft max-w-xl leading-relaxed">
+      A student-built directory of {{ count }} general-education courses across {{ attributes|length }} attributes — rated, reviewed, and sorted by how easy students said they were.
+    </p>
+
+    <form action="browse.html" class="mt-10 max-w-xl flex items-center gap-2 bg-surface border border-line rounded-xl shadow-xs px-3 py-2 focus-within:border-ink focus-within:shadow-sm transition">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-ink-muted ml-1.5"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
+      <input name="q" placeholder="Search by code, title, or professor…" class="flex-1 bg-transparent outline-none text-sm py-1.5 placeholder:text-ink-dim" />
+      <button class="btn-primary">Search</button>
+    </form>
+
+    <div class="mt-6 flex items-center gap-5 text-sm text-ink-muted">
+      <a href="suggest.html" class="ulink hover:text-ink">Suggest a course</a>
+      <span class="text-ink-faint">·</span>
+      <a href="suggestions.html" class="ulink hover:text-ink">Community picks</a>
+    </div>
+  </div>
+</section>
+
+<!-- Attributes + Progress -->
+<section class="border-b border-line">
+  <div class="max-w-6xl mx-auto px-6 sm:px-8 pt-20 pb-16 grid lg:grid-cols-3 gap-10">
+    <div class="lg:col-span-2">
+      <div class="mb-8">
+        <h2 class="text-3xl sm:text-4xl font-medium">Browse by attribute</h2>
+        <p class="mt-2 text-ink-muted">Pick a general-education category to filter.</p>
+      </div>
+      <div class="grid sm:grid-cols-2 gap-3 stagger">
+        {% for attr in attributes %}
+        <a href="attribute/{{ attr.slug }}.html" class="card card-link p-5 flex items-center justify-between group">
+          <div>
+            <div class="font-medium text-ink transition">{{ attr.name }}</div>
+            <div class="mt-1 text-xs text-ink-muted">{{ attr.count }} course{{ '' if attr.count == 1 else 's' }}</div>
+          </div>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-ink-dim group-hover:text-ink group-hover:translate-x-0.5 transition"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+        </a>
+        {% endfor %}
+      </div>
+    </div>
+
+    <aside class="lg:sticky lg:top-20 self-start">
+      <div class="card p-5">
+        <div class="flex items-center justify-between">
+          <div>
+            <div class="text-[11px] uppercase tracking-wider text-ink-muted">Your progress</div>
+            <h3 class="mt-1 font-medium">GE tracker</h3>
+          </div>
+          <span id="prog-total" class="mono text-xs text-ink-muted tnum">0/{{ attributes|length }}</span>
+        </div>
+        <p class="mt-1.5 text-xs text-ink-muted leading-relaxed">Check off each attribute as you complete it. Saved locally.</p>
+        <div class="mt-4" id="prog-list">
+          {% for attr in attributes %}
+          <div class="prog-row" data-attr="{{ attr.name }}">
+            <span class="prog-check" data-toggle aria-label="Toggle {{ attr.name }}">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg>
+            </span>
+            <a href="attribute/{{ attr.slug }}.html" class="prog-label hover:text-ink-soft transition">{{ attr.name }}</a>
+            <span class="prog-count">{{ attr.count }}</span>
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+    </aside>
+  </div>
+</section>
+
+<script>
+(function(){
+  const KEY = 'electify.completed';
+  const load = () => { try { return new Set(JSON.parse(localStorage.getItem(KEY) || '[]')); } catch { return new Set(); } };
+  const save = (s) => localStorage.setItem(KEY, JSON.stringify([...s]));
+  const total = document.querySelectorAll('.prog-row').length;
+  const totalEl = document.getElementById('prog-total');
+  function refresh(){
+    const s = load();
+    document.querySelectorAll('.prog-row').forEach(r => {
+      const on = s.has(r.dataset.attr);
+      r.classList.toggle('done', on);
+      r.querySelector('.prog-check').classList.toggle('done', on);
+    });
+    totalEl.textContent = `${s.size}/${total}`;
+  }
+  document.querySelectorAll('.prog-row [data-toggle]').forEach(el => {
+    el.addEventListener('click', (e) => {
+      e.preventDefault(); e.stopPropagation();
+      const row = el.closest('.prog-row');
+      const s = load();
+      s.has(row.dataset.attr) ? s.delete(row.dataset.attr) : s.add(row.dataset.attr);
+      save(s); refresh();
+    });
+  });
+  refresh();
+})();
+</script>
+
+<!-- Top picks -->
+<section class="border-b border-line">
+  <div class="max-w-6xl mx-auto px-6 sm:px-8 pt-20 pb-16">
+    <div class="flex items-end justify-between gap-6 flex-wrap mb-8">
+      <div>
+        <h2 class="text-3xl sm:text-4xl font-medium">Top picks</h2>
+        <p class="mt-2 text-ink-muted">Highest student-reported ease scores.</p>
+      </div>
+      <a href="browse.html" class="text-sm text-ink-soft hover:text-ink ulink">View all {{ count }} →</a>
+    </div>
+    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 stagger">
+      {% for c in top %}
+      {% include "_course_card.html" %}
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<!-- Featured this term -->
+<section class="border-b border-line">
+  <div class="max-w-6xl mx-auto px-6 sm:px-8 pt-20 pb-16">
+    <div class="flex items-end justify-between gap-6 flex-wrap mb-8">
+      <div>
+        <div class="pill mb-3">Spring 2025–26</div>
+        <h2 class="text-3xl sm:text-4xl font-medium">Featured this term</h2>
+        <p class="mt-2 text-ink-muted">From the Cultural Club of the South (CCS) guide.</p>
+      </div>
+    </div>
+    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+      {% for c in featured %}
+      {% include "_course_card.html" %}
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section>
+  <div class="max-w-6xl mx-auto px-6 sm:px-8 pt-20 pb-8">
+    <div class="bg-ink text-bg rounded-2xl p-10 sm:p-14 relative overflow-hidden">
+      <div class="absolute -top-20 -right-20 w-72 h-72 rounded-full bg-bg/5 blur-3xl"></div>
+      <div class="relative grid sm:grid-cols-5 gap-8 items-center">
+        <div class="sm:col-span-3">
+          <h2 class="text-3xl sm:text-4xl font-medium leading-tight">Took an easy elective lately?</h2>
+          <p class="mt-4 text-bg/70 max-w-lg leading-relaxed">Add it to Electify in 30 seconds. Submissions go live in Community. When 3 students agree, the course is promoted to the main list.</p>
+        </div>
+        <div class="sm:col-span-2 sm:text-right">
+          <a href="suggest.html" class="inline-flex items-center gap-2 bg-bg text-ink px-5 py-3 rounded-lg font-medium hover:opacity-90 transition">
+            Suggest a course
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% endblock %}

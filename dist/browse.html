@@ -1,0 +1,3102 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Browse all electives — Electify</title>
+<meta name="description" content="Electify is a student-built directory of easy general-education electives at the American University of Beirut." />
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230A0A0A'/%3E%3Ctext x='32' y='44' font-family='Geist,Inter,sans-serif' font-weight='600' font-size='34' text-anchor='middle' fill='white'%3EE%3C/text%3E%3C/svg%3E" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<script>
+  // Set theme before paint to avoid flash
+  (function(){
+    var t = localStorage.getItem('electify.theme');
+    if (!t) t = matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    if (t === 'dark') document.documentElement.classList.add('dark');
+  })();
+</script>
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+tailwind.config = {
+  darkMode: 'class',
+  theme: {
+    extend: {
+      colors: {
+        bg:      'rgb(var(--bg) / <alpha-value>)',
+        surface: 'rgb(var(--surface) / <alpha-value>)',
+        ink: {
+          DEFAULT: 'rgb(var(--ink) / <alpha-value>)',
+          soft:    'rgb(var(--ink-soft) / <alpha-value>)',
+          muted:   'rgb(var(--ink-muted) / <alpha-value>)',
+          dim:     'rgb(var(--ink-dim) / <alpha-value>)',
+          faint:   'rgb(var(--ink-faint) / <alpha-value>)',
+        },
+        line: {
+          DEFAULT: 'rgb(var(--line) / <alpha-value>)',
+          soft:    'rgb(var(--line-soft) / <alpha-value>)',
+        },
+        warn: { DEFAULT: '#B45309', bg: '#FEF3C7', br: '#FDE68A' },
+      },
+      fontFamily: {
+        sans: ['Geist', 'Inter', 'system-ui', 'sans-serif'],
+        mono: ['"Geist Mono"', 'ui-monospace', 'monospace'],
+      },
+      boxShadow: {
+        xs: '0 1px 2px rgb(var(--ink) / 0.04)',
+        sm: '0 1px 3px rgb(var(--ink) / 0.04), 0 1px 2px rgb(var(--ink) / 0.03)',
+        md: '0 4px 8px -2px rgb(var(--ink) / 0.05), 0 2px 4px -2px rgb(var(--ink) / 0.04)',
+      },
+    },
+  },
+};
+</script>
+<style>
+  :root {
+    --bg:        250 250 249;
+    --surface:   255 255 255;
+    --ink:        10  10  10;
+    --ink-soft:   64  64  64;
+    --ink-muted: 115 115 115;
+    --ink-dim:   163 163 163;
+    --ink-faint: 212 212 212;
+    --line:      231 229 228;
+    --line-soft: 240 239 236;
+  }
+  html.dark {
+    --bg:         12  12  14;
+    --surface:    22  22  24;
+    --ink:       250 250 249;
+    --ink-soft:  212 212 212;
+    --ink-muted: 163 163 163;
+    --ink-dim:   115 115 115;
+    --ink-faint:  64  64  64;
+    --line:       38  38  42;
+    --line-soft:  28  28  32;
+  }
+  html { scroll-behavior: smooth; }
+  body {
+    background: rgb(var(--bg));
+    color: rgb(var(--ink));
+    font-family: 'Geist', Inter, system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    font-feature-settings: 'ss01', 'ss03', 'cv11';
+  }
+  h1, h2, h3, h4 { font-family: 'Geist', Inter, system-ui, sans-serif; letter-spacing: -0.022em; font-weight: 500; }
+  h1 { letter-spacing: -0.032em; font-weight: 500; }
+  .mono { font-family: 'Geist Mono', ui-monospace, monospace; font-feature-settings: 'ss01', 'ss02'; }
+  .tnum { font-variant-numeric: tabular-nums; }
+
+  .card {
+    background: rgb(var(--surface));
+    border: 1px solid rgb(var(--line));
+    border-radius: 14px;
+    transition: border-color .2s ease, box-shadow .2s ease, transform .2s ease;
+  }
+  .card-link { cursor: pointer; }
+  .card-link:hover { border-color: rgb(var(--ink-dim)); box-shadow: 0 4px 8px -2px rgb(var(--ink) / 0.05), 0 2px 4px -2px rgb(var(--ink) / 0.04); transform: translateY(-1px); }
+
+  .btn-primary {
+    background: rgb(var(--ink)); color: rgb(var(--bg));
+    padding: 0.625rem 1rem; border-radius: 8px;
+    font-weight: 500; font-size: 0.875rem;
+    transition: opacity .15s ease;
+    display: inline-flex; align-items: center; gap: 0.4rem;
+  }
+  .btn-primary:hover { opacity: 0.85; }
+  .btn-secondary {
+    background: rgb(var(--surface)); color: rgb(var(--ink));
+    padding: 0.625rem 1rem; border-radius: 8px;
+    font-weight: 500; font-size: 0.875rem;
+    border: 1px solid rgb(var(--line));
+    transition: border-color .15s ease;
+    display: inline-flex; align-items: center; gap: 0.4rem;
+  }
+  .btn-secondary:hover { border-color: rgb(var(--ink-dim)); }
+  .btn-icon {
+    width: 34px; height: 34px; border-radius: 8px;
+    display: inline-flex; align-items: center; justify-content: center;
+    color: rgb(var(--ink-soft)); transition: background .15s ease, color .15s ease;
+  }
+  .btn-icon:hover { background: rgb(var(--line-soft)); color: rgb(var(--ink)); }
+
+  .input {
+    width: 100%; background: rgb(var(--surface)); color: rgb(var(--ink));
+    border: 1px solid rgb(var(--line)); border-radius: 10px;
+    padding: 0.7rem 0.95rem; font-size: 0.95rem;
+    transition: border-color .15s ease, box-shadow .15s ease; outline: none;
+  }
+  .input::placeholder { color: rgb(var(--ink-dim)); }
+  .input:focus { border-color: rgb(var(--ink)); box-shadow: 0 0 0 3px rgb(var(--ink) / 0.06); }
+
+  .ulink { position: relative; }
+  .ulink::after { content:''; position:absolute; left:0; right:0; bottom:-1px; height:1px; background: currentColor; opacity:0.35; transition: opacity .15s ease; }
+  .ulink:hover::after { opacity: 1; }
+
+  .pill {
+    display: inline-flex; align-items: center; gap: 0.35rem;
+    padding: 0.2rem 0.55rem; border-radius: 6px;
+    font-size: 11px; font-weight: 500;
+    background: rgb(var(--line-soft)); color: rgb(var(--ink-soft));
+    border: 1px solid transparent;
+  }
+  .pill-outline { background: transparent; border-color: rgb(var(--line)); }
+
+  .cta-block { background: rgb(var(--ink)); color: rgb(var(--bg)); }
+  .cta-block .btn-invert {
+    background: rgb(var(--bg)); color: rgb(var(--ink));
+    padding: 0.75rem 1.25rem; border-radius: 8px; font-weight: 500;
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    transition: opacity .15s ease;
+  }
+  .cta-block .btn-invert:hover { opacity: 0.85; }
+  .logo-mark { background: rgb(var(--ink)); color: rgb(var(--bg)); }
+
+  .hero-gradient { background: radial-gradient(ellipse at top, rgb(var(--ink) / 0.04), transparent 60%); }
+
+  ::selection { background: rgb(var(--ink)); color: rgb(var(--bg)); }
+
+  /* Star button */
+  .star-btn {
+    position: absolute; top: 10px; right: 10px; z-index: 2;
+    width: 30px; height: 30px; border-radius: 8px;
+    display: inline-flex; align-items: center; justify-content: center;
+    color: rgb(var(--ink-dim));
+    transition: background .15s ease, color .15s ease;
+  }
+  .star-btn:hover { background: rgb(var(--line-soft)); color: rgb(var(--ink)); }
+  .star-btn.starred { color: #EAB308; }
+  .star-btn.starred svg { fill: #EAB308; }
+
+  /* Palette */
+  .palette-backdrop { position: fixed; inset: 0; background: rgb(var(--ink) / 0.35); backdrop-filter: blur(4px); z-index: 50; display: none; align-items: flex-start; justify-content: center; padding-top: 14vh; }
+  .palette-backdrop.open { display: flex; }
+  .palette { width: min(640px, calc(100% - 2rem)); background: rgb(var(--surface)); border: 1px solid rgb(var(--line)); border-radius: 14px; overflow: hidden; box-shadow: 0 24px 48px -12px rgb(0 0 0 / 0.25); }
+  .palette-input { width: 100%; padding: 1rem 1.15rem; background: transparent; color: rgb(var(--ink)); border: none; outline: none; font-size: 1rem; border-bottom: 1px solid rgb(var(--line)); }
+  .palette-input::placeholder { color: rgb(var(--ink-dim)); }
+  .palette-list { max-height: 56vh; overflow-y: auto; padding: 0.35rem; }
+  .palette-item { display: flex; gap: 0.9rem; align-items: center; padding: 0.7rem 0.85rem; border-radius: 8px; cursor: pointer; text-decoration: none; color: inherit; }
+  .palette-item:hover, .palette-item.active { background: rgb(var(--line-soft)); }
+  .palette-code { font-family: 'Geist Mono', monospace; font-size: 11px; color: rgb(var(--ink-muted)); min-width: 68px; }
+  .palette-title { flex: 1; font-size: 0.95rem; color: rgb(var(--ink)); min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .palette-ease { font-size: 11px; color: rgb(var(--ink-muted)); }
+  .palette-empty { padding: 2rem; text-align: center; color: rgb(var(--ink-muted)); font-size: 0.9rem; }
+
+  /* Compare tray */
+  .cmp-tray { position: fixed; bottom: 1.25rem; left: 50%; transform: translateX(-50%); background: rgb(var(--ink)); color: rgb(var(--bg)); padding: 0.6rem 0.75rem 0.6rem 1rem; border-radius: 12px; display: none; align-items: center; gap: 0.75rem; z-index: 40; box-shadow: 0 18px 48px -12px rgb(0 0 0 / 0.35); }
+  .cmp-tray.open { display: flex; }
+  .cmp-chip { font-family: 'Geist Mono', monospace; font-size: 11px; padding: 3px 6px; border-radius: 5px; background: rgb(var(--bg) / 0.15); }
+  .cmp-go { background: rgb(var(--bg)); color: rgb(var(--ink)); padding: 0.4rem 0.8rem; border-radius: 8px; font-size: 0.8rem; font-weight: 500; }
+  .cmp-go[disabled] { opacity: 0.5; cursor: not-allowed; }
+
+  /* Progress bar */
+  .prog-row { display: flex; align-items: center; gap: 0.75rem; padding: 0.55rem 0; border-bottom: 1px solid rgb(var(--line-soft)); }
+  .prog-row:last-child { border: 0; }
+  .prog-check { width: 18px; height: 18px; border-radius: 5px; border: 1.5px solid rgb(var(--line)); display: inline-flex; align-items: center; justify-content: center; flex-shrink: 0; cursor: pointer; transition: all .18s cubic-bezier(.2,.7,.3,1); }
+  .prog-check:hover { border-color: rgb(var(--ink-dim)); transform: scale(1.06); }
+  .prog-check.done { background: rgb(var(--ink)); border-color: rgb(var(--ink)); color: rgb(var(--bg)); }
+  .prog-check.done svg { opacity: 1; }
+  .prog-check svg { opacity: 0; color: rgb(var(--bg)); transition: opacity .15s ease; }
+  .prog-label { flex: 1; font-size: 0.95rem; transition: color .15s ease; }
+  .prog-count { font-size: 12px; color: rgb(var(--ink-muted)); font-variant-numeric: tabular-nums; }
+  .prog-row.done .prog-label { color: rgb(var(--ink-muted)); text-decoration: line-through; text-decoration-color: rgb(var(--ink-dim)); }
+
+  /* ---- Animation polish ---- */
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+  @keyframes pop    { 0% { transform: scale(.85); } 60% { transform: scale(1.15); } 100% { transform: scale(1); } }
+
+  .fade-up { animation: fadeUp .5s cubic-bezier(.2,.7,.3,1) both; }
+  .stagger > * { animation: fadeUp .5s cubic-bezier(.2,.7,.3,1) both; }
+  .stagger > *:nth-child(1) { animation-delay: .02s; }
+  .stagger > *:nth-child(2) { animation-delay: .05s; }
+  .stagger > *:nth-child(3) { animation-delay: .08s; }
+  .stagger > *:nth-child(4) { animation-delay: .11s; }
+  .stagger > *:nth-child(5) { animation-delay: .14s; }
+  .stagger > *:nth-child(6) { animation-delay: .17s; }
+  .stagger > *:nth-child(7) { animation-delay: .20s; }
+  .stagger > *:nth-child(8) { animation-delay: .23s; }
+  .stagger > *:nth-child(9) { animation-delay: .26s; }
+  .stagger > *:nth-child(n+10) { animation-delay: .28s; }
+
+  /* Card hover gets slightly more lift */
+  .card-link:hover { transform: translateY(-2px); }
+  .card-link:active { transform: translateY(0); transition-duration: .05s; }
+
+  /* Buttons */
+  .btn-primary, .btn-secondary { transition: opacity .15s ease, border-color .15s ease, transform .12s cubic-bezier(.2,.7,.3,1); }
+  .btn-primary:active, .btn-secondary:active { transform: scale(.97); }
+  .btn-icon { transition: background .15s ease, color .15s ease, transform .12s cubic-bezier(.2,.7,.3,1); }
+  .btn-icon:active { transform: scale(.92); }
+
+  /* Star pop on toggle */
+  .star-btn.starred svg { animation: pop .35s cubic-bezier(.2,.7,.3,1); }
+
+  /* Pill subtle hover */
+  .pill { transition: border-color .15s ease, background .15s ease, color .15s ease; }
+
+  /* Header link underline-from-left */
+  header nav a { position: relative; }
+  header nav a:not(.btn-primary):not(.btn-icon)::after {
+    content: ''; position: absolute; left: 0.75rem; right: 0.75rem; bottom: 4px;
+    height: 1px; background: currentColor; transform: scaleX(0); transform-origin: left;
+    transition: transform .25s cubic-bezier(.2,.7,.3,1); opacity: .6;
+  }
+  header nav a:not(.btn-primary):not(.btn-icon):hover::after { transform: scaleX(1); }
+
+  /* Palette enter */
+  .palette-backdrop { transition: opacity .18s ease; opacity: 0; pointer-events: none; }
+  .palette-backdrop.open { opacity: 1; pointer-events: auto; }
+  .palette { transform: translateY(-8px) scale(.98); opacity: 0; transition: transform .22s cubic-bezier(.2,.7,.3,1), opacity .18s ease; }
+  .palette-backdrop.open .palette { transform: none; opacity: 1; }
+
+  /* Compare tray slide-up */
+  .cmp-tray { transform: translate(-50%, 16px); opacity: 0; transition: transform .22s cubic-bezier(.2,.7,.3,1), opacity .18s ease; pointer-events: none; }
+  .cmp-tray.open { transform: translate(-50%, 0); opacity: 1; pointer-events: auto; display: flex; }
+
+  /* Mobile niceties */
+  @media (max-width: 640px) {
+    h1 { letter-spacing: -0.025em; }
+    header nav { gap: 0; }
+    .cmp-tray { left: 0.75rem; right: 0.75rem; transform: translateY(16px); }
+    .cmp-tray.open { transform: translateY(0); }
+  }
+
+  /* Reduced motion */
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { animation: none !important; transition: none !important; }
+    html { scroll-behavior: auto; }
+  }
+
+  /* ---- Print styles ---- */
+  @media print {
+    :root { --bg: 255 255 255; --surface: 255 255 255; --ink: 0 0 0; --ink-soft: 40 40 40; --ink-muted: 90 90 90; --ink-dim: 140 140 140; --line: 200 200 200; --line-soft: 225 225 225; }
+    html.dark { --bg: 255 255 255; --surface: 255 255 255; --ink: 0 0 0; --ink-soft: 40 40 40; --ink-muted: 90 90 90; --ink-dim: 140 140 140; --line: 200 200 200; --line-soft: 225 225 225; }
+    body { background: white !important; color: black !important; font-size: 10.5pt; }
+    header, footer, .palette-backdrop, .cmp-tray, .star-btn,
+    [data-print-hide], .no-print { display: none !important; }
+    main.fade-up { animation: none !important; }
+    a { color: black !important; text-decoration: none !important; }
+    a::after { display: none !important; }
+    .card { box-shadow: none !important; border: 1px solid #ccc !important; break-inside: avoid; page-break-inside: avoid; }
+    .card-link:hover { transform: none !important; }
+    .pill { border: 1px solid #bbb !important; color: #222 !important; background: transparent !important; }
+    .grid { display: grid !important; grid-template-columns: 1fr 1fr !important; gap: 8pt !important; }
+    h1 { font-size: 20pt !important; }
+    h2 { font-size: 14pt !important; }
+    .print-only { display: block !important; }
+    @page { margin: 0.6in; }
+  }
+  .print-only { display: none; }
+</style>
+</head>
+<body class="min-h-screen flex flex-col">
+
+<header class="border-b border-line bg-bg/85 backdrop-blur-xl sticky top-0 z-30">
+  <div class="max-w-6xl mx-auto px-6 sm:px-8 h-14 flex items-center justify-between gap-4">
+    <a href="index.html" class="flex items-center gap-2 shrink-0">
+      <span class="logo-mark inline-flex items-center justify-center w-7 h-7 rounded-lg font-semibold text-sm leading-none">E</span>
+      <span class="font-semibold tracking-tight text-[15px]">Electify</span>
+    </a>
+    <nav class="flex items-center gap-0.5 text-sm">
+      <a href="browse.html" class="hidden sm:inline px-3 py-1.5 rounded-md text-ink-soft hover:text-ink hover:bg-line-soft transition">Browse</a>
+      <a href="suggestions.html" class="hidden sm:inline px-3 py-1.5 rounded-md text-ink-soft hover:text-ink hover:bg-line-soft transition">Community</a>
+      <a href="methodology.html" class="hidden md:inline px-3 py-1.5 rounded-md text-ink-soft hover:text-ink hover:bg-line-soft transition">About</a>
+
+      <button data-palette-open class="btn-icon ml-1" title="Search (⌘K)" aria-label="Search">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
+      </button>
+      <a href="shortlist.html" class="btn-icon relative" title="Shortlist" aria-label="Shortlist">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.1 8.6 22 9.3 17 14.1 18.2 21 12 17.8 5.8 21 7 14.1 2 9.3 8.9 8.6 12 2"/></svg>
+        <span data-shortlist-count class="hidden absolute -top-1 -right-1 bg-ink text-bg text-[10px] font-semibold rounded-full min-w-[16px] h-4 px-1 flex items-center justify-center">0</span>
+      </a>
+      <button data-theme-toggle class="btn-icon" title="Toggle theme" aria-label="Toggle theme">
+        <svg class="hidden dark:block" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+        <svg class="block dark:hidden" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.8A9 9 0 1111.2 3a7 7 0 009.8 9.8z"/></svg>
+      </button>
+      <a href="suggest.html" class="ml-1 btn-primary hidden sm:inline-flex">Suggest</a>
+    </nav>
+  </div>
+</header>
+
+<main class="flex-1 fade-up">
+
+
+<section class="border-b border-line">
+  <div class="max-w-6xl mx-auto px-6 sm:px-8 pt-14 sm:pt-20 pb-12">
+    <h1 class="text-4xl sm:text-5xl font-medium tracking-tight">All electives</h1>
+    <p class="mt-3 text-ink-muted">73 courses · filter, sort, or search.</p>
+
+    <div class="mt-8 grid grid-cols-1 sm:grid-cols-12 gap-3">
+      <input id="q" placeholder="Search code, title, professor…" class="input sm:col-span-5" />
+      <select id="attr" class="input sm:col-span-3 cursor-pointer">
+        <option value="">All attributes</option>
+        <option value="Cultures &amp; Histories">Cultures &amp; Histories</option><option value="History of Ideas">History of Ideas</option><option value="Human Values">Human Values</option><option value="Quantitative Reasoning">Quantitative Reasoning</option><option value="Social Inequalities">Social Inequalities</option><option value="Societies &amp; Individuals">Societies &amp; Individuals</option><option value="Understanding Communication">Understanding Communication</option><option value="Understanding the World">Understanding the World</option><option value="Writing in the Discipline">Writing in the Discipline</option>
+      </select>
+      <select id="ease" class="input sm:col-span-2 cursor-pointer" title="Filter by minimum ease score">
+        <option value="">Min ease · any</option>
+        <option value="9">Min ease · 9</option>
+        <option value="7">Min ease · 7</option>
+        <option value="5">Min ease · 5</option>
+      </select>
+      <select id="sort" class="input sm:col-span-2 cursor-pointer" title="Sort order">
+        <option value="ease-desc">Sort · easiest</option>
+        <option value="ease-asc">Sort · hardest</option>
+        <option value="code">Sort · code</option>
+        <option value="title">Sort · title</option>
+      </select>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="max-w-6xl mx-auto px-6 sm:px-8 pt-12 pb-24">
+    <div id="grid" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 stagger">
+      
+      <div class="course-item" data-code="ACCT 210L" data-title="" data-title-raw="ACCT 210L" data-attrs="" data-profs="bassima hout" data-ease="0">
+        <div class="relative h-full">
+<a href="course/acct-210l.html" class="card card-link p-5 pr-12 group h-full flex flex-col">
+  <div class="flex items-start justify-between gap-4">
+    <div class="min-w-0 flex-1">
+      <div class="mono text-[11px] tracking-wider text-ink-muted">ACCT 210L</div>
+      <div class="mt-1.5 text-[15px] font-medium leading-snug text-ink transition">ACCT 210L</div>
+    </div>
+    
+  </div>
+  
+  
+  
+  <div class="mt-auto pt-4 text-xs text-ink-muted">
+    <div class="pt-4 border-t border-line">
+      <span class="text-ink-dim">Prof ·</span>
+      <span class="text-ink-soft ml-0.5">Bassima Hout</span>
+    </div>
+  </div>
+  
+</a>
+<button data-star="ACCT 210L" class="star-btn" aria-label="Save ACCT 210L to shortlist" title="Save to shortlist">
+  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><polygon points="12 2 15.1 8.6 22 9.3 17 14.1 18.2 21 12 17.8 5.8 21 7 14.1 2 9.3 8.9 8.6 12 2"/></svg>
+</button>
+</div>
+      </div>
+      
+      <div class="course-item" data-code="AGSC 205" data-title="the food odyssey" data-title-raw="The Food Odyssey" data-attrs="Cultures &amp; Histories" data-profs="lina jane and shady hamadeh, lina jaber" data-ease="9">
+        <div class="relative h-full">
+<a href="course/agsc-205.html" class="card card-link p-5 pr-12 group h-full flex flex-col">
+  <div class="flex items-start justify-between gap-4">
+    <div class="min-w-0 flex-1">
+      <div class="mono text-[11px] tracking-wider text-ink-muted">AGSC 205</div>
+      <div class="mt-1.5 text-[15px] font-medium leading-snug text-ink transition">The Food Odyssey</div>
+    </div>
+    
+    <div class="shrink-0 flex items-baseline gap-1 bg-line/60 rounded-md px-2.5 py-1 tnum">
+      <span class="text-base font-semibold text-ink">9</span>
+      <span class="text-[11px] text-ink-muted">/10</span>
+    </div>
+    
+  </div>
+  
+  <div class="mt-4 flex flex-wrap gap-1.5">
+    
+    <span class="pill pill-outline">Cultures &amp; Histories</span>
+    
+  </div>
+  
+  
+  
+  <div class="mt-auto pt-4 text-xs text-ink-muted">
+    <div class="pt-4 border-t border-line">
+      <span class="text-ink-dim">Prof ·</span>
+      <span class="text-ink-soft ml-0.5">Lina Jane and Shady Hamadeh, Lina Jaber</span>
+    </div>
+  </div>
+  
+</a>
+<button data-star="AGSC 205" class="star-btn" aria-label="Save AGSC 205 to shortlist" title="Save to shortlist">
+  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><polygon points="12 2 15.1 8.6 22 9.3 17 14.1 18.2 21 12 17.8 5.8 21 7 14.1 2 9.3 8.9 8.6 12 2"/></svg>
+</button>
+</div>
+      </div>
+      
+      <div class="course-item" data-code="AHIS 203" data-title="" data-title-raw="AHIS 203" data-attrs="Cultures &amp; Histories" data-profs="" data-ease="0">
+        <div class="relative h-full">
+<a href="course/ahis-203.html" class="card card-link p-5 pr-12 group h-full flex flex-col">
+  <div class="flex items-start justify-between gap-4">
+    <div class="min-w-0 flex-1">
+      <div class="mono text-[11px] tracking-wider text-ink-muted">AHIS 203</div>
+      <div class="mt-1.5 text-[15px] font-medium leading-snug text-ink transition">AHIS 203</div>
+    </div>
+    
+  </div>
+  
+  <div class="mt-4 flex flex-wrap gap-1.5">
+    
+    <span class="pill pill-outline">Cultures &amp; Histories</span>
+    
+  </div>
+  
+  
+  
+</a>
+<button data-star="AHIS 203" class="star-btn" aria-label="Save AHIS 203 to shortlist" title="Save to shortlist">
+  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><polygon points="12 2 15.1 8.6 22 9.3 17 14.1 18.2 21 12 17.8 5.8 21 7 14.1 2 9.3 8.9 8.6 12 2"/></svg>
+</button>
+</div>
+      </div>
+      
+      <div class="course-item" data-code="AHIS 221" data-title="" data-title-raw="AHIS 221" data-attrs="Cultures &amp; Histories" data-profs="" data-ease="0">
+        <div class="relative h-full">
+<a href="course/ahis-221.html" class="card card-link p-5 pr-12 group h-full flex flex-col">
+  <div class="flex items-start justify-between gap-4">
+    <div class="min-w-0 flex-1">
+      <div class="mono text-[11px] tracking-wider text-ink-muted">AHIS 221</div>
+      <div class="mt-1.5 text-[15px] font-medium leading-snug text-ink transition">AHIS 221</div>
+    </div>
+    
+  </div>
+  
+  <div class="mt-4 flex flex-wrap gap-1.5">
+    
+    <span class="pill pill-outline">Cultures &amp; Histories</span>
+    
+  </div>
+  
+  
+  
+</a>
+<button data-star="AHIS 221" class="star-btn" aria-label="Save AHIS 221 to shortlist" title="Save to shortlist">
+  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><polygon points="12 2 15.1 8.6 22 9.3 17 14.1 18.2 21 12 17.8 5.8 21 7 14.1 2 9.3 8.9 8.6 12 2"/></svg>
+</button>
+</div>
+      </div>
+      
+      <div class="course-item" data-code="ARAB 202" data-title="" data-title-raw="ARAB 202" data-attrs="Understanding Communication" data-profs="samir malti" data-ease="0">
+        <div class="relative h-full">
+<a href="course/arab-202.html" class="card card-link p-5 pr-12 group h-full flex flex-col">
+  <div class="flex items-start justify-between gap-4">
+    <div class="min-w-0 flex-1">
+      <div class="mono text-[11px] tracking-wider text-ink-muted">ARAB 202</div>
+      <div class="mt-1.5 text-[15px] font-medium leading-snug text-ink transition">ARAB 202</div>
+    </div>
+    
+  </div>
+  
+  <div class="mt-4 flex flex-wrap gap-1.5">
+    
+    <span class="pill pill-outline">Understanding Communication</span>
+    
+  </div>
+  
+  
+  
+  <div class="mt-auto pt-4 text-xs text-ink-muted">
+    <div class="pt-4 border-t border-line">
+      <span class="text-ink-dim">Prof ·</span>
+      <span class="text-ink-soft ml-0.5">Samir Malti</span>
+    </div>
+  </div>
+  
+</a>
+<button data-star="ARAB 202" class="star-btn" aria-label="Save ARAB 202 to shortlist" title="Save to shortlist">
+  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><polygon points="12 2 15.1 8.6 22 9.3 17 14.1 18.2 21 12 17.8 5.8 21 7 14.1 2 9.3 8.9 8.6 12 2"/></svg>
+</button>
+</div>
+      </div>
+      
+      <div class="course-item" data-code="ARAB 210A" data-title="" data-title-raw="ARAB 210A" data-attrs="Understanding Communication" data-profs="rachid el daif" data-ease="0">
+        <div class="relative h-full">
+<a href="course/arab-210a.html" class="card card-link p-5 pr-12 group h-full flex flex-col">
+  <div class="flex items-start justify-between gap-4">
+    <div class="min-w-0 flex-1">
+      <div class="mono text-[11px] tracking-wider text-ink-muted">ARAB 210A</div>
+      <div class="mt-1.5 text-[15px] font-medium leading-snug text-ink transition">ARAB 210A</div>
+    </div>
+    
+  </div>
+  
+  <div class="mt-4 flex flex-wrap gap-1.5">
+    
+    <span class="pill pill-outline">Understanding Communication</span>
+    
+  </div>
+  
+  
+  
+  <div class="mt-auto pt-4 text-xs text-ink-muted">
+    <div class="pt-4 border-t border-line">
+      <span class="text-ink-dim">Prof ·</span>
+      <span class="text-ink-soft ml-0.5">Rachid el Daif</span>
+    </div>
+  </div>
+  
+</a>
+<button data-star="ARAB 210A" class="star-btn" aria-label="Save ARAB 210A to shortlist" title="Save to shortlist">
+  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><polygon points="12 2 15.1 8.6 22 9.3 17 14.1 18.2 21 12 17.8 5.8 21 7 14.1 2 9.3 8.9 8.6 12 2"/></svg>
+</button>
+</div>
+      </div>
+      
+      <div class="course-item" data-code="ARAB 211" data-title="" data-title-raw="ARAB 211" data-attrs="Cultures &amp; Histories" data-profs="" data-ease="0">
+        <div class="relative h-full">
+<a href="course/arab-211.html" class="card card-link p-5 pr-12 group h-full flex flex-col">
+  <div class="flex items-start justify-between gap-4">
+    <div class="min-w-0 flex-1">
+      <div class="mono text-[11px] tracking-wider text-ink-muted">ARAB 211</div>
+      <div class="mt-1.5 text-[15px] font-medium leading-snug text-ink transition">ARAB 211</div>
+    </div>
+    
+  </div>
+  
+  <div class="mt-4 flex flex-wrap gap-1.5">
+    
+    <span class="pill pill-outline">Cultures &amp; Histories</span>
+    
+  </div>
+  
+  
+  
+</a>
+<button data-star="ARAB 211" class="star-btn" aria-label="Save ARAB 211 to shortlist" title="Save to shortlist">
+  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><polygon points="12 2 15.1 8.6 22 9.3 17 14.1 18.2 21 12 17.8 5.8 21 7 14.1 2 9.3 8.9 8.6 12 2"/></svg>
+</button>
+</div>
+      </div>
+      
+      <div class="course-item" data-code="ARAB 213" data-title="introduction to biblical hebrew" data-title-raw="Introduction to Biblical Hebrew" data-attrs="Cultures &amp; Histories" data-profs="hussein ghaddar" data-ease="7">
+        <div class="relative h-full">
+<a href="course/arab-213.html" class="card card-link p-5 pr-12 group h-full flex flex-col">
+  <div class="flex items-start justify-between gap-4">
+    <div class="min-w-0 flex-1">
+      <div class="mono text-[11px] tracking-wider text-ink-muted">ARAB 213</div>
+      <div class="mt-1.5 text-[15px] font-medium leading-snug text-ink transition">Introduction to Biblical Hebrew</div>
+    </div>
+    
+    <div class="shrink-0 flex items-baseline gap-1 bg-line/60 rounded-md px-2.5 py-1 tnum">
+      <span class="text-base font-semibold text-ink">7</span>
+      <span class="text-[11px] text-ink-muted">/10</span>
+    </div>
+    
+  </div>
+  
+  <div class="mt-4 flex flex-wrap gap-1.5">
+    
+    <span class="pill pill-outline">Cultures &amp; Histories</span>
+    
+  </div>
+  
+  
+  
+  <div class="mt-auto pt-4 text-xs text-ink-muted">
+    <div class="pt-4 border-t border-line">
+      <span class="text-ink-dim">Prof ·</span>
+      <span class="text-ink-soft ml-0.5">Hussein Ghaddar</span>
+    </div>
+  </div>
+  
+</a>
+<button data-star="ARAB 213" class="star-btn" aria-label="Save ARAB 213 to shortlist" title="Save to shortlist">
+  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><polygon points="12 2 15.1 8.6 22 9.3 17 14.1 18.2 21 12 17.8 5.8 21 7 14.1 2 9.3 8.9 8.6 12 2"/></svg>
+</button>
+</div>
+      </div>
+      
+      <div class="course-item" data-code="ARAB 215" data-title="introductory syriac" data-title-raw="Introductory Syriac" data-attrs="Cultures &amp; Histories" data-profs="najm bou fadel" data-ease="10">
+        <div class="relative h-full">
+<a href="course/arab-215.html" class="card card-link p-5 pr-12 group h-full flex flex-col">
+  <div class="flex items-start justify-between gap-4">
+    <div class="min-w-0 flex-1">
+      <div class="mono text-[11px] tracking-wider text-ink-muted">ARAB 215</div>
+      <div class="mt-1.5 text-[15px] font-medium leading-snug text-ink transition">Introductory Syriac</div>
+    </div>
+    
+    <div class="shrink-0 flex items-baseline gap-1 bg-line/60 rounded-md px-2.5 py-1 tnum">
+      <span class="text-base font-semibold text-ink">10</span>
+      <span class="text-[11px] text-ink-muted">/10</span>
+    </div>
+    
+  </div>
+  
+  <div class="mt-4 flex flex-wrap gap-1.5">
+    
+    <span class="pill pill-outline">Cultures &amp; Histories</span>
+    
+  </div>
+  
+  
+  
+  <div class="mt-auto pt-4 text-xs text-ink-muted">
+    <div class="pt-4 border-t border-line">
+      <span class="text-ink-dim">Prof ·</span>
+      <span class="text-ink-soft ml-0.5">Najm bou Fadel</span>
+    </div>
+  </div>
+  
+</a>
+<button data-star="ARAB 215" class="star-btn" aria-label="Save ARAB 215 to shortlist" title="Save to shortlist">
+  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><polygon points="12 2 15.1 8.6 22 9.3 17 14.1 18.2 21 12 17.8 5.8 21 7 14.1 2 9.3 8.9 8.6 12 2"/></svg>
+</button>
+</div>
+      </div>
+      
+      <div class="course-item" data-code="ARAB 223" data-title="arab 223" data-title-raw="ARAB 223" data-attrs="Understanding Communication" data-profs="jihad al mallah" data-ease="9">
+        <div class="relative h-full">
+<a href="course/arab-223.html" class="card card-link p-5 pr-12 group h-full flex flex-col">
+  <div class="flex items-start justify-between gap-4">
+    <div class="min-w-0 flex-1">
+      <div class="mono text-[11px] tracking-wider text-ink-muted">ARAB 223</div>
+      <div class="mt-1.5 text-[15px] font-medium leading-snug text-ink transition">ARAB 223</div>
+    </div>
+    
+    <div class="shrink-0 flex items-baseline gap-1 bg-line/60 rounded-md px-2.5 py-1 tnum">
+      <span class="text-base font-semibold text-ink">9</span>
+      <span class="text-[11px] text-ink-muted">/10</span>
+    </div>
+    
+  </div>
+  
+  <div class="mt-4 flex flex-wrap gap-1.5">
+    
+    <span class="pill pill-outline">Understanding Communication</span>
+    
+  </div>
+  
+  
+  
+  <div class="mt-auto pt-4 text-xs text-ink-muted">
+    <div class="pt-4 border-t border-line">
+      <span class="text-ink-dim">Prof ·</span>
+      <span class="text-ink-soft ml-0.5">Jihad al Mallah</span>
+    </div>
+  </div>
+  
+</a>
+<button data-star="ARAB 223" class="star-btn" aria-label="Save ARAB 223 to shortlist" title="Save to shortlist">
+  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><polygon points="12 2 15.1 8.6 22 9.3 17 14.1 18.2 21 12 17.8 5.8 21 7 14.1 2 9.3 8.9 8.6 12 2"/></svg>
+</button>
+</div>
+      </div>
+      
+      <div class="course-item" data-code="ARAB 224" data-title="arabic stylistics &amp; metrics" data-title-raw="Arabic Stylistics &amp; Metrics" data-attrs="Cultures &amp; Histories" data-profs="tarif bazzi" data-ease="9">
+        <div class="relative h-full">
+<a href="course/arab-224.html" class="card card-link p-5 pr-12 group h-full flex flex-col">
+  <div class="flex items-start justify-between gap-4">
+    <div class="min-w-0 flex-1">
+      <div class="mono text-[11px] tracking-wider text-ink-muted">ARAB 224</div>
+      <div class="mt-1.5 text-[15px] font-medium leading-snug text-ink transition">Arabic Stylistics &amp; Metrics</div>
+    </div>
+    
+    <div class="shrink-0 flex items-baseline gap-1 bg-line/60 rounded-md px-2.5 py-1 tnum">
+      <span class="text-base font-semibold text-ink">9</span>
+      <span class="text-[11px] text-ink-muted">/10</span>
+    </div>
+    
+  </div>
+  
+  <div class="mt-4 flex flex-wrap gap-1.5">
+    
+    <span class="pill pill-outline">Cultures &amp; Histories</span>
+    
+  </div>
+  
+  
+  
+  <div class="mt-auto pt-4 text-xs text-ink-muted">
+    <div class="pt-4 border-t border-line">
+      <span class="text-ink-dim">Prof ·</span>
+      <span class="text-ink-soft ml-0.5">Tarif Bazzi</span>
+    </div>
+  </div>
+  
+</a>
+<button data-star="ARAB 224" class="star-btn" aria-label="Save ARAB 224 to shortlist" title="Save to shortlist">
+  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><polygon points="12 2 15.1 8.6 22 9.3 17 14.1 18.2 21 12 17.8 5.8 21 7 14.1 2 9.3 8.9 8.6 12 2"/></svg>
+</button>
+</div>
+      </div>
+      
+      <div class="course-item" data-code="ARAB 231" data-title="the ode" data-title-raw="The Ode" data-attrs="Cultures &amp; Histories" data-profs="najah hawwa attieh" data-ease="9">
+        <div class="relative h-full">
+<a href="course/arab-231.html" class="card card-link p-5 pr-12 group h-full flex flex-col">
+  <div class="flex items-start justify-between gap-4">
+    <div class="min-w-0 flex-1">
+      <div class="mono text-[11px] tracking-wider text-ink-muted">ARAB 231</div>
+      <div class="mt-1.5 text-[15px] font-medium leading-snug text-ink transition">The Ode</div>
+    </div>
+    
+    <div class="shrink-0 flex items-baseline gap-1 bg-line/60 rounded-md px-2.5 py-1 tnum">
+      <span class="text-base font-semibold text-ink">9</span>
+      <span class="text-[11px] text-ink-muted">/10</span>
+    </div>
+    
+  </div>
+  
+  <div class="mt-4 flex flex-wrap gap-1.5">
+    
+    <span class="pill pill-outline">Cultures &amp; Histories</span>
+    
+  </div>
+  
+  
+  
+  <div class="mt-auto pt-4 text-xs text-ink-muted">
+    <div class="pt-4 border-t border-line">
+      <span class="text-ink-dim">Prof ·</span>
+      <span class="text-ink-soft ml-0.5">Najah Hawwa Attieh</span>
+    </div>
+  </div>
+  
+</a>
+<button data-star="ARAB 231" class="star-btn" aria-label="Save ARAB 231 to shortlist" title="Save to shortlist">
+  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><polygon points="12 2 15.1 8.6 22 9.3 17 14.1 18.2 21 12 17.8 5.8 21 7 14.1 2 9.3 8.9 8.6 12 2"/></svg>
+</button>
+</div>
+      </div>
+      
+      <div class="course-item" data-code="ARAB 232" data-title="arabic poetry: the making of the early canon" data-title-raw="Arabic Poetry: The Making of the Early Canon" data-attrs="Cultures &amp; Histories" data-profs="najah hawwa attieh" data-ease="9">
+        <div class="relative h-full">
+<a href="course/arab-232.html" class="card card-link p-5 pr-12 group h-full flex flex-col">
+  <div class="flex items-start justify-between gap-4">
+    <div class="min-w-0 flex-1">
+      <div class="mono text-[11px] tracking-wider text-ink-muted">ARAB 232</div>
+      <div class="mt-1.5 text-[15px] font-medium leading-snug text-ink transition">Arabic Poetry: The Making of the Early Canon</div>
+    </div>
+    
+    <div class="shrink-0 flex items-baseline gap-1 bg-line/60 rounded-md px-2.5 py-1 tnum">
+      <span class="text-base font-semibold text-ink">9</span>
+      <span class="text-[11px] text-ink-muted">/10</span>
+    </div>
+    
+  </div>
+  
+  <div class="mt-4 flex flex-wrap gap-1.5">
+    
+    <span class="pill pill-outline">Cultures &amp; Histories</span>
+    
+  </div>
+  
+  
+  
+  <div class="mt-auto pt-4 text-xs text-ink-muted">
+    <div class="pt-4 border-t border-line">
+      <span class="text-ink-dim">Prof ·</span>
+      <span class="text-ink-soft ml-0.5">Najah Hawwa Attieh</span>
+    </div>
+  </div>
+  
+</a>
+<button data-star="ARAB 232" class="star-btn" aria-label="Save ARAB 232 to shortlist" title="Save to shortlist">
+  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><polygon points="12 2 15.1 8.6 22 9.3 17 14.1 18.2 21 12 17.8 5.8 21 7 14.1 2 9.3 8.9 8.6 12 2"/></svg>
+</button>
+</div>
+      </div>
+      
+      <div class="course-item" data-code="ARAB 235" data-title="readers of al-andalus" data-title-raw="Readers of al-Andalus" data-attrs="Understanding Communication" data-profs="maher jarrar" data-ease="8">
+        <div class="relative h-full">
+<a href="course/arab-235.html" class="card card-link p-5 pr-12 group h-full flex flex-col">
+  <div class="flex items-start justify-between gap-4">
+    <div class="min-w-0 flex-1">
+      <div class="mono text-[11px] tracking-wider text-ink-muted">ARAB 235</div>
+      <div class="mt-1.5 text-[15px] font-medium leading-snug text-ink transition">Readers of al-Andalus</div>
+    </div>
+    
+    <div class="shrink-0 flex items-baseline gap-1 bg-line/60 rounded-md px-2.5 py-1 tnum">
+      <span class="text-base font-semibold text-ink">8</span>
+      <span class="text-[11px] text-ink-muted">/10</span>
+    </div>
+    
+  </div>
+  
+  <div class="mt-4 flex flex-wrap gap-1.5">
+    
+    <span class="pill pill-outline">Understanding Communication</span>
+    
+  </div>
+  
+  
+  
+  <div class="mt-auto pt-4 text-xs text-ink-muted">
+    <div class="pt-4 border-t border-line">
+      <span class="text-ink-dim">Prof ·</span>
+      <span class="text-ink-soft ml-0.5">Maher Jarrar</span>
+    </div>
+  </div>
+  
+</a>
+<button data-star="ARAB 235" class="star-btn" aria-label="Save ARAB 235 to shortlist" title="Save to shortlist">
+  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><polygon points="12 2 15.1 8.6 22 9.3 17 14.1 18.2 21 12 17.8 5.8 21 7 14.1 2 9.3 8.9 8.6 12 2"/></svg>
+</button>
+</div>
+      </div>
+      
+      <div class="course-item" data-code="ARAB 237" data-title="arabic poetry and modernity" data-title-raw="Arabic Poetry and Modernity" data-attrs="Understanding Communication" data-profs="jawdat fakhreddine" data-ease="9">
+        <div class="relative h-full">
+<a href="course/arab-237.html" class="card card-link p-5 pr-12 group h-full flex flex-col">
+  <div class="flex items-start justify-between gap-4">
+    <div class="min-w-0 flex-1">
+      <div class="mono text-[11px] tracking-wider text-ink-muted">ARAB 237</div>
+      <div class="mt-1.5 text-[15px] font-medium leading-snug text-ink transition">Arabic Poetry and Modernity</div>
+    </div>
+    
+    <div class="shrink-0 flex items-baseline gap-1 bg-line/60 rounded-md px-2.5 py-1 tnum">
+      <span class="text-base font-semibold text-ink">9</span>
+      <span class="text-[11px] text-ink-muted">/10</span>
+    </div>
+    
+  </div>
+  
+  <div class="mt-4 flex flex-wrap gap-1.5">
+    
+    <span class="pill pill-outline">Understanding Communication</span>
+    
+  </div>
+  
+  
+  
+  <div class="mt-auto pt-4 text-xs text-ink-muted">
+    <div class="pt-4 border-t border-line">
+      <span class="text-ink-dim">Prof ·</span>
+      <span class="text-ink-soft ml-0.5">Jawdat Fakhreddine</span>
+    </div>
+  </div>
+  
+</a>
+<button data-star="ARAB 237" class="star-btn" aria-label="Save ARAB 237 to shortlist" title="Save to shortlist">
+  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><polygon points="12 2 15.1 8.6 22 9.3 17 14.1 18.2 21 12 17.8 5.8 21 7 14.1 2 9.3 8.9 8.6 12 2"/></svg>
+</button>
+</div>
+      </div>
+      
+      <div class="course-item" data-code="ARAB 243" data-title="arabic rhetoric" data-title-raw="Arabic Rhetoric" data-attrs="Understanding Communication" data-profs="najah hawwa attieh" data-ease="10">
+        <div class="relative h-full">
+<a href="course/arab-243.html" class="card card-link p-5 pr-12 group h-full flex flex-col">
+  <div class="flex items-start justify-between gap-4">
+    <div class="min-w-0 flex-1">
+      <div class="mono text-[11px] tracking-wider text-ink-muted">ARAB 243</div>
+      <div class="mt-1.5 text-[15px] font-medium leading-snug text-ink transition">Arabic Rhetoric</div>
+    </div>
+    
+    <div class="shrink-0 flex items-baseline gap-1 bg-line/60 rounded-md px-2.5 py-1 tnum">
+      <span class="text-base font-semibold text-ink">10</span>
+      <span class="text-[11px] text-ink-muted">/10</span>
+    </div>
+    
+  </div>
+  
+  <div class="mt-4 flex flex-wrap gap-1.5">
+    
+    <span class="pill pill-outline">Understanding Communication</span>
+    
+  </div>
+  
+  
+  
+  <div class="mt-auto pt-4 text-xs text-ink-muted">
+    <div class="pt-4 border-t border-line">
+      <span class="text-ink-dim">Prof ·</span>
+      <span class="text-ink-soft ml-0.5">Najah Hawwa Attieh</span>
+    </div>
+  </div>
+  
+</a>
+<button data-star="ARAB 243" class="star-btn" aria-label="Save ARAB 243 to shortlist" title="Save to shortlist">
+  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><polygon points="12 2 15.1 8.6 22 9.3 17 14.1 18.2 21 12 17.8 5.8 21 7 14.1 2 9.3 8.9 8.6 12 2"/></svg>
+</button>
+</div>
+      </div>
+      
+      <div class="course-item" data-code="ARAB 246" data-title="the lexicon of the nahda" data-title-raw="The Lexicon of the Nahda" data-attrs="Understanding Communication" data-profs="jawdat fakhreddine" data-ease="7">
+        <div class="relative h-full">
+<a href="course/arab-246.html" class="card card-link p-5 pr-12 group h-full flex flex-col">
+  <div class="flex items-start justify-between gap-4">
+    <div class="min-w-0 flex-1">
+      <div class="mono text-[11px] tracking-wider text-ink-muted">ARAB 246</div>
+      <div class="mt-1.5 text-[15px] font-medium leading-snug text-ink transition">The Lexicon of the Nahda</div>
+    </div>
+    
+    <div class="shrink-0 flex items-baseline gap-1 bg-line/60 rounded-md px-2.5 py-1 tnum">
+      <span class="text-base font-semibold text-ink">7</span>
+      <span class="text-[11px] text-ink-muted">/10</span>
+    </div>
+    
+  </div>
+  
+  <div class="mt-4 flex flex-wrap gap-1.5">
+    
+    <span class="pill pill-outline">Understanding Communication</span>
+    
+  </div>
+  
+  
+  
+  <div class="mt-auto pt-4 text-xs text-ink-muted">
+    <div class="pt-4 border-t border-line">
+      <span class="text-ink-dim">Prof ·</span>
+      <span class="text-ink-soft ml-0.5">Jawdat Fakhreddine</span>
+    </div>
+  </div>
+  
+</a>
+<button data-star="ARAB 246" class="star-btn" aria-label="Save ARAB 246 to shortlist" title="Save to shortlist">
+  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><polygon points="12 2 15.1 8.6 22 9.3 17 14.1 18.2 21 12 17.8 5.8 21 7 14.1 2 9.3 8.9 8.6 12 2"/></svg>
+</button>
+</div>
+      </div>
+      
+      <div class="course-item" data-code="ARAB 247" data-title="" data-title-raw="ARAB 247" data-attrs="Cultures &amp; Histories" data-profs="enass khansa, maher jarrar" data-ease="0">
+        <div class="relative h-full">
+<a href="course/arab-247.html" class="card card-link p-5 pr-12 group h-full flex flex-col">
+  <div class="flex items-start justify-between gap-4">
+    <div class="min-w-0 flex-1">
+      <div class="mono text-[11px] tracking-wider text-ink-muted">ARAB 247</div>
+      <div class="mt-1.5 text-[15px] font-medium leading-snug text-ink transition">ARAB 247</div>
+    </div>
+    
+  </div>
+  
+  <div class="mt-4 flex flex-wrap gap-1.5">
+    
+    <span class="pill pill-outline">Cultures &amp; Histories</span>
+    
+  </div>
+  
+  
+  
+  <div class="mt-auto pt-4 text-xs text-ink-muted">
+    <div class="pt-4 border-t border-line">
+      <span class="text-ink-dim">Prof ·</span>
+      <span class="text-ink-soft ml-0.5">Enass Khansa, Maher Jarrar</span>
+    </div>
+  </div>
+  
+</a>
+<button data-star="ARAB 247" class="star-btn" aria-label="Save ARAB 247 to shortlist" title="Save to shortlist">
+  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><polygon points="12 2 15.1 8.6 22 9.3 17 14.1 18.2 21 12 17.8 5.8 21 7 14.1 2 9.3 8.9 8.6 12 2"/></svg>
+</button>
+</div>
+      </div>
+      
+      <div class="course-item" data-code="ARAB 251" data-title="" data-title-raw="ARAB 251" data-attrs="Understanding Communication, Cultures &amp; Histories" data-profs="mariam el ali" data-ease="0">
+        <div class="relative h-full">
+<a href="course/arab-251.html" class="card card-link p-5 pr-12 group h-full flex flex-col">
+  <div class="flex items-start justify-between gap-4">
+    <div class="min-w-0 flex-1">
+      <div class="mono text-[11px] tracking-wider text-ink-muted">ARAB 251</div>
+      <div class="mt-1.5 text-[15px] font-medium leading-snug text-ink transition">ARAB 251</div>
+    </div>
+    
+  </div>
+  
+  <div class="mt-4 flex flex-wrap gap-1.5">
+    
+    <span class="pill pill-outline">Understanding Communication</span>
+    
+    <span class="pill pill-outline">Cultures &amp; Histories</span>
+    
+  </div>
+  
+  
+  
+  <div class="mt-auto pt-4 text-xs text-ink-muted">
+    <div class="pt-4 border-t border-line">
+      <span class="text-ink-dim">Prof ·</span>
+      <span class="text-ink-soft ml-0.5">Mariam el Ali</span>
+    </div>
+  </div>
+  
+</a>
+<button data-star="ARAB 251" class="star-btn" aria-label="Save ARAB 251 to shortlist" title="Save to shortlist">
+  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><polygon points="12 2 15.1 8.6 22 9.3 17 14.1 18.2 21 12 17.8 5.8 21 7 14.1 2 9.3 8.9 8.6 12 2"/></svg>
+</button>
+</div>
+      </div>
+      
+      <div class="course-item" data-code="ARAB 251AW" data-title="" data-title-raw="ARAB 251AW" data-attrs="Understanding Communication" data-profs="hussein ghaddar" data-ease="0">
+        <div class="relative h-full">
+<a href="course/arab-251aw.html" class="card card-link p-5 pr-12 group h-full flex flex-col">
+  <div class="flex items-start justify-between gap-4">
+    <div class="min-w-0 flex-1">
+      <div class="mono text-[11px] tracking-wider text-ink-muted">ARAB 251AW</div>
+      <div class="mt-1.5 text-[15px] font-medium leading-snug text-ink transition">ARAB 251AW</div>
+    </div>
+    
+  </div>
+  
+  <div class="mt-4 flex flex-wrap gap-1.5">
+    
+    <span class="pill pill-outline">Understanding Communication</span>
+    
+  </div>
+  
+  
+  
+  <div class="mt-auto pt-4 text-xs text-ink-muted">
+    <div class="pt-4 border-t border-line">
+      <span class="text-ink-dim">Prof ·</span>
+      <span class="text-ink-soft ml-0.5">Hussein Ghaddar</span>
+    </div>
+  </div>
+  
+</a>
+<button data-star="ARAB 251AW" class="star-btn" aria-label="Save ARAB 251AW to shortlist" title="Save to shortlist">
+  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><polygon points="12 2 15.1 8.6 22 9.3 17 14.1 18.2 21 12 17.8 5.8 21 7 14.1 2 9.3 8.9 8.6 12 2"/></svg>
+</button>
+</div>
+      </div>
+      
+      <div class="course-item" data-code="ARAB 251W" data-title="nahda in periodicals" data-title-raw="Nahda in Periodicals" data-attrs="Understanding Communication" data-profs="raghda nahas el-zein" data-ease="9">
+        <div class="relative h-full">
+<a href="course/arab-251w.html" class="card card-link p-5 pr-12 group h-full flex flex-col">
+  <div class="flex items-start justify-between gap-4">
+    <div class="min-w-0 flex-1">
+      <div class="mono text-[11px] tracking-wider text-ink-muted">ARAB 251W</div>
+      <div class="mt-1.5 text-[15px] font-medium leading-snug text-ink transition">Nahda in Periodicals</div>
+    </div>
+    
+    <div class="shrink-0 flex items-baseline gap-1 bg-line/60 rounded-md px-2.5 py-1 tnum">
+      <span class="text-base font-semibold text-ink">9</span>
+      <span class="text-[11px] text-ink-muted">/10</span>
+    </div>
+    
+  </div>
+  
+  <div class="mt-4 flex flex-wrap gap-1.5">
+    
+    <span class="pill pill-outline">Understanding Communication</span>
+    
+  </div>
+  
+  
+  
+  <div class="mt-auto pt-4 text-xs text-ink-muted">
+    <div class="pt-4 border-t border-line">
+      <span class="text-ink-dim">Prof ·</span>
+      <span class="text-ink-soft ml-0.5">Raghda Nahas El-Zein</span>
+    </div>
+  </div>
+  
+</a>
+<button data-star="ARAB 251W" class="star-btn" aria-label="Save ARAB 251W to shortlist" title="Save to shortlist">
+  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><polygon points="12 2 15.1 8.6 22 9.3 17 14.1 18.2 21 12 17.8 5.8 21 7 14.1 2 9.3 8.9 8.6 12 2"/></svg>
+</button>
+</div>
+      </div>
+      
+      <div class="course-item" data-code="AROL 221" data-title="" data-title-raw="AROL 221" data-attrs="Cultures &amp; Histories" data-profs="paul newson" data-ease="0">
+        <div class="relative h-full">
+<a href="course/arol-221.html" class="card card-link p-5 pr-12 group h-full flex flex-col">
+  <div class="flex items-start justify-between gap-4">
+    <div class="min-w-0 flex-1">
+      <div class="mono text-[11px] tracking-wider text-ink-muted">AROL 221</div>
+      <div class="mt-1.5 text-[15px] font-medium leading-snug text-ink transition">AROL 221</div>
+    </div>
+    
+  </div>
+  
+  <div class="mt-4 flex flex-wrap gap-1.5">
+    
+    <span class="pill pill-outline">Cultures &amp; Histories</span>
+    
+  </div>
+  
+  
+  
+  <div class="mt-auto pt-4 text-xs text-ink-muted">
+    <div class="pt-4 border-t border-line">
+      <span class="text-ink-dim">Prof ·</span>
+      <span class="text-ink-soft ml-0.5">Paul Newson</span>
+    </div>
+  </div>
+  
+</a>
+<button data-star="AROL 221" class="star-btn" aria-label="Save AROL 221 to shortlist" title="Save to shortlist">
+  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><polygon points="12 2 15.1 8.6 22 9.3 17 14.1 18.2 21 12 17.8 5.8 21 7 14.1 2 9.3 8.9 8.6 12 2"/></svg>
+</button>
+</div>
+      </div>
+      
+      <div class="course-item" data-code="AROL 225" data-title="" data-title-raw="AROL 225" data-attrs="Cultures &amp; Histories" data-profs="paul newson" data-ease="0">
+        <div class="relative h-full">
+<a href="course/arol-225.html" class="card card-link p-5 pr-12 group h-full flex flex-col">
+  <div class="flex items-start justify-between gap-4">
+    <div class="min-w-0 flex-1">
+      <div class="mono text-[11px] tracking-wider text-ink-muted">AROL 225</div>
+      <div class="mt-1.5 text-[15px] font-medium leading-snug text-ink transition">AROL 225</div>
+    </div>
+    
+  </div>
+  
+  <div class="mt-4 flex flex-wrap gap-1.5">
+    
+    <span class="pill pill-outline">Cultures &amp; Histories</span>
+    
+  </div>
+  
+  
+  
+  <div class="mt-auto pt-4 text-xs text-ink-muted">
+    <div class="pt-4 border-t border-line">
+      <span class="text-ink-dim">Prof ·</span>
+      <span class="text-ink-soft ml-0.5">Paul Newson</span>
+    </div>
+  </div>
+  
+</a>
+<button data-star="AROL 225" class="star-btn" aria-label="Save AROL 225 to shortlist" title="Save to shortlist">
+  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><polygon points="12 2 15.1 8.6 22 9.3 17 14.1 18.2 21 12 17.8 5.8 21 7 14.1 2 9.3 8.9 8.6 12 2"/></svg>
+</button>
+</div>
+      </div>
+      
+      <div class="course-item" data-code="BIOL 210" data-title="" data-title-raw="BIOL 210" data-attrs="Understanding the World" data-profs="" data-ease="0">
+        <div class="relative h-full">
+<a href="course/biol-210.html" class="card card-link p-5 pr-12 group h-full flex flex-col">
+  <div class="flex items-start justify-between gap-4">
+    <div class="min-w-0 flex-1">
+      <div class="mono text-[11px] tracking-wider text-ink-muted">BIOL 210</div>
+      <div class="mt-1.5 text-[15px] font-medium leading-snug text-ink transition">BIOL 210</div>
+    </div>
+    
+  </div>
+  
+  <div class="mt-4 flex flex-wrap gap-1.5">
+    
+    <span class="pill pill-outline">Understanding the World</span>
+    
+  </div>
+  
+  
+  
+</a>
+<button data-star="BIOL 210" class="star-btn" aria-label="Save BIOL 210 to shortlist" title="Save to shortlist">
+  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><polygon points="12 2 15.1 8.6 22 9.3 17 14.1 18.2 21 12 17.8 5.8 21 7 14.1 2 9.3 8.9 8.6 12 2"/></svg>
+</button>
+</div>
+      </div>
+      
+      <div class="course-item" data-code="BUSS 215" data-title="" data-title-raw="BUSS 215" data-attrs="Cultures &amp; Histories, Human Values, Writing in the Discipline" data-profs="yasser akkawi" data-ease="0">
+        <div class="relative h-full">
+<a href="course/buss-215.html" class="card card-link p-5 pr-12 group h-full flex flex-col">
+  <div class="flex items-start justify-between gap-4">
+    <div class="min-w-0 flex-1">
+      <div class="mono text-[11px] tracking-wider text-ink-muted">BUSS 215</div>
+      <div class="mt-1.5 text-[15px] font-medium leading-snug text-ink transition">BUSS 215</div>
+    </div>
+    
+  </div>
+  
+  <div class="mt-4 flex flex-wrap gap-1.5">
+    
+    <span class="pill pill-outline">Cultures &amp; Histories</span>
+    
+    <span class="pill pill-outline">Human Values</span>
+    
+    <span class="pill pill-outline">Writing in the Discipline</span>
+    
+  </div>
+  
+  
+  
+  <div class="mt-auto pt-4 text-xs text-ink-muted">
+    <div class="pt-4 border-t border-line">
+      <span class="text-ink-dim">Prof ·</span>
+      <span class="text-ink-soft ml-0.5">Yasser Akkawi</span>
+    </div>
+  </div>
+  
+</a>
+<button data-star="BUSS 215" class="star-btn" aria-label="Save BUSS 215 to shortlist" title="Save to shortlist">
+  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><polygon points="12 2 15.1 8.6 22 9.3 17 14.1 18.2 21 12 17.8 5.8 21 7 14.1 2 9.3 8.9 8.6 12 2"/></svg>
+</button>
+</div>
+      </div>
+      
+      <div class="course-item" data-code="BUSS 220" data-title="buss 220" data-title-raw="BUSS 220" data-attrs="Societies &amp; Individuals" data-profs="lina tannir" data-ease="10">
+        <div class="relative h-full">
+<a href="course/buss-220.html" class="card card-link p-5 pr-12 group h-full flex flex-col">
+  <div class="flex items-start justify-between gap-4">
+    <div class="min-w-0 flex-1">
+      <div class="mono text-[11px] tracking-wider text-ink-muted">BUSS 220</div>
+      <div class="mt-1.5 text-[15px] font-medium leading-snug text-ink transition">BUSS 220</div>
+    </div>
+    
+    <div class="shrink-0 flex items-baseline gap-1 bg-line/60 rounded-md px-2.5 py-1 tnum">
+      <span class="text-base font-semibold text-ink">10</span>
+      <span class="text-[11px] text-ink-muted">/10</span>
+    </div>
+    
+  </div>
+  
+  <div class="mt-4 flex flex-wrap gap-1.5">
+    
+    <span class="pill pill-outline">Societies &amp; Individuals</span>
+    
+  </div>
+  
+  
+  
+  <div class="mt-auto pt-4 text-xs text-ink-muted">
+    <div class="pt-4 border-t border-line">
+      <span class="text-ink-dim">Prof ·</span>
+      <span class="text-ink-soft ml-0.5">Lina Tannir</span>
+    </div>
+  </div>
+  
+</a>
+<button data-star="BUSS 220" class="star-btn" aria-label="Save BUSS 220 to shortlist" title="Save to shortlist">
+  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><polygon points="12 2 15.1 8.6 22 9.3 17 14.1 18.2 21 12 17.8 5.8 21 7 14.1 2 9.3 8.9 8.6 12 2"/></svg>
+</button>
+</div>
+      </div>
+      
+      <div class="course-item" data-code="CHEM 200" data-title="basic chemistry and applications" data-title-raw="Basic Chemistry and Applications" data-attrs="Understanding the World" data-profs="faraj hasanayn, pierre karam" data-ease="7">
+        <div class="relative h-full">
+<a href="course/chem-200.html" class="card card-link p-5 pr-12 group h-full flex flex-col">
+  <div class="flex items-start justify-between gap-4">
+    <div class="min-w-0 flex-1">
+      <div class="mono text-[11px] tracking-wider text-ink-muted">CHEM 200</div>
+      <div class="mt-1.5 text-[15px] font-medium leading-snug text-ink transition">Basic Chemistry and Applications</div>
+    </div>
+    
+    <div class="shrink-0 flex items-baseline gap-1 bg-line/60 rounded-md px-2.5 py-1 tnum">
+      <span class="text-base font-semibold text-ink">7</span>
+      <span class="text-[11px] text-ink-muted">/10</span>
+    </div>
+    
+  </div>
+  
+  <div class="mt-4 flex flex-wrap gap-1.5">
+    
+    <span class="pill pill-outline">Understanding the World</span>
+    
+  </div>
+  
+  
+  
+  <div class="mt-auto pt-4 text-xs text-ink-muted">
+    <div class="pt-4 border-t border-line">
+      <span class="text-ink-dim">Prof ·</span>
+      <span class="text-ink-soft ml-0.5">Faraj Hasanayn, Pierre Karam</span>
+    </div>
+  </div>
+  
+</a>
+<button data-star="CHEM 200" class="star-btn" aria-label="Save CHEM 200 to shortlist" title="Save to shortlist">
+  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><polygon points="12 2 15.1 8.6 22 9.3 17 14.1 18.2 21 12 17.8 5.8 21 7 14.1 2 9.3 8.9 8.6 12 2"/></svg>
+</button>
+</div>
+      </div>
+      
+      <div class="course-item" data-code="CHLA 212A" data-title="" data-title-raw="CHLA 212A" data-attrs="Cultures &amp; Histories, History of Ideas" data-profs="mohamad nasser" data-ease="0">
+        <div class="relative h-full">
+<a href="course/chla-212a.html" class="card card-link p-5 pr-12 group h-full flex flex-col">
+  <div class="flex items-start justify-between gap-4">
+    <div class="min-w-0 flex-1">
+      <div class="mono text-[11px] tracking-wider text-ink-muted">CHLA 212A</div>
+      <div class="mt-1.5 text-[15px] font-medium leading-snug text-ink transition">CHLA 212A</div>
+    </div>
+    
+  </div>
+  
+  <div class="mt-4 flex flex-wrap gap-1.5">
+    
+    <span class="pill pill-outline">Cultures &amp; Histories</span>
+    
+    <span class="pill pill-outline">History of Ideas</span>
+    
+  </div>
+  
+  
+  
+  <div class="mt-auto pt-4 text-xs text-ink-muted">
+    <div class="pt-4 border-t border-line">
+      <span class="text-ink-dim">Prof ·</span>
+      <span class="text-ink-soft ml-0.5">Mohamad Nasser</span>
+    </div>
+  </div>
+  
+</a>
+<button data-star="CHLA 212A" class="star-btn" aria-label="Save CHLA 212A to shortlist" title="Save to shortlist">
+  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><polygon points="12 2 15.1 8.6 22 9.3 17 14.1 18.2 21 12 17.8 5.8 21 7 14.1 2 9.3 8.9 8.6 12 2"/></svg>
+</button>
+</div>
+      </div>
+      
+      <div class="course-item" data-code="DCSN 200" data-title="" data-title-raw="DCSN 200" data-attrs="" data-profs="" data-ease="0">
+        <div class="relative h-full">
+<a href="course/dcsn-200.html" class="card card-link p-5 pr-12 group h-full flex flex-col">
+  <div class="flex items-start justify-between gap-4">
+    <div class="min-w-0 flex-1">
+      <div class="mono text-[11px] tracking-wider text-ink-muted">DCSN 200</div>
+      <div class="mt-1.5 text-[15px] font-medium leading-snug text-ink transition">DCSN 200</div>
+    </div>
+    
+  </div>
+  
+  
+  
+</a>
+<button data-star="DCSN 200" class="star-btn" aria-label="Save DCSN 200 to shortlist" title="Save to shortlist">
+  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><polygon points="12 2 15.1 8.6 22 9.3 17 14.1 18.2 21 12 17.8 5.8 21 7 14.1 2 9.3 8.9 8.6 12 2"/></svg>
+</button>
+</div>
+      </div>
+      
+      <div class="course-item" data-code="ECON 203" data-title="" data-title-raw="ECON 203" data-attrs="Societies &amp; Individuals" data-profs="maya kanaan" data-ease="0">
+        <div class="relative h-full">
+<a href="course/econ-203.html" class="card card-link p-5 pr-12 group h-full flex flex-col">
+  <div class="flex items-start justify-between gap-4">
+    <div class="min-w-0 flex-1">
+      <div class="mono text-[11px] tracking-wider text-ink-muted">ECON 203</div>
+      <div class="mt-1.5 text-[15px] font-medium leading-snug text-ink transition">ECON 203</div>
+    </div>
+    
+  </div>
+  
+  <div class="mt-4 flex flex-wrap gap-1.5">
+    
+    <span class="pill pill-outline">Societies &amp; Individuals</span>
+    
+  </div>
+  
+  
+  
+  <div class="mt-auto pt-4 text-xs text-ink-muted">
+    <div class="pt-4 border-t border-line">
+      <span class="text-ink-dim">Prof ·</span>
+      <span class="text-ink-soft ml-0.5">Maya Kanaan</span>
+    </div>
+  </div>
+  
+</a>
+<button data-star="ECON 203" class="star-btn" aria-label="Save ECON 203 to shortlist" title="Save to shortlist">
+  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><polygon points="12 2 15.1 8.6 22 9.3 17 14.1 18.2 21 12 17.8 5.8 21 7 14.1 2 9.3 8.9 8.6 12 2"/></svg>
+</button>
+</div>
+      </div>
+      
+      <div class="course-item" data-code="ECON 211" data-title="econ 211" data-title-raw="ECON 211" data-attrs="Societies &amp; Individuals" data-profs="usamah ramadan, raja sabra" data-ease="8">
+        <div class="relative h-full">
+<a href="course/econ-211.html" class="card card-link p-5 pr-12 group h-full flex flex-col">
+  <div class="flex items-start justify-between gap-4">
+    <div class="min-w-0 flex-1">
+      <div class="mono text-[11px] tracking-wider text-ink-muted">ECON 211</div>
+      <div class="mt-1.5 text-[15px] font-medium leading-snug text-ink transition">ECON 211</div>
+    </div>
+    
+    <div class="shrink-0 flex items-baseline gap-1 bg-line/60 rounded-md px-2.5 py-1 tnum">
+      <span class="text-base font-semibold text-ink">8</span>
+      <span class="text-[11px] text-ink-muted">/10</span>
+    </div>
+    
+  </div>
+  
+  <div class="mt-4 flex flex-wrap gap-1.5">
+    
+    <span class="pill pill-outline">Societies &amp; Individuals</span>
+    
+  </div>
+  
+  
+  
+  <div class="mt-auto pt-4 text-xs text-ink-muted">
+    <div class="pt-4 border-t border-line">
+      <span class="text-ink-dim">Prof ·</span>
+      <span class="text-ink-soft ml-0.5">Usamah Ramadan, Raja Sabra</span>
+    </div>
+  </div>
+  
+</a>
+<button data-star="ECON 211" class="star-btn" aria-label="Save ECON 211 to shortlist" title="Save to shortlist">
+  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><polygon points="12 2 15.1 8.6 22 9.3 17 14.1 18.2 21 12 17.8 5.8 21 7 14.1 2 9.3 8.9 8.6 12 2"/></svg>
+</button>
+</div>
+      </div>
+      
+      <div class="course-item" data-code="ECON 212" data-title="econ 212" data-title-raw="ECON 212" data-attrs="Societies &amp; Individuals" data-profs="malak makki" data-ease="9">
+        <div class="relative h-full">
+<a href="course/econ-212.html" class="card card-link p-5 pr-12 group h-full flex flex-col">
+  <div class="flex items-start justify-between gap-4">
+    <div class="min-w-0 flex-1">
+      <div class="mono text-[11px] tracking-wider text-ink-muted">ECON 212</div>
+      <div class="mt-1.5 text-[15px] font-medium leading-snug text-ink transition">ECON 212</div>
+    </div>
+    
+    <div class="shrink-0 flex items-baseline gap-1 bg-line/60 rounded-md px-2.5 py-1 tnum">
+      <span class="text-base font-semibold text-ink">9</span>
+      <span class="text-[11px] text-ink-muted">/10</span>
+    </div>
+    
+  </div>
+  
+  <div class="mt-4 flex flex-wrap gap-1.5">
+    
+    <span class="pill pill-outline">Societies &amp; Individuals</span>
+    
+  </div>
+  
+  
+  
+  <div class="mt-auto pt-4 text-xs text-ink-muted">
+    <div class="pt-4 border-t border-line">
+      <span class="text-ink-dim">Prof ·</span>
+      <span class="text-ink-soft ml-0.5">Malak Makki</span>
+    </div>
+  </div>
+  
+</a>
+<button data-star="ECON 212" class="star-btn" aria-label="Save ECON 212 to shortlist" title="Save to shortlist">
+  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><polygon points="12 2 15.1 8.6 22 9.3 17 14.1 18.2 21 12 17.8 5.8 21 7 14.1 2 9.3 8.9 8.6 12 2"/></svg>
+</button>
+</div>
+      </div>
+      
+      <div class="course-item" data-code="EDUC 219" data-title="" data-title-raw="EDUC 219" data-attrs="" data-profs="hoda baytiyeh" data-ease="0">
+        <div class="relative h-full">
+<a href="course/educ-219.html" class="card card-link p-5 pr-12 group h-full flex flex-col">
+  <div class="flex items-start justify-between gap-4">
+    <div class="min-w-0 flex-1">
+      <div class="mono text-[11px] tracking-wider text-ink-muted">EDUC 219</div>
+      <div class="mt-1.5 text-[15px] font-medium leading-snug text-ink transition">EDUC 219</div>
+    </div>
+    
+  </div>
+  
+  
+  
+  <div class="mt-auto pt-4 text-xs text-ink-muted">
+    <div class="pt-4 border-t border-line">
+      <span class="text-ink-dim">Prof ·</span>
+      <span class="text-ink-soft ml-0.5">Hoda Baytiyeh</span>
+    </div>
+  </div>
+  
+</a>
+<button data-star="EDUC 219" class="star-btn" aria-label="Save EDUC 219 to shortlist" title="Save to shortlist">
+  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><polygon points="12 2 15.1 8.6 22 9.3 17 14.1 18.2 21 12 17.8 5.8 21 7 14.1 2 9.3 8.9 8.6 12 2"/></svg>
+</button>
+</div>
+      </div>
+      
+      <div class="course-item" data-code="EDUC 230" data-title="" data-title-raw="EDUC 230" data-attrs="Societies &amp; Individuals" data-profs="enja osman" data-ease="0">
+        <div class="relative h-full">
+<a href="course/educ-230.html" class="card card-link p-5 pr-12 group h-full flex flex-col">
+  <div class="flex items-start justify-between gap-4">
+    <div class="min-w-0 flex-1">
+      <div class="mono text-[11px] tracking-wider text-ink-muted">EDUC 230</div>
+      <div class="mt-1.5 text-[15px] font-medium leading-snug text-ink transition">EDUC 230</div>
+    </div>
+    
+  </div>
+  
+  <div class="mt-4 flex flex-wrap gap-1.5">
+    
+    <span class="pill pill-outline">Societies &amp; Individuals</span>
+    
+  </div>
+  
+  
+  
+  <div class="mt-auto pt-4 text-xs text-ink-muted">
+    <div class="pt-4 border-t border-line">
+      <span class="text-ink-dim">Prof ·</span>
+      <span class="text-ink-soft ml-0.5">Enja Osman</span>
+    </div>
+  </div>
+  
+</a>
+<button data-star="EDUC 230" class="star-btn" aria-label="Save EDUC 230 to shortlist" title="Save to shortlist">
+  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><polygon points="12 2 15.1 8.6 22 9.3 17 14.1 18.2 21 12 17.8 5.8 21 7 14.1 2 9.3 8.9 8.6 12 2"/></svg>
+</button>
+</div>
+      </div>
+      
+      <div class="course-item" data-code="EDUC 231" data-title="" data-title-raw="EDUC 231" data-attrs="Societies &amp; Individuals" data-profs="ghazi ghaith" data-ease="0">
+        <div class="relative h-full">
+<a href="course/educ-231.html" class="card card-link p-5 pr-12 group h-full flex flex-col">
+  <div class="flex items-start justify-between gap-4">
+    <div class="min-w-0 flex-1">
+      <div class="mono text-[11px] tracking-wider text-ink-muted">EDUC 231</div>
+      <div class="mt-1.5 text-[15px] font-medium leading-snug text-ink transition">EDUC 231</div>
+    </div>
+    
+  </div>
+  
+  <div class="mt-4 flex flex-wrap gap-1.5">
+    
+    <span class="pill pill-outline">Societies &amp; Individuals</span>
+    
+  </div>
+  
+  
+  
+  <div class="mt-auto pt-4 text-xs text-ink-muted">
+    <div class="pt-4 border-t border-line">
+      <span class="text-ink-dim">Prof ·</span>
+      <span class="text-ink-soft ml-0.5">Ghazi Ghaith</span>
+    </div>
+  </div>
+  
+</a>
+<button data-star="EDUC 231" class="star-btn" aria-label="Save EDUC 231 to shortlist" title="Save to shortlist">
+  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><polygon points="12 2 15.1 8.6 22 9.3 17 14.1 18.2 21 12 17.8 5.8 21 7 14.1 2 9.3 8.9 8.6 12 2"/></svg>
+</button>
+</div>
+      </div>
+      
+      <div class="course-item" data-code="EDUC 273" data-title="sciences for elementary teachers 1" data-title-raw="Sciences for Elementary Teachers 1" data-attrs="Understanding the World" data-profs="rula baalbaki" data-ease="8">
+        <div class="relative h-full">
+<a href="course/educ-273.html" class="card card-link p-5 pr-12 group h-full flex flex-col">
+  <div class="flex items-start justify-between gap-4">
+    <div class="min-w-0 flex-1">
+      <div class="mono text-[11px] tracking-wider text-ink-muted">EDUC 273</div>
+      <div class="mt-1.5 text-[15px] font-medium leading-snug text-ink transition">Sciences for Elementary Teachers 1</div>
+    </div>
+    
+    <div class="shrink-0 flex items-baseline gap-1 bg-line/60 rounded-md px-2.5 py-1 tnum">
+      <span class="text-base font-semibold text-ink">8</span>
+      <span class="text-[11px] text-ink-muted">/10</span>
+    </div>
+    
+  </div>
+  
+  <div class="mt-4 flex flex-wrap gap-1.5">
+    
+    <span class="pill pill-outline">Understanding the World</span>
+    
+  </div>
+  
+  
+  
+  <div class="mt-auto pt-4 text-xs text-ink-muted">
+    <div class="pt-4 border-t border-line">
+      <span class="text-ink-dim">Prof ·</span>
+      <span class="text-ink-soft ml-0.5">Rula Baalbaki</span>
+    </div>
+  </div>
+  
+</a>
+<button data-star="EDUC 273" class="star-btn" aria-label="Save EDUC 273 to shortlist" title="Save to shortlist">
+  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><polygon points="12 2 15.1 8.6 22 9.3 17 14.1 18.2 21 12 17.8 5.8 21 7 14.1 2 9.3 8.9 8.6 12 2"/></svg>
+</button>
+</div>
+      </div>
+      
+      <div class="course-item" data-code="ENGL 203" data-title="" data-title-raw="ENGL 203" data-attrs="Understanding Communication" data-profs="" data-ease="0">
+        <div class="relative h-full">
+<a href="course/engl-203.html" class="card card-link p-5 pr-12 group h-full flex flex-col">
+  <div class="flex items-start justify-between gap-4">
+    <div class="min-w-0 flex-1">
+      <div class="mono text-[11px] tracking-wider text-ink-muted">ENGL 203</div>
+      <div class="mt-1.5 text-[15px] font-medium leading-snug text-ink transition">ENGL 203</div>
+    </div>
+    
+  </div>
+  
+  <div class="mt-4 flex flex-wrap gap-1.5">
+    
+    <span class="pill pill-outline">Understanding Communication</span>
+    
+  </div>
+  
+  
+  
+</a>
+<button data-star="ENGL 203" class="star-btn" aria-label="Save ENGL 203 to shortlist" title="Save to shortlist">
+  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><polygon points="12 2 15.1 8.6 22 9.3 17 14.1 18.2 21 12 17.8 5.8 21 7 14.1 2 9.3 8.9 8.6 12 2"/></svg>
+</button>
+</div>
+      </div>
+      
+      <div class="course-item" data-code="ENGL 205" data-title="" data-title-raw="ENGL 205" data-attrs="Cultures &amp; Histories" data-profs="devan ard-keyser" data-ease="0">
+        <div class="relative h-full">
+<a href="course/engl-205.html" class="card card-link p-5 pr-12 group h-full flex flex-col">
+  <div class="flex items-start justify-between gap-4">
+    <div class="min-w-0 flex-1">
+      <div class="mono text-[11px] tracking-wider text-ink-muted">ENGL 205</div>
+      <div class="mt-1.5 text-[15px] font-medium leading-snug text-ink transition">ENGL 205</div>
+    </div>
+    
+  </div>
+  
+  <div class="mt-4 flex flex-wrap gap-1.5">
+    
+    <span class="pill pill-outline">Cultures &amp; Histories</span>
+    
+  </div>
+  
+  
+  
+  <div class="mt-auto pt-4 text-xs text-ink-muted">
+    <div class="pt-4 border-t border-line">
+      <span class="text-ink-dim">Prof ·</span>
+      <span class="text-ink-soft ml-0.5">DeVan Ard-Keyser</span>
+    </div>
+  </div>
+  
+</a>
+<button data-star="ENGL 205" class="star-btn" aria-label="Save ENGL 205 to shortlist" title="Save to shortlist">
+  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><polygon points="12 2 15.1 8.6 22 9.3 17 14.1 18.2 21 12 17.8 5.8 21 7 14.1 2 9.3 8.9 8.6 12 2"/></svg>
+</button>
+</div>
+      </div>
+      
+      <div class="course-item" data-code="ENGL 207" data-title="" data-title-raw="ENGL 207" data-attrs="Cultures &amp; Histories" data-profs="syrine el hout" data-ease="0">
+        <div class="relative h-full">
+<a href="course/engl-207.html" class="card card-link p-5 pr-12 group h-full flex flex-col">
+  <div class="flex items-start justify-between gap-4">
+    <div class="min-w-0 flex-1">
+      <div class="mono text-[11px] tracking-wider text-ink-muted">ENGL 207</div>
+      <div class="mt-1.5 text-[15px] font-medium leading-snug text-ink transition">ENGL 207</div>
+    </div>
+    
+  </div>
+  
+  <div class="mt-4 flex flex-wrap gap-1.5">
+    
+    <span class="pill pill-outline">Cultures &amp; Histories</span>
+    
+  </div>
+  
+  
+  
+  <div class="mt-auto pt-4 text-xs text-ink-muted">
+    <div class="pt-4 border-t border-line">
+      <span class="text-ink-dim">Prof ·</span>
+      <span class="text-ink-soft ml-0.5">Syrine el Hout</span>
+    </div>
+  </div>
+  
+</a>
+<button data-star="ENGL 207" class="star-btn" aria-label="Save ENGL 207 to shortlist" title="Save to shortlist">
+  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><polygon points="12 2 15.1 8.6 22 9.3 17 14.1 18.2 21 12 17.8 5.8 21 7 14.1 2 9.3 8.9 8.6 12 2"/></svg>
+</button>
+</div>
+      </div>
+      
+      <div class="course-item" data-code="ENGL 212" data-title="" data-title-raw="ENGL 212" data-attrs="Cultures &amp; Histories" data-profs="emelye ard-keyser" data-ease="0">
+        <div class="relative h-full">
+<a href="course/engl-212.html" class="card card-link p-5 pr-12 group h-full flex flex-col">
+  <div class="flex items-start justify-between gap-4">
+    <div class="min-w-0 flex-1">
+      <div class="mono text-[11px] tracking-wider text-ink-muted">ENGL 212</div>
+      <div class="mt-1.5 text-[15px] font-medium leading-snug text-ink transition">ENGL 212</div>
+    </div>
+    
+  </div>
+  
+  <div class="mt-4 flex flex-wrap gap-1.5">
+    
+    <span class="pill pill-outline">Cultures &amp; Histories</span>
+    
+  </div>
+  
+  
+  
+  <div class="mt-auto pt-4 text-xs text-ink-muted">
+    <div class="pt-4 border-t border-line">
+      <span class="text-ink-dim">Prof ·</span>
+      <span class="text-ink-soft ml-0.5">Emelye Ard-Keyser</span>
+    </div>
+  </div>
+  
+</a>
+<button data-star="ENGL 212" class="star-btn" aria-label="Save ENGL 212 to shortlist" title="Save to shortlist">
+  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><polygon points="12 2 15.1 8.6 22 9.3 17 14.1 18.2 21 12 17.8 5.8 21 7 14.1 2 9.3 8.9 8.6 12 2"/></svg>
+</button>
+</div>
+      </div>
+      
+      <div class="course-item" data-code="ENGL 214" data-title="" data-title-raw="ENGL 214" data-attrs="Cultures &amp; Histories" data-profs="christopher nassar" data-ease="0">
+        <div class="relative h-full">
+<a href="course/engl-214.html" class="card card-link p-5 pr-12 group h-full flex flex-col">
+  <div class="flex items-start justify-between gap-4">
+    <div class="min-w-0 flex-1">
+      <div class="mono text-[11px] tracking-wider text-ink-muted">ENGL 214</div>
+      <div class="mt-1.5 text-[15px] font-medium leading-snug text-ink transition">ENGL 214</div>
+    </div>
+    
+  </div>
+  
+  <div class="mt-4 flex flex-wrap gap-1.5">
+    
+    <span class="pill pill-outline">Cultures &amp; Histories</span>
+    
+  </div>
+  
+  
+  
+  <div class="mt-auto pt-4 text-xs text-ink-muted">
+    <div class="pt-4 border-t border-line">
+      <span class="text-ink-dim">Prof ·</span>
+      <span class="text-ink-soft ml-0.5">Christopher Nassar</span>
+    </div>
+  </div>
+  
+</a>
+<button data-star="ENGL 214" class="star-btn" aria-label="Save ENGL 214 to shortlist" title="Save to shortlist">
+  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><polygon points="12 2 15.1 8.6 22 9.3 17 14.1 18.2 21 12 17.8 5.8 21 7 14.1 2 9.3 8.9 8.6 12 2"/></svg>
+</button>
+</div>
+      </div>
+      
+      <div class="course-item" data-code="ENGL 227" data-title="introduction to language" data-title-raw="Introduction to Language" data-attrs="Cultures &amp; Histories" data-profs="kassim shaaban" data-ease="8">
+        <div class="relative h-full">
+<a href="course/engl-227.html" class="card card-link p-5 pr-12 group h-full flex flex-col">
+  <div class="flex items-start justify-between gap-4">
+    <div class="min-w-0 flex-1">
+      <div class="mono text-[11px] tracking-wider text-ink-muted">ENGL 227</div>
+      <div class="mt-1.5 text-[15px] font-medium leading-snug text-ink transition">Introduction to Language</div>
+    </div>
+    
+    <div class="shrink-0 flex items-baseline gap-1 bg-line/60 rounded-md px-2.5 py-1 tnum">
+      <span class="text-base font-semibold text-ink">8</span>
+      <span class="text-[11px] text-ink-muted">/10</span>
+    </div>
+    
+  </div>
+  
+  <div class="mt-4 flex flex-wrap gap-1.5">
+    
+    <span class="pill pill-outline">Cultures &amp; Histories</span>
+    
+  </div>
+  
+  
+  
+  <div class="mt-auto pt-4 text-xs text-ink-muted">
+    <div class="pt-4 border-t border-line">
+      <span class="text-ink-dim">Prof ·</span>
+      <span class="text-ink-soft ml-0.5">Kassim Shaaban</span>
+    </div>
+  </div>
+  
+</a>
+<button data-star="ENGL 227" class="star-btn" aria-label="Save ENGL 227 to shortlist" title="Save to shortlist">
+  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><polygon points="12 2 15.1 8.6 22 9.3 17 14.1 18.2 21 12 17.8 5.8 21 7 14.1 2 9.3 8.9 8.6 12 2"/></svg>
+</button>
+</div>
+      </div>
+      
+      <div class="course-item" data-code="ENGL 233" data-title="introduction to translation" data-title-raw="Introduction to Translation" data-attrs="Cultures &amp; Histories" data-profs="zinnia shweiry" data-ease="9">
+        <div class="relative h-full">
+<a href="course/engl-233.html" class="card card-link p-5 pr-12 group h-full flex flex-col">
+  <div class="flex items-start justify-between gap-4">
+    <div class="min-w-0 flex-1">
+      <div class="mono text-[11px] tracking-wider text-ink-muted">ENGL 233</div>
+      <div class="mt-1.5 text-[15px] font-medium leading-snug text-ink transition">Introduction to Translation</div>
+    </div>
+    
+    <div class="shrink-0 flex items-baseline gap-1 bg-line/60 rounded-md px-2.5 py-1 tnum">
+      <span class="text-base font-semibold text-ink">9</span>
+      <span class="text-[11px] text-ink-muted">/10</span>
+    </div>
+    
+  </div>
+  
+  <div class="mt-4 flex flex-wrap gap-1.5">
+    
+    <span class="pill pill-outline">Cultures &amp; Histories</span>
+    
+  </div>
+  
+  
+  
+  <div class="mt-auto pt-4 text-xs text-ink-muted">
+    <div class="pt-4 border-t border-line">
+      <span class="text-ink-dim">Prof ·</span>
+      <span class="text-ink-soft ml-0.5">Zinnia Shweiry</span>
+    </div>
+  </div>
+  
+</a>
+<button data-star="ENGL 233" class="star-btn" aria-label="Save ENGL 233 to shortlist" title="Save to shortlist">
+  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><polygon points="12 2 15.1 8.6 22 9.3 17 14.1 18.2 21 12 17.8 5.8 21 7 14.1 2 9.3 8.9 8.6 12 2"/></svg>
+</button>
+</div>
+      </div>
+      
+      <div class="course-item" data-code="GEOL 201" data-title="" data-title-raw="GEOL 201" data-attrs="Understanding the World" data-profs="abdel rahman" data-ease="0">
+        <div class="relative h-full">
+<a href="course/geol-201.html" class="card card-link p-5 pr-12 group h-full flex flex-col">
+  <div class="flex items-start justify-between gap-4">
+    <div class="min-w-0 flex-1">
+      <div class="mono text-[11px] tracking-wider text-ink-muted">GEOL 201</div>
+      <div class="mt-1.5 text-[15px] font-medium leading-snug text-ink transition">GEOL 201</div>
+    </div>
+    
+  </div>
+  
+  <div class="mt-4 flex flex-wrap gap-1.5">
+    
+    <span class="pill pill-outline">Understanding the World</span>
+    
+  </div>
+  
+  
+  
+  <div class="mt-auto pt-4 text-xs text-ink-muted">
+    <div class="pt-4 border-t border-line">
+      <span class="text-ink-dim">Prof ·</span>
+      <span class="text-ink-soft ml-0.5">Abdel Rahman</span>
+    </div>
+  </div>
+  
+</a>
+<button data-star="GEOL 201" class="star-btn" aria-label="Save GEOL 201 to shortlist" title="Save to shortlist">
+  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><polygon points="12 2 15.1 8.6 22 9.3 17 14.1 18.2 21 12 17.8 5.8 21 7 14.1 2 9.3 8.9 8.6 12 2"/></svg>
+</button>
+</div>
+      </div>
+      
+      <div class="course-item" data-code="HIST 214" data-title="islamic history: military society in the middle east," data-title-raw="Islamic History: Military Society in the Middle East," data-attrs="Cultures &amp; Histories" data-profs="tarek abou hussein" data-ease="8">
+        <div class="relative h-full">
+<a href="course/hist-214.html" class="card card-link p-5 pr-12 group h-full flex flex-col">
+  <div class="flex items-start justify-between gap-4">
+    <div class="min-w-0 flex-1">
+      <div class="mono text-[11px] tracking-wider text-ink-muted">HIST 214</div>
+      <div class="mt-1.5 text-[15px] font-medium leading-snug text-ink transition">Islamic History: Military Society in the Middle East,</div>
+    </div>
+    
+    <div class="shrink-0 flex items-baseline gap-1 bg-line/60 rounded-md px-2.5 py-1 tnum">
+      <span class="text-base font-semibold text-ink">8</span>
+      <span class="text-[11px] text-ink-muted">/10</span>
+    </div>
+    
+  </div>
+  
+  <div class="mt-4 flex flex-wrap gap-1.5">
+    
+    <span class="pill pill-outline">Cultures &amp; Histories</span>
+    
+  </div>
+  
+  
+  
+  <div class="mt-auto pt-4 text-xs text-ink-muted">
+    <div class="pt-4 border-t border-line">
+      <span class="text-ink-dim">Prof ·</span>
+      <span class="text-ink-soft ml-0.5">Tarek Abou Hussein</span>
+    </div>
+  </div>
+  
+</a>
+<button data-star="HIST 214" class="star-btn" aria-label="Save HIST 214 to shortlist" title="Save to shortlist">
+  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><polygon points="12 2 15.1 8.6 22 9.3 17 14.1 18.2 21 12 17.8 5.8 21 7 14.1 2 9.3 8.9 8.6 12 2"/></svg>
+</button>
+</div>
+      </div>
+      
+      <div class="course-item" data-code="HIST 220E" data-title="local histories: ottoman constantinople, from the" data-title-raw="Local Histories: Ottoman Constantinople, from the" data-attrs="Cultures &amp; Histories" data-profs="tarek abou hussein" data-ease="8">
+        <div class="relative h-full">
+<a href="course/hist-220e.html" class="card card-link p-5 pr-12 group h-full flex flex-col">
+  <div class="flex items-start justify-between gap-4">
+    <div class="min-w-0 flex-1">
+      <div class="mono text-[11px] tracking-wider text-ink-muted">HIST 220E</div>
+      <div class="mt-1.5 text-[15px] font-medium leading-snug text-ink transition">Local Histories: Ottoman Constantinople, from the</div>
+    </div>
+    
+    <div class="shrink-0 flex items-baseline gap-1 bg-line/60 rounded-md px-2.5 py-1 tnum">
+      <span class="text-base font-semibold text-ink">8</span>
+      <span class="text-[11px] text-ink-muted">/10</span>
+    </div>
+    
+  </div>
+  
+  <div class="mt-4 flex flex-wrap gap-1.5">
+    
+    <span class="pill pill-outline">Cultures &amp; Histories</span>
+    
+  </div>
+  
+  
+  
+  <div class="mt-auto pt-4 text-xs text-ink-muted">
+    <div class="pt-4 border-t border-line">
+      <span class="text-ink-dim">Prof ·</span>
+      <span class="text-ink-soft ml-0.5">Tarek Abou Hussein</span>
+    </div>
+  </div>
+  
+</a>
+<button data-star="HIST 220E" class="star-btn" aria-label="Save HIST 220E to shortlist" title="Save to shortlist">
+  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><polygon points="12 2 15.1 8.6 22 9.3 17 14.1 18.2 21 12 17.8 5.8 21 7 14.1 2 9.3 8.9 8.6 12 2"/></svg>
+</button>
+</div>
+      </div>
+      
+      <div class="course-item" data-code="HIST 227" data-title="hist 227" data-title-raw="HIST 227" data-attrs="Cultures &amp; Histories" data-profs="tarek abou hussein" data-ease="9">
+        <div class="relative h-full">
+<a href="course/hist-227.html" class="card card-link p-5 pr-12 group h-full flex flex-col">
+  <div class="flex items-start justify-between gap-4">
+    <div class="min-w-0 flex-1">
+      <div class="mono text-[11px] tracking-wider text-ink-muted">HIST 227</div>
+      <div class="mt-1.5 text-[15px] font-medium leading-snug text-ink transition">HIST 227</div>
+    </div>
+    
+    <div class="shrink-0 flex items-baseline gap-1 bg-line/60 rounded-md px-2.5 py-1 tnum">
+      <span class="text-base font-semibold text-ink">9</span>
+      <span class="text-[11px] text-ink-muted">/10</span>
+    </div>
+    
+  </div>
+  
+  <div class="mt-4 flex flex-wrap gap-1.5">
+    
+    <span class="pill pill-outline">Cultures &amp; Histories</span>
+    
+  </div>
+  
+  
+  
+  <div class="mt-auto pt-4 text-xs text-ink-muted">
+    <div class="pt-4 border-t border-line">
+      <span class="text-ink-dim">Prof ·</span>
+      <span class="text-ink-soft ml-0.5">Tarek Abou Hussein</span>
+    </div>
+  </div>
+  
+</a>
+<button data-star="HIST 227" class="star-btn" aria-label="Save HIST 227 to shortlist" title="Save to shortlist">
+  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><polygon points="12 2 15.1 8.6 22 9.3 17 14.1 18.2 21 12 17.8 5.8 21 7 14.1 2 9.3 8.9 8.6 12 2"/></svg>
+</button>
+</div>
+      </div>
+      
+      <div class="course-item" data-code="HIST 237" data-title="hist 237" data-title-raw="HIST 237" data-attrs="Cultures &amp; Histories" data-profs="tarek abou hussein" data-ease="8">
+        <div class="relative h-full">
+<a href="course/hist-237.html" class="card card-link p-5 pr-12 group h-full flex flex-col">
+  <div class="flex items-start justify-between gap-4">
+    <div class="min-w-0 flex-1">
+      <div class="mono text-[11px] tracking-wider text-ink-muted">HIST 237</div>
+      <div class="mt-1.5 text-[15px] font-medium leading-snug text-ink transition">HIST 237</div>
+    </div>
+    
+    <div class="shrink-0 flex items-baseline gap-1 bg-line/60 rounded-md px-2.5 py-1 tnum">
+      <span class="text-base font-semibold text-ink">8</span>
+      <span class="text-[11px] text-ink-muted">/10</span>
+    </div>
+    
+  </div>
+  
+  <div class="mt-4 flex flex-wrap gap-1.5">
+    
+    <span class="pill pill-outline">Cultures &amp; Histories</span>
+    
+  </div>
+  
+  
+  
+  <div class="mt-auto pt-4 text-xs text-ink-muted">
+    <div class="pt-4 border-t border-line">
+      <span class="text-ink-dim">Prof ·</span>
+      <span class="text-ink-soft ml-0.5">Tarek Abou Hussein</span>
+    </div>
+  </div>
+  
+</a>
+<button data-star="HIST 237" class="star-btn" aria-label="Save HIST 237 to shortlist" title="Save to shortlist">
+  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><polygon points="12 2 15.1 8.6 22 9.3 17 14.1 18.2 21 12 17.8 5.8 21 7 14.1 2 9.3 8.9 8.6 12 2"/></svg>
+</button>
+</div>
+      </div>
+      
+      <div class="course-item" data-code="HIST 239" data-title="" data-title-raw="HIST 239" data-attrs="Cultures &amp; Histories" data-profs="peter kitlas" data-ease="0">
+        <div class="relative h-full">
+<a href="course/hist-239.html" class="card card-link p-5 pr-12 group h-full flex flex-col">
+  <div class="flex items-start justify-between gap-4">
+    <div class="min-w-0 flex-1">
+      <div class="mono text-[11px] tracking-wider text-ink-muted">HIST 239</div>
+      <div class="mt-1.5 text-[15px] font-medium leading-snug text-ink transition">HIST 239</div>
+    </div>
+    
+  </div>
+  
+  <div class="mt-4 flex flex-wrap gap-1.5">
+    
+    <span class="pill pill-outline">Cultures &amp; Histories</span>
+    
+  </div>
+  
+  
+  
+  <div class="mt-auto pt-4 text-xs text-ink-muted">
+    <div class="pt-4 border-t border-line">
+      <span class="text-ink-dim">Prof ·</span>
+      <span class="text-ink-soft ml-0.5">Peter Kitlas</span>
+    </div>
+  </div>
+  
+</a>
+<button data-star="HIST 239" class="star-btn" aria-label="Save HIST 239 to shortlist" title="Save to shortlist">
+  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><polygon points="12 2 15.1 8.6 22 9.3 17 14.1 18.2 21 12 17.8 5.8 21 7 14.1 2 9.3 8.9 8.6 12 2"/></svg>
+</button>
+</div>
+      </div>
+      
+      <div class="course-item" data-code="HIST 258BW" data-title="topics vary each semester, current: st.colonial" data-title-raw="Topics Vary Each Semester, current: ST.Colonial" data-attrs="Social Inequalities" data-profs="peter kitlas" data-ease="9">
+        <div class="relative h-full">
+<a href="course/hist-258bw.html" class="card card-link p-5 pr-12 group h-full flex flex-col">
+  <div class="flex items-start justify-between gap-4">
+    <div class="min-w-0 flex-1">
+      <div class="mono text-[11px] tracking-wider text-ink-muted">HIST 258BW</div>
+      <div class="mt-1.5 text-[15px] font-medium leading-snug text-ink transition">Topics Vary Each Semester, current: ST.Colonial</div>
+    </div>
+    
+    <div class="shrink-0 flex items-baseline gap-1 bg-line/60 rounded-md px-2.5 py-1 tnum">
+      <span class="text-base font-semibold text-ink">9</span>
+      <span class="text-[11px] text-ink-muted">/10</span>
+    </div>
+    
+  </div>
+  
+  <div class="mt-4 flex flex-wrap gap-1.5">
+    
+    <span class="pill pill-outline">Social Inequalities</span>
+    
+  </div>
+  
+  
+  
+  <div class="mt-auto pt-4 text-xs text-ink-muted">
+    <div class="pt-4 border-t border-line">
+      <span class="text-ink-dim">Prof ·</span>
+      <span class="text-ink-soft ml-0.5">Peter Kitlas</span>
+    </div>
+  </div>
+  
+</a>
+<button data-star="HIST 258BW" class="star-btn" aria-label="Save HIST 258BW to shortlist" title="Save to shortlist">
+  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><polygon points="12 2 15.1 8.6 22 9.3 17 14.1 18.2 21 12 17.8 5.8 21 7 14.1 2 9.3 8.9 8.6 12 2"/></svg>
+</button>
+</div>
+      </div>
+      
+      <div class="course-item" data-code="HPCH 201" data-title="" data-title-raw="HPCH 201" data-attrs="Societies &amp; Individuals" data-profs="faysal kak" data-ease="0">
+        <div class="relative h-full">
+<a href="course/hpch-201.html" class="card card-link p-5 pr-12 group h-full flex flex-col">
+  <div class="flex items-start justify-between gap-4">
+    <div class="min-w-0 flex-1">
+      <div class="mono text-[11px] tracking-wider text-ink-muted">HPCH 201</div>
+      <div class="mt-1.5 text-[15px] font-medium leading-snug text-ink transition">HPCH 201</div>
+    </div>
+    
+  </div>
+  
+  <div class="mt-4 flex flex-wrap gap-1.5">
+    
+    <span class="pill pill-outline">Societies &amp; Individuals</span>
+    
+  </div>
+  
+  
+  
+  <div class="mt-auto pt-4 text-xs text-ink-muted">
+    <div class="pt-4 border-t border-line">
+      <span class="text-ink-dim">Prof ·</span>
+      <span class="text-ink-soft ml-0.5">Faysal Kak</span>
+    </div>
+  </div>
+  
+</a>
+<button data-star="HPCH 201" class="star-btn" aria-label="Save HPCH 201 to shortlist" title="Save to shortlist">
+  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><polygon points="12 2 15.1 8.6 22 9.3 17 14.1 18.2 21 12 17.8 5.8 21 7 14.1 2 9.3 8.9 8.6 12 2"/></svg>
+</button>
+</div>
+      </div>
+      
+      <div class="course-item" data-code="LDEM 267" data-title="introoduction restoration ecology" data-title-raw="Introoduction Restoration Ecology" data-attrs="Understanding the World" data-profs="" data-ease="8">
+        <div class="relative h-full">
+<a href="course/ldem-267.html" class="card card-link p-5 pr-12 group h-full flex flex-col">
+  <div class="flex items-start justify-between gap-4">
+    <div class="min-w-0 flex-1">
+      <div class="mono text-[11px] tracking-wider text-ink-muted">LDEM 267</div>
+      <div class="mt-1.5 text-[15px] font-medium leading-snug text-ink transition">Introoduction Restoration Ecology</div>
+    </div>
+    
+    <div class="shrink-0 flex items-baseline gap-1 bg-line/60 rounded-md px-2.5 py-1 tnum">
+      <span class="text-base font-semibold text-ink">8</span>
+      <span class="text-[11px] text-ink-muted">/10</span>
+    </div>
+    
+  </div>
+  
+  <div class="mt-4 flex flex-wrap gap-1.5">
+    
+    <span class="pill pill-outline">Understanding the World</span>
+    
+  </div>
+  
+  
+  
+</a>
+<button data-star="LDEM 267" class="star-btn" aria-label="Save LDEM 267 to shortlist" title="Save to shortlist">
+  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><polygon points="12 2 15.1 8.6 22 9.3 17 14.1 18.2 21 12 17.8 5.8 21 7 14.1 2 9.3 8.9 8.6 12 2"/></svg>
+</button>
+</div>
+      </div>
+      
+      <div class="course-item" data-code="MUSC 200" data-title="" data-title-raw="MUSC 200" data-attrs="Quantitative Reasoning" data-profs="yasmina sabbah" data-ease="0">
+        <div class="relative h-full">
+<a href="course/musc-200.html" class="card card-link p-5 pr-12 group h-full flex flex-col">
+  <div class="flex items-start justify-between gap-4">
+    <div class="min-w-0 flex-1">
+      <div class="mono text-[11px] tracking-wider text-ink-muted">MUSC 200</div>
+      <div class="mt-1.5 text-[15px] font-medium leading-snug text-ink transition">MUSC 200</div>
+    </div>
+    
+  </div>
+  
+  <div class="mt-4 flex flex-wrap gap-1.5">
+    
+    <span class="pill pill-outline">Quantitative Reasoning</span>
+    
+  </div>
+  
+  
+  
+  <div class="mt-auto pt-4 text-xs text-ink-muted">
+    <div class="pt-4 border-t border-line">
+      <span class="text-ink-dim">Prof ·</span>
+      <span class="text-ink-soft ml-0.5">Yasmina Sabbah</span>
+    </div>
+  </div>
+  
+</a>
+<button data-star="MUSC 200" class="star-btn" aria-label="Save MUSC 200 to shortlist" title="Save to shortlist">
+  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><polygon points="12 2 15.1 8.6 22 9.3 17 14.1 18.2 21 12 17.8 5.8 21 7 14.1 2 9.3 8.9 8.6 12 2"/></svg>
+</button>
+</div>
+      </div>
+      
+      <div class="course-item" data-code="MUSC 205" data-title="" data-title-raw="MUSC 205" data-attrs="Cultures &amp; Histories" data-profs="joelle garro el khoury" data-ease="0">
+        <div class="relative h-full">
+<a href="course/musc-205.html" class="card card-link p-5 pr-12 group h-full flex flex-col">
+  <div class="flex items-start justify-between gap-4">
+    <div class="min-w-0 flex-1">
+      <div class="mono text-[11px] tracking-wider text-ink-muted">MUSC 205</div>
+      <div class="mt-1.5 text-[15px] font-medium leading-snug text-ink transition">MUSC 205</div>
+    </div>
+    
+  </div>
+  
+  <div class="mt-4 flex flex-wrap gap-1.5">
+    
+    <span class="pill pill-outline">Cultures &amp; Histories</span>
+    
+  </div>
+  
+  
+  
+  <div class="mt-auto pt-4 text-xs text-ink-muted">
+    <div class="pt-4 border-t border-line">
+      <span class="text-ink-dim">Prof ·</span>
+      <span class="text-ink-soft ml-0.5">Joelle Garro El Khoury</span>
+    </div>
+  </div>
+  
+</a>
+<button data-star="MUSC 205" class="star-btn" aria-label="Save MUSC 205 to shortlist" title="Save to shortlist">
+  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><polygon points="12 2 15.1 8.6 22 9.3 17 14.1 18.2 21 12 17.8 5.8 21 7 14.1 2 9.3 8.9 8.6 12 2"/></svg>
+</button>
+</div>
+      </div>
+      
+      <div class="course-item" data-code="MUSC 230" data-title="" data-title-raw="MUSC 230" data-attrs="Cultures &amp; Histories" data-profs="joelle garro el khoury" data-ease="0">
+        <div class="relative h-full">
+<a href="course/musc-230.html" class="card card-link p-5 pr-12 group h-full flex flex-col">
+  <div class="flex items-start justify-between gap-4">
+    <div class="min-w-0 flex-1">
+      <div class="mono text-[11px] tracking-wider text-ink-muted">MUSC 230</div>
+      <div class="mt-1.5 text-[15px] font-medium leading-snug text-ink transition">MUSC 230</div>
+    </div>
+    
+  </div>
+  
+  <div class="mt-4 flex flex-wrap gap-1.5">
+    
+    <span class="pill pill-outline">Cultures &amp; Histories</span>
+    
+  </div>
+  
+  
+  
+  <div class="mt-auto pt-4 text-xs text-ink-muted">
+    <div class="pt-4 border-t border-line">
+      <span class="text-ink-dim">Prof ·</span>
+      <span class="text-ink-soft ml-0.5">Joelle Garro El Khoury</span>
+    </div>
+  </div>
+  
+</a>
+<button data-star="MUSC 230" class="star-btn" aria-label="Save MUSC 230 to shortlist" title="Save to shortlist">
+  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><polygon points="12 2 15.1 8.6 22 9.3 17 14.1 18.2 21 12 17.8 5.8 21 7 14.1 2 9.3 8.9 8.6 12 2"/></svg>
+</button>
+</div>
+      </div>
+      
+      <div class="course-item" data-code="MUSIC 205" data-title="" data-title-raw="MUSIC 205" data-attrs="Cultures &amp; Histories" data-profs="joelle garro el khoury" data-ease="0">
+        <div class="relative h-full">
+<a href="course/music-205.html" class="card card-link p-5 pr-12 group h-full flex flex-col">
+  <div class="flex items-start justify-between gap-4">
+    <div class="min-w-0 flex-1">
+      <div class="mono text-[11px] tracking-wider text-ink-muted">MUSIC 205</div>
+      <div class="mt-1.5 text-[15px] font-medium leading-snug text-ink transition">MUSIC 205</div>
+    </div>
+    
+  </div>
+  
+  <div class="mt-4 flex flex-wrap gap-1.5">
+    
+    <span class="pill pill-outline">Cultures &amp; Histories</span>
+    
+  </div>
+  
+  
+  
+  <div class="mt-auto pt-4 text-xs text-ink-muted">
+    <div class="pt-4 border-t border-line">
+      <span class="text-ink-dim">Prof ·</span>
+      <span class="text-ink-soft ml-0.5">Joelle Garro El Khoury</span>
+    </div>
+  </div>
+  
+</a>
+<button data-star="MUSIC 205" class="star-btn" aria-label="Save MUSIC 205 to shortlist" title="Save to shortlist">
+  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><polygon points="12 2 15.1 8.6 22 9.3 17 14.1 18.2 21 12 17.8 5.8 21 7 14.1 2 9.3 8.9 8.6 12 2"/></svg>
+</button>
+</div>
+      </div>
+      
+      <div class="course-item" data-code="MUSIC 221" data-title="" data-title-raw="MUSIC 221" data-attrs="Cultures &amp; Histories" data-profs="maya maalouf" data-ease="0">
+        <div class="relative h-full">
+<a href="course/music-221.html" class="card card-link p-5 pr-12 group h-full flex flex-col">
+  <div class="flex items-start justify-between gap-4">
+    <div class="min-w-0 flex-1">
+      <div class="mono text-[11px] tracking-wider text-ink-muted">MUSIC 221</div>
+      <div class="mt-1.5 text-[15px] font-medium leading-snug text-ink transition">MUSIC 221</div>
+    </div>
+    
+  </div>
+  
+  <div class="mt-4 flex flex-wrap gap-1.5">
+    
+    <span class="pill pill-outline">Cultures &amp; Histories</span>
+    
+  </div>
+  
+  
+  
+  <div class="mt-auto pt-4 text-xs text-ink-muted">
+    <div class="pt-4 border-t border-line">
+      <span class="text-ink-dim">Prof ·</span>
+      <span class="text-ink-soft ml-0.5">Maya Maalouf</span>
+    </div>
+  </div>
+  
+</a>
+<button data-star="MUSIC 221" class="star-btn" aria-label="Save MUSIC 221 to shortlist" title="Save to shortlist">
+  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><polygon points="12 2 15.1 8.6 22 9.3 17 14.1 18.2 21 12 17.8 5.8 21 7 14.1 2 9.3 8.9 8.6 12 2"/></svg>
+</button>
+</div>
+      </div>
+      
+      <div class="course-item" data-code="PHIL 201" data-title="" data-title-raw="PHIL 201" data-attrs="Cultures &amp; Histories" data-profs="jana kassab" data-ease="0">
+        <div class="relative h-full">
+<a href="course/phil-201.html" class="card card-link p-5 pr-12 group h-full flex flex-col">
+  <div class="flex items-start justify-between gap-4">
+    <div class="min-w-0 flex-1">
+      <div class="mono text-[11px] tracking-wider text-ink-muted">PHIL 201</div>
+      <div class="mt-1.5 text-[15px] font-medium leading-snug text-ink transition">PHIL 201</div>
+    </div>
+    
+  </div>
+  
+  <div class="mt-4 flex flex-wrap gap-1.5">
+    
+    <span class="pill pill-outline">Cultures &amp; Histories</span>
+    
+  </div>
+  
+  
+  
+  <div class="mt-auto pt-4 text-xs text-ink-muted">
+    <div class="pt-4 border-t border-line">
+      <span class="text-ink-dim">Prof ·</span>
+      <span class="text-ink-soft ml-0.5">Jana Kassab</span>
+    </div>
+  </div>
+  
+</a>
+<button data-star="PHIL 201" class="star-btn" aria-label="Save PHIL 201 to shortlist" title="Save to shortlist">
+  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><polygon points="12 2 15.1 8.6 22 9.3 17 14.1 18.2 21 12 17.8 5.8 21 7 14.1 2 9.3 8.9 8.6 12 2"/></svg>
+</button>
+</div>
+      </div>
+      
+      <div class="course-item" data-code="PHIL 210" data-title="" data-title-raw="PHIL 210" data-attrs="Cultures &amp; Histories, Human Values" data-profs="zeinab sabra" data-ease="0">
+        <div class="relative h-full">
+<a href="course/phil-210.html" class="card card-link p-5 pr-12 group h-full flex flex-col">
+  <div class="flex items-start justify-between gap-4">
+    <div class="min-w-0 flex-1">
+      <div class="mono text-[11px] tracking-wider text-ink-muted">PHIL 210</div>
+      <div class="mt-1.5 text-[15px] font-medium leading-snug text-ink transition">PHIL 210</div>
+    </div>
+    
+  </div>
+  
+  <div class="mt-4 flex flex-wrap gap-1.5">
+    
+    <span class="pill pill-outline">Cultures &amp; Histories</span>
+    
+    <span class="pill pill-outline">Human Values</span>
+    
+  </div>
+  
+  
+  
+  <div class="mt-auto pt-4 text-xs text-ink-muted">
+    <div class="pt-4 border-t border-line">
+      <span class="text-ink-dim">Prof ·</span>
+      <span class="text-ink-soft ml-0.5">Zeinab Sabra</span>
+    </div>
+  </div>
+  
+</a>
+<button data-star="PHIL 210" class="star-btn" aria-label="Save PHIL 210 to shortlist" title="Save to shortlist">
+  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><polygon points="12 2 15.1 8.6 22 9.3 17 14.1 18.2 21 12 17.8 5.8 21 7 14.1 2 9.3 8.9 8.6 12 2"/></svg>
+</button>
+</div>
+      </div>
+      
+      <div class="course-item" data-code="PHIL 211" data-title="" data-title-raw="PHIL 211" data-attrs="Cultures &amp; Histories" data-profs="" data-ease="0">
+        <div class="relative h-full">
+<a href="course/phil-211.html" class="card card-link p-5 pr-12 group h-full flex flex-col">
+  <div class="flex items-start justify-between gap-4">
+    <div class="min-w-0 flex-1">
+      <div class="mono text-[11px] tracking-wider text-ink-muted">PHIL 211</div>
+      <div class="mt-1.5 text-[15px] font-medium leading-snug text-ink transition">PHIL 211</div>
+    </div>
+    
+  </div>
+  
+  <div class="mt-4 flex flex-wrap gap-1.5">
+    
+    <span class="pill pill-outline">Cultures &amp; Histories</span>
+    
+  </div>
+  
+  
+  
+</a>
+<button data-star="PHIL 211" class="star-btn" aria-label="Save PHIL 211 to shortlist" title="Save to shortlist">
+  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><polygon points="12 2 15.1 8.6 22 9.3 17 14.1 18.2 21 12 17.8 5.8 21 7 14.1 2 9.3 8.9 8.6 12 2"/></svg>
+</button>
+</div>
+      </div>
+      
+      <div class="course-item" data-code="PHIL 214" data-title="" data-title-raw="PHIL 214" data-attrs="Cultures &amp; Histories" data-profs="" data-ease="0">
+        <div class="relative h-full">
+<a href="course/phil-214.html" class="card card-link p-5 pr-12 group h-full flex flex-col">
+  <div class="flex items-start justify-between gap-4">
+    <div class="min-w-0 flex-1">
+      <div class="mono text-[11px] tracking-wider text-ink-muted">PHIL 214</div>
+      <div class="mt-1.5 text-[15px] font-medium leading-snug text-ink transition">PHIL 214</div>
+    </div>
+    
+  </div>
+  
+  <div class="mt-4 flex flex-wrap gap-1.5">
+    
+    <span class="pill pill-outline">Cultures &amp; Histories</span>
+    
+  </div>
+  
+  
+  
+</a>
+<button data-star="PHIL 214" class="star-btn" aria-label="Save PHIL 214 to shortlist" title="Save to shortlist">
+  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><polygon points="12 2 15.1 8.6 22 9.3 17 14.1 18.2 21 12 17.8 5.8 21 7 14.1 2 9.3 8.9 8.6 12 2"/></svg>
+</button>
+</div>
+      </div>
+      
+      <div class="course-item" data-code="PHIL 226" data-title="" data-title-raw="PHIL 226" data-attrs="Cultures &amp; Histories, Human Values" data-profs="" data-ease="0">
+        <div class="relative h-full">
+<a href="course/phil-226.html" class="card card-link p-5 pr-12 group h-full flex flex-col">
+  <div class="flex items-start justify-between gap-4">
+    <div class="min-w-0 flex-1">
+      <div class="mono text-[11px] tracking-wider text-ink-muted">PHIL 226</div>
+      <div class="mt-1.5 text-[15px] font-medium leading-snug text-ink transition">PHIL 226</div>
+    </div>
+    
+  </div>
+  
+  <div class="mt-4 flex flex-wrap gap-1.5">
+    
+    <span class="pill pill-outline">Cultures &amp; Histories</span>
+    
+    <span class="pill pill-outline">Human Values</span>
+    
+  </div>
+  
+  
+  
+</a>
+<button data-star="PHIL 226" class="star-btn" aria-label="Save PHIL 226 to shortlist" title="Save to shortlist">
+  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><polygon points="12 2 15.1 8.6 22 9.3 17 14.1 18.2 21 12 17.8 5.8 21 7 14.1 2 9.3 8.9 8.6 12 2"/></svg>
+</button>
+</div>
+      </div>
+      
+      <div class="course-item" data-code="PHYS 200" data-title="understanding the universe" data-title-raw="Understanding the Universe" data-attrs="Understanding the World" data-profs="ola malaeb, ola hosseiky, samih isber" data-ease="9">
+        <div class="relative h-full">
+<a href="course/phys-200.html" class="card card-link p-5 pr-12 group h-full flex flex-col">
+  <div class="flex items-start justify-between gap-4">
+    <div class="min-w-0 flex-1">
+      <div class="mono text-[11px] tracking-wider text-ink-muted">PHYS 200</div>
+      <div class="mt-1.5 text-[15px] font-medium leading-snug text-ink transition">Understanding the Universe</div>
+    </div>
+    
+    <div class="shrink-0 flex items-baseline gap-1 bg-line/60 rounded-md px-2.5 py-1 tnum">
+      <span class="text-base font-semibold text-ink">9</span>
+      <span class="text-[11px] text-ink-muted">/10</span>
+    </div>
+    
+  </div>
+  
+  <div class="mt-4 flex flex-wrap gap-1.5">
+    
+    <span class="pill pill-outline">Understanding the World</span>
+    
+  </div>
+  
+  
+  
+  <div class="mt-auto pt-4 text-xs text-ink-muted">
+    <div class="pt-4 border-t border-line">
+      <span class="text-ink-dim">Prof ·</span>
+      <span class="text-ink-soft ml-0.5">Ola Malaeb, Ola Hosseiky <span class="text-ink-dim">+1</span></span>
+    </div>
+  </div>
+  
+</a>
+<button data-star="PHYS 200" class="star-btn" aria-label="Save PHYS 200 to shortlist" title="Save to shortlist">
+  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><polygon points="12 2 15.1 8.6 22 9.3 17 14.1 18.2 21 12 17.8 5.8 21 7 14.1 2 9.3 8.9 8.6 12 2"/></svg>
+</button>
+</div>
+      </div>
+      
+      <div class="course-item" data-code="PSPA 201" data-title="pspa 201" data-title-raw="PSPA 201" data-attrs="Societies &amp; Individuals" data-profs="vera choulhadjian, yeghia tashjian" data-ease="7">
+        <div class="relative h-full">
+<a href="course/pspa-201.html" class="card card-link p-5 pr-12 group h-full flex flex-col">
+  <div class="flex items-start justify-between gap-4">
+    <div class="min-w-0 flex-1">
+      <div class="mono text-[11px] tracking-wider text-ink-muted">PSPA 201</div>
+      <div class="mt-1.5 text-[15px] font-medium leading-snug text-ink transition">PSPA 201</div>
+    </div>
+    
+    <div class="shrink-0 flex items-baseline gap-1 bg-line/60 rounded-md px-2.5 py-1 tnum">
+      <span class="text-base font-semibold text-ink">7</span>
+      <span class="text-[11px] text-ink-muted">/10</span>
+    </div>
+    
+  </div>
+  
+  <div class="mt-4 flex flex-wrap gap-1.5">
+    
+    <span class="pill pill-outline">Societies &amp; Individuals</span>
+    
+  </div>
+  
+  
+  
+  <div class="mt-auto pt-4 text-xs text-ink-muted">
+    <div class="pt-4 border-t border-line">
+      <span class="text-ink-dim">Prof ·</span>
+      <span class="text-ink-soft ml-0.5">Vera Choulhadjian, Yeghia Tashjian</span>
+    </div>
+  </div>
+  
+</a>
+<button data-star="PSPA 201" class="star-btn" aria-label="Save PSPA 201 to shortlist" title="Save to shortlist">
+  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><polygon points="12 2 15.1 8.6 22 9.3 17 14.1 18.2 21 12 17.8 5.8 21 7 14.1 2 9.3 8.9 8.6 12 2"/></svg>
+</button>
+</div>
+      </div>
+      
+      <div class="course-item" data-code="PSPA 202" data-title="pspa 202" data-title-raw="PSPA 202" data-attrs="Societies &amp; Individuals" data-profs="melissa ajamian, hiba khodr" data-ease="8">
+        <div class="relative h-full">
+<a href="course/pspa-202.html" class="card card-link p-5 pr-12 group h-full flex flex-col">
+  <div class="flex items-start justify-between gap-4">
+    <div class="min-w-0 flex-1">
+      <div class="mono text-[11px] tracking-wider text-ink-muted">PSPA 202</div>
+      <div class="mt-1.5 text-[15px] font-medium leading-snug text-ink transition">PSPA 202</div>
+    </div>
+    
+    <div class="shrink-0 flex items-baseline gap-1 bg-line/60 rounded-md px-2.5 py-1 tnum">
+      <span class="text-base font-semibold text-ink">8</span>
+      <span class="text-[11px] text-ink-muted">/10</span>
+    </div>
+    
+  </div>
+  
+  <div class="mt-4 flex flex-wrap gap-1.5">
+    
+    <span class="pill pill-outline">Societies &amp; Individuals</span>
+    
+  </div>
+  
+  
+  
+  <div class="mt-auto pt-4 text-xs text-ink-muted">
+    <div class="pt-4 border-t border-line">
+      <span class="text-ink-dim">Prof ·</span>
+      <span class="text-ink-soft ml-0.5">Melissa Ajamian, Hiba Khodr</span>
+    </div>
+  </div>
+  
+</a>
+<button data-star="PSPA 202" class="star-btn" aria-label="Save PSPA 202 to shortlist" title="Save to shortlist">
+  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><polygon points="12 2 15.1 8.6 22 9.3 17 14.1 18.2 21 12 17.8 5.8 21 7 14.1 2 9.3 8.9 8.6 12 2"/></svg>
+</button>
+</div>
+      </div>
+      
+      <div class="course-item" data-code="PSPA 210" data-title="" data-title-raw="PSPA 210" data-attrs="Cultures &amp; Histories" data-profs="samer frangie" data-ease="0">
+        <div class="relative h-full">
+<a href="course/pspa-210.html" class="card card-link p-5 pr-12 group h-full flex flex-col">
+  <div class="flex items-start justify-between gap-4">
+    <div class="min-w-0 flex-1">
+      <div class="mono text-[11px] tracking-wider text-ink-muted">PSPA 210</div>
+      <div class="mt-1.5 text-[15px] font-medium leading-snug text-ink transition">PSPA 210</div>
+    </div>
+    
+  </div>
+  
+  <div class="mt-4 flex flex-wrap gap-1.5">
+    
+    <span class="pill pill-outline">Cultures &amp; Histories</span>
+    
+  </div>
+  
+  
+  
+  <div class="mt-auto pt-4 text-xs text-ink-muted">
+    <div class="pt-4 border-t border-line">
+      <span class="text-ink-dim">Prof ·</span>
+      <span class="text-ink-soft ml-0.5">Samer Frangie</span>
+    </div>
+  </div>
+  
+</a>
+<button data-star="PSPA 210" class="star-btn" aria-label="Save PSPA 210 to shortlist" title="Save to shortlist">
+  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><polygon points="12 2 15.1 8.6 22 9.3 17 14.1 18.2 21 12 17.8 5.8 21 7 14.1 2 9.3 8.9 8.6 12 2"/></svg>
+</button>
+</div>
+      </div>
+      
+      <div class="course-item" data-code="PSPA 272" data-title="" data-title-raw="PSPA 272" data-attrs="Societies &amp; Individuals" data-profs="tania haddad" data-ease="0">
+        <div class="relative h-full">
+<a href="course/pspa-272.html" class="card card-link p-5 pr-12 group h-full flex flex-col">
+  <div class="flex items-start justify-between gap-4">
+    <div class="min-w-0 flex-1">
+      <div class="mono text-[11px] tracking-wider text-ink-muted">PSPA 272</div>
+      <div class="mt-1.5 text-[15px] font-medium leading-snug text-ink transition">PSPA 272</div>
+    </div>
+    
+  </div>
+  
+  <div class="mt-4 flex flex-wrap gap-1.5">
+    
+    <span class="pill pill-outline">Societies &amp; Individuals</span>
+    
+  </div>
+  
+  
+  
+  <div class="mt-auto pt-4 text-xs text-ink-muted">
+    <div class="pt-4 border-t border-line">
+      <span class="text-ink-dim">Prof ·</span>
+      <span class="text-ink-soft ml-0.5">Tania Haddad</span>
+    </div>
+  </div>
+  
+</a>
+<button data-star="PSPA 272" class="star-btn" aria-label="Save PSPA 272 to shortlist" title="Save to shortlist">
+  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><polygon points="12 2 15.1 8.6 22 9.3 17 14.1 18.2 21 12 17.8 5.8 21 7 14.1 2 9.3 8.9 8.6 12 2"/></svg>
+</button>
+</div>
+      </div>
+      
+      <div class="course-item" data-code="PSPA 273" data-title="human resources and personnel administration:" data-title-raw="Human Resources and Personnel Administration:" data-attrs="Societies &amp; Individuals" data-profs="rima shaar" data-ease="8">
+        <div class="relative h-full">
+<a href="course/pspa-273.html" class="card card-link p-5 pr-12 group h-full flex flex-col">
+  <div class="flex items-start justify-between gap-4">
+    <div class="min-w-0 flex-1">
+      <div class="mono text-[11px] tracking-wider text-ink-muted">PSPA 273</div>
+      <div class="mt-1.5 text-[15px] font-medium leading-snug text-ink transition">Human Resources and Personnel Administration:</div>
+    </div>
+    
+    <div class="shrink-0 flex items-baseline gap-1 bg-line/60 rounded-md px-2.5 py-1 tnum">
+      <span class="text-base font-semibold text-ink">8</span>
+      <span class="text-[11px] text-ink-muted">/10</span>
+    </div>
+    
+  </div>
+  
+  <div class="mt-4 flex flex-wrap gap-1.5">
+    
+    <span class="pill pill-outline">Societies &amp; Individuals</span>
+    
+  </div>
+  
+  
+  
+  <div class="mt-auto pt-4 text-xs text-ink-muted">
+    <div class="pt-4 border-t border-line">
+      <span class="text-ink-dim">Prof ·</span>
+      <span class="text-ink-soft ml-0.5">Rima Shaar</span>
+    </div>
+  </div>
+  
+</a>
+<button data-star="PSPA 273" class="star-btn" aria-label="Save PSPA 273 to shortlist" title="Save to shortlist">
+  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><polygon points="12 2 15.1 8.6 22 9.3 17 14.1 18.2 21 12 17.8 5.8 21 7 14.1 2 9.3 8.9 8.6 12 2"/></svg>
+</button>
+</div>
+      </div>
+      
+      <div class="course-item" data-code="PSPA 277" data-title="pspa 277" data-title-raw="PSPA 277" data-attrs="Societies &amp; Individuals" data-profs="rima shaar" data-ease="8">
+        <div class="relative h-full">
+<a href="course/pspa-277.html" class="card card-link p-5 pr-12 group h-full flex flex-col">
+  <div class="flex items-start justify-between gap-4">
+    <div class="min-w-0 flex-1">
+      <div class="mono text-[11px] tracking-wider text-ink-muted">PSPA 277</div>
+      <div class="mt-1.5 text-[15px] font-medium leading-snug text-ink transition">PSPA 277</div>
+    </div>
+    
+    <div class="shrink-0 flex items-baseline gap-1 bg-line/60 rounded-md px-2.5 py-1 tnum">
+      <span class="text-base font-semibold text-ink">8</span>
+      <span class="text-[11px] text-ink-muted">/10</span>
+    </div>
+    
+  </div>
+  
+  <div class="mt-4 flex flex-wrap gap-1.5">
+    
+    <span class="pill pill-outline">Societies &amp; Individuals</span>
+    
+  </div>
+  
+  
+  
+  <div class="mt-auto pt-4 text-xs text-ink-muted">
+    <div class="pt-4 border-t border-line">
+      <span class="text-ink-dim">Prof ·</span>
+      <span class="text-ink-soft ml-0.5">Rima Shaar</span>
+    </div>
+  </div>
+  
+</a>
+<button data-star="PSPA 277" class="star-btn" aria-label="Save PSPA 277 to shortlist" title="Save to shortlist">
+  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><polygon points="12 2 15.1 8.6 22 9.3 17 14.1 18.2 21 12 17.8 5.8 21 7 14.1 2 9.3 8.9 8.6 12 2"/></svg>
+</button>
+</div>
+      </div>
+      
+      <div class="course-item" data-code="SOAN 201" data-title="soan 201" data-title-raw="SOAN 201" data-attrs="Social Inequalities, Societies &amp; Individuals" data-profs="zeina fathallah, rima rassi, jad al tayyan" data-ease="8">
+        <div class="relative h-full">
+<a href="course/soan-201.html" class="card card-link p-5 pr-12 group h-full flex flex-col">
+  <div class="flex items-start justify-between gap-4">
+    <div class="min-w-0 flex-1">
+      <div class="mono text-[11px] tracking-wider text-ink-muted">SOAN 201</div>
+      <div class="mt-1.5 text-[15px] font-medium leading-snug text-ink transition">SOAN 201</div>
+    </div>
+    
+    <div class="shrink-0 flex items-baseline gap-1 bg-line/60 rounded-md px-2.5 py-1 tnum">
+      <span class="text-base font-semibold text-ink">8</span>
+      <span class="text-[11px] text-ink-muted">/10</span>
+    </div>
+    
+  </div>
+  
+  <div class="mt-4 flex flex-wrap gap-1.5">
+    
+    <span class="pill pill-outline">Social Inequalities</span>
+    
+    <span class="pill pill-outline">Societies &amp; Individuals</span>
+    
+  </div>
+  
+  
+  
+  <div class="mt-auto pt-4 text-xs text-ink-muted">
+    <div class="pt-4 border-t border-line">
+      <span class="text-ink-dim">Prof ·</span>
+      <span class="text-ink-soft ml-0.5">Zeina Fathallah, Rima Rassi <span class="text-ink-dim">+1</span></span>
+    </div>
+  </div>
+  
+</a>
+<button data-star="SOAN 201" class="star-btn" aria-label="Save SOAN 201 to shortlist" title="Save to shortlist">
+  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><polygon points="12 2 15.1 8.6 22 9.3 17 14.1 18.2 21 12 17.8 5.8 21 7 14.1 2 9.3 8.9 8.6 12 2"/></svg>
+</button>
+</div>
+      </div>
+      
+      <div class="course-item" data-code="SOAN 203" data-title="" data-title-raw="SOAN 203" data-attrs="Cultures &amp; Histories, Social Inequalities" data-profs="narod seroujian" data-ease="0">
+        <div class="relative h-full">
+<a href="course/soan-203.html" class="card card-link p-5 pr-12 group h-full flex flex-col">
+  <div class="flex items-start justify-between gap-4">
+    <div class="min-w-0 flex-1">
+      <div class="mono text-[11px] tracking-wider text-ink-muted">SOAN 203</div>
+      <div class="mt-1.5 text-[15px] font-medium leading-snug text-ink transition">SOAN 203</div>
+    </div>
+    
+  </div>
+  
+  <div class="mt-4 flex flex-wrap gap-1.5">
+    
+    <span class="pill pill-outline">Cultures &amp; Histories</span>
+    
+    <span class="pill pill-outline">Social Inequalities</span>
+    
+  </div>
+  
+  
+  
+  <div class="mt-auto pt-4 text-xs text-ink-muted">
+    <div class="pt-4 border-t border-line">
+      <span class="text-ink-dim">Prof ·</span>
+      <span class="text-ink-soft ml-0.5">Narod Seroujian</span>
+    </div>
+  </div>
+  
+</a>
+<button data-star="SOAN 203" class="star-btn" aria-label="Save SOAN 203 to shortlist" title="Save to shortlist">
+  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><polygon points="12 2 15.1 8.6 22 9.3 17 14.1 18.2 21 12 17.8 5.8 21 7 14.1 2 9.3 8.9 8.6 12 2"/></svg>
+</button>
+</div>
+      </div>
+      
+      <div class="course-item" data-code="SOAN 246" data-title="" data-title-raw="SOAN 246" data-attrs="" data-profs="alexandra kassir" data-ease="0">
+        <div class="relative h-full">
+<a href="course/soan-246.html" class="card card-link p-5 pr-12 group h-full flex flex-col">
+  <div class="flex items-start justify-between gap-4">
+    <div class="min-w-0 flex-1">
+      <div class="mono text-[11px] tracking-wider text-ink-muted">SOAN 246</div>
+      <div class="mt-1.5 text-[15px] font-medium leading-snug text-ink transition">SOAN 246</div>
+    </div>
+    
+  </div>
+  
+  
+  
+  <div class="mt-auto pt-4 text-xs text-ink-muted">
+    <div class="pt-4 border-t border-line">
+      <span class="text-ink-dim">Prof ·</span>
+      <span class="text-ink-soft ml-0.5">Alexandra Kassir</span>
+    </div>
+  </div>
+  
+</a>
+<button data-star="SOAN 246" class="star-btn" aria-label="Save SOAN 246 to shortlist" title="Save to shortlist">
+  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><polygon points="12 2 15.1 8.6 22 9.3 17 14.1 18.2 21 12 17.8 5.8 21 7 14.1 2 9.3 8.9 8.6 12 2"/></svg>
+</button>
+</div>
+      </div>
+      
+      <div class="course-item" data-code="STAT 231" data-title="stat 231" data-title-raw="STAT 231" data-attrs="Quantitative Reasoning" data-profs="" data-ease="9">
+        <div class="relative h-full">
+<a href="course/stat-231.html" class="card card-link p-5 pr-12 group h-full flex flex-col">
+  <div class="flex items-start justify-between gap-4">
+    <div class="min-w-0 flex-1">
+      <div class="mono text-[11px] tracking-wider text-ink-muted">STAT 231</div>
+      <div class="mt-1.5 text-[15px] font-medium leading-snug text-ink transition">STAT 231</div>
+    </div>
+    
+    <div class="shrink-0 flex items-baseline gap-1 bg-line/60 rounded-md px-2.5 py-1 tnum">
+      <span class="text-base font-semibold text-ink">9</span>
+      <span class="text-[11px] text-ink-muted">/10</span>
+    </div>
+    
+  </div>
+  
+  <div class="mt-4 flex flex-wrap gap-1.5">
+    
+    <span class="pill pill-outline">Quantitative Reasoning</span>
+    
+  </div>
+  
+  
+  
+</a>
+<button data-star="STAT 231" class="star-btn" aria-label="Save STAT 231 to shortlist" title="Save to shortlist">
+  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><polygon points="12 2 15.1 8.6 22 9.3 17 14.1 18.2 21 12 17.8 5.8 21 7 14.1 2 9.3 8.9 8.6 12 2"/></svg>
+</button>
+</div>
+      </div>
+      
+    </div>
+    <div id="empty" class="hidden text-center py-24">
+      <p class="text-ink-muted">No courses match those filters.</p>
+    </div>
+  </div>
+</section>
+
+<script>
+const q = document.getElementById('q');
+const attr = document.getElementById('attr');
+const ease = document.getElementById('ease');
+const sort = document.getElementById('sort');
+const grid = document.getElementById('grid');
+const items = [...document.querySelectorAll('.course-item')];
+const empty = document.getElementById('empty');
+
+function apply() {
+  const qv = q.value.trim().toLowerCase();
+  const av = attr.value;
+  const ev = parseInt(ease.value || '0', 10);
+  let shown = 0;
+  for (const it of items) {
+    const hay = (it.dataset.code + ' ' + it.dataset.title + ' ' + it.dataset.profs).toLowerCase();
+    const okQ = !qv || hay.includes(qv);
+    const okA = !av || it.dataset.attrs.includes(av);
+    const okE = !ev || parseInt(it.dataset.ease, 10) >= ev;
+    const ok = okQ && okA && okE;
+    it.style.display = ok ? '' : 'none';
+    if (ok) shown++;
+  }
+  empty.classList.toggle('hidden', shown > 0);
+  applySort();
+}
+function applySort() {
+  const mode = sort.value;
+  const sorted = items.slice().sort((a, b) => {
+    if (mode === 'ease-desc') return parseInt(b.dataset.ease) - parseInt(a.dataset.ease);
+    if (mode === 'ease-asc') {
+      const ea = parseInt(a.dataset.ease) || 999, eb = parseInt(b.dataset.ease) || 999;
+      return ea - eb;
+    }
+    if (mode === 'code') return a.dataset.code.localeCompare(b.dataset.code);
+    if (mode === 'title') return a.dataset.titleRaw.localeCompare(b.dataset.titleRaw);
+    return 0;
+  });
+  sorted.forEach(el => grid.appendChild(el));
+}
+q.addEventListener('input', apply);
+attr.addEventListener('change', apply);
+ease.addEventListener('change', apply);
+sort.addEventListener('change', applySort);
+
+const params = new URLSearchParams(location.search);
+if (params.get('q')) { q.value = params.get('q'); apply(); }
+</script>
+
+
+</main>
+
+<footer class="mt-32 border-t border-line">
+  <div class="max-w-6xl mx-auto px-6 sm:px-8 pt-14 pb-10">
+    <div class="grid sm:grid-cols-12 gap-10">
+      <div class="sm:col-span-7">
+        <div class="flex items-center gap-2">
+          <span class="logo-mark inline-flex items-center justify-center w-7 h-7 rounded-lg font-semibold text-sm leading-none">E</span>
+          <span class="font-semibold tracking-tight">Electify</span>
+        </div>
+        <p class="mt-4 text-ink-muted text-sm leading-relaxed max-w-md">A student-built directory of easy general-education electives at the American University of Beirut.</p>
+        <p class="mt-3 text-xs text-ink-muted"><kbd class="mono border border-line rounded px-1.5 py-0.5 text-[10px]">⌘</kbd> <kbd class="mono border border-line rounded px-1.5 py-0.5 text-[10px]">K</kbd> to search anywhere</p>
+      </div>
+      <div class="sm:col-span-5">
+        <div class="text-ink-muted text-xs font-medium uppercase tracking-wider">Disclaimer</div>
+        <p class="mt-4 text-sm text-ink-soft leading-relaxed">Not affiliated with AUB. Workload depends on the professor and the semester. Always confirm with the official AUB catalogue.</p>
+      </div>
+    </div>
+    <div class="mt-12 pt-6 border-t border-line flex items-center justify-between text-xs text-ink-muted gap-4 flex-wrap">
+      <span>© Electify · Updated 2026-04-19</span>
+      <span class="flex items-center gap-4">
+        <span>A project by <a href="mailto:electify.site@outlook.com" class="ulink text-ink-soft hover:text-ink">Khaled Rabah</a></span>
+      </span>
+    </div>
+  </div>
+</footer>
+
+<!-- Command palette -->
+<div class="palette-backdrop" data-palette>
+  <div class="palette" role="dialog" aria-label="Search courses">
+    <input class="palette-input" placeholder="Search courses, professors, attributes…" data-palette-input />
+    <div class="palette-list" data-palette-list></div>
+  </div>
+</div>
+
+<!-- Compare tray -->
+<div class="cmp-tray" data-cmp-tray>
+  <span class="text-xs opacity-70">Compare</span>
+  <div class="flex gap-1" data-cmp-chips></div>
+  <button data-cmp-clear class="text-xs opacity-60 hover:opacity-100 px-1">clear</button>
+  <a class="cmp-go" data-cmp-go href="#">View →</a>
+</div>
+
+<script>
+(function(){
+  const REL = "";
+
+  /* Theme */
+  const THEME_KEY = 'electify.theme';
+  const setTheme = (t) => {
+    document.documentElement.classList.toggle('dark', t === 'dark');
+    localStorage.setItem(THEME_KEY, t);
+  };
+  document.querySelectorAll('[data-theme-toggle]').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const cur = document.documentElement.classList.contains('dark') ? 'dark' : 'light';
+      setTheme(cur === 'dark' ? 'light' : 'dark');
+    });
+  });
+
+  /* Local lists */
+  const LS = {
+    get: (k) => { try { return JSON.parse(localStorage.getItem(k) || '[]'); } catch { return []; } },
+    set: (k, v) => localStorage.setItem(k, JSON.stringify(v)),
+    toggle: (k, v) => {
+      const s = new Set(LS.get(k));
+      s.has(v) ? s.delete(v) : s.add(v);
+      const arr = [...s]; LS.set(k, arr); return arr;
+    },
+  };
+  const SL = 'electify.shortlist';
+  const CMP = 'electify.compare';
+
+  /* Stars */
+  const refreshStars = () => {
+    const set = new Set(LS.get(SL));
+    document.querySelectorAll('[data-star]').forEach(b => {
+      const on = set.has(b.dataset.star);
+      b.classList.toggle('starred', on);
+      b.setAttribute('aria-pressed', on);
+    });
+    const n = set.size;
+    document.querySelectorAll('[data-shortlist-count]').forEach(el => {
+      el.textContent = n;
+      el.classList.toggle('hidden', n === 0);
+    });
+  };
+  document.addEventListener('click', (e) => {
+    const b = e.target.closest('[data-star]');
+    if (!b) return;
+    e.preventDefault(); e.stopPropagation();
+    LS.toggle(SL, b.dataset.star);
+    refreshStars();
+  });
+
+  /* Compare */
+  const refreshCompare = () => {
+    const list = LS.get(CMP);
+    const tray = document.querySelector('[data-cmp-tray]');
+    if (!tray) return;
+    const chips = tray.querySelector('[data-cmp-chips]');
+    const go = tray.querySelector('[data-cmp-go]');
+    tray.classList.toggle('open', list.length > 0);
+    chips.innerHTML = list.map(c => `<span class="cmp-chip">${c}</span>`).join('');
+    go.href = REL + 'compare.html?codes=' + encodeURIComponent(list.join(','));
+    if (list.length < 2) { go.setAttribute('disabled',''); } else { go.removeAttribute('disabled'); }
+    document.querySelectorAll('[data-cmp]').forEach(b => {
+      b.classList.toggle('ring-2', list.includes(b.dataset.cmp));
+    });
+  };
+  document.addEventListener('click', (e) => {
+    const b = e.target.closest('[data-cmp]');
+    if (b) {
+      e.preventDefault();
+      const list = LS.get(CMP);
+      const code = b.dataset.cmp;
+      if (list.includes(code)) LS.set(CMP, list.filter(x => x !== code));
+      else if (list.length < 4) LS.set(CMP, [...list, code]);
+      refreshCompare();
+    }
+    if (e.target.closest('[data-cmp-clear]')) { LS.set(CMP, []); refreshCompare(); }
+  });
+
+  /* Courses index (for ⌘K + random + shortlist + compare pages) */
+  let COURSES = null;
+  async function loadCourses() {
+    if (!COURSES) {
+      const r = await fetch(REL + 'courses.json', { cache: 'force-cache' });
+      COURSES = await r.json();
+    }
+    return COURSES;
+  }
+  window.electifyLoadCourses = loadCourses;
+
+  /* Palette */
+  const pal = document.querySelector('[data-palette]');
+  const palInput = pal?.querySelector('[data-palette-input]');
+  const palList = pal?.querySelector('[data-palette-list]');
+  let palActive = 0, palResults = [];
+  async function openPalette(){
+    if (!pal) return;
+    pal.classList.add('open');
+    palInput.value = '';
+    await loadCourses();
+    renderPalette('');
+    setTimeout(() => palInput.focus(), 30);
+  }
+  function closePalette(){ pal?.classList.remove('open'); }
+  function renderPalette(q){
+    if (!COURSES) return;
+    q = q.trim().toLowerCase();
+    const source = q
+      ? COURSES.filter(c =>
+          c.code.toLowerCase().includes(q) ||
+          (c.title||'').toLowerCase().includes(q) ||
+          (c.profs||[]).some(p => p.toLowerCase().includes(q)) ||
+          (c.attrs||[]).some(a => a.toLowerCase().includes(q))
+        )
+      : COURSES.slice().sort((a,b)=>(b.ease||0)-(a.ease||0));
+    palResults = source.slice(0, 40);
+    palActive = 0;
+    if (!palResults.length) {
+      palList.innerHTML = '<div class="palette-empty">No matches.</div>';
+      return;
+    }
+    palList.innerHTML = palResults.map((c, i) => `
+      <a class="palette-item ${i===0?'active':''}" data-i="${i}" href="${REL}course/${c.slug}.html">
+        <span class="palette-code">${c.code}</span>
+        <span class="palette-title">${c.title || c.code}</span>
+        ${c.ease ? `<span class="palette-ease">${c.ease}/10</span>` : ''}
+      </a>`).join('');
+  }
+  function setActive(i){
+    palActive = Math.max(0, Math.min(palResults.length-1, i));
+    palList.querySelectorAll('.palette-item').forEach((el, j) => el.classList.toggle('active', j === palActive));
+    palList.querySelector('.palette-item.active')?.scrollIntoView({ block: 'nearest' });
+  }
+  document.addEventListener('keydown', (e) => {
+    if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === 'k') {
+      e.preventDefault(); openPalette();
+    } else if (e.key === 'Escape') {
+      closePalette();
+    } else if (pal?.classList.contains('open')) {
+      if (e.key === 'ArrowDown') { e.preventDefault(); setActive(palActive + 1); }
+      else if (e.key === 'ArrowUp') { e.preventDefault(); setActive(palActive - 1); }
+      else if (e.key === 'Enter') {
+        const a = palList.querySelectorAll('.palette-item')[palActive];
+        if (a) location.href = a.href;
+      }
+    }
+  });
+  document.querySelectorAll('[data-palette-open]').forEach(b => b.addEventListener('click', openPalette));
+  pal?.addEventListener('click', (e) => { if (e.target === pal) closePalette(); });
+  palInput?.addEventListener('input', () => renderPalette(palInput.value));
+
+  /* Init */
+  refreshStars();
+  refreshCompare();
+})();
+</script>
+
+
+
+</body>
+</html>

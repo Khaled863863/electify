@@ -1,0 +1,96 @@
+{% extends "base.html" %}
+{% block title %}Browse all electives — Electify{% endblock %}
+{% block content %}
+
+<section class="border-b border-line">
+  <div class="max-w-6xl mx-auto px-6 sm:px-8 pt-14 sm:pt-20 pb-12">
+    <h1 class="text-4xl sm:text-5xl font-medium tracking-tight">All electives</h1>
+    <p class="mt-3 text-ink-muted">{{ count }} courses · filter, sort, or search.</p>
+
+    <div class="mt-8 grid grid-cols-1 sm:grid-cols-12 gap-3">
+      <input id="q" placeholder="Search code, title, professor…" class="input sm:col-span-5" />
+      <select id="attr" class="input sm:col-span-3 cursor-pointer">
+        <option value="">All attributes</option>
+        {% for a in attributes %}<option value="{{ a.name }}">{{ a.name }}</option>{% endfor %}
+      </select>
+      <select id="ease" class="input sm:col-span-2 cursor-pointer" title="Filter by minimum ease score">
+        <option value="">Min ease · any</option>
+        <option value="9">Min ease · 9</option>
+        <option value="7">Min ease · 7</option>
+        <option value="5">Min ease · 5</option>
+      </select>
+      <select id="sort" class="input sm:col-span-2 cursor-pointer" title="Sort order">
+        <option value="ease-desc">Sort · easiest</option>
+        <option value="ease-asc">Sort · hardest</option>
+        <option value="code">Sort · code</option>
+        <option value="title">Sort · title</option>
+      </select>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="max-w-6xl mx-auto px-6 sm:px-8 pt-12 pb-24">
+    <div id="grid" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 stagger">
+      {% for c in courses %}
+      <div class="course-item" data-code="{{ c.code }}" data-title="{{ c.title|lower }}" data-title-raw="{{ c.title or c.code }}" data-attrs="{{ c.attributes|join(', ') }}" data-profs="{{ c.professors | map(attribute='name') | join(', ') | lower }}" data-ease="{{ c.ease_score or 0 }}">
+        {% include "_course_card.html" %}
+      </div>
+      {% endfor %}
+    </div>
+    <div id="empty" class="hidden text-center py-24">
+      <p class="text-ink-muted">No courses match those filters.</p>
+    </div>
+  </div>
+</section>
+
+<script>
+const q = document.getElementById('q');
+const attr = document.getElementById('attr');
+const ease = document.getElementById('ease');
+const sort = document.getElementById('sort');
+const grid = document.getElementById('grid');
+const items = [...document.querySelectorAll('.course-item')];
+const empty = document.getElementById('empty');
+
+function apply() {
+  const qv = q.value.trim().toLowerCase();
+  const av = attr.value;
+  const ev = parseInt(ease.value || '0', 10);
+  let shown = 0;
+  for (const it of items) {
+    const hay = (it.dataset.code + ' ' + it.dataset.title + ' ' + it.dataset.profs).toLowerCase();
+    const okQ = !qv || hay.includes(qv);
+    const okA = !av || it.dataset.attrs.includes(av);
+    const okE = !ev || parseInt(it.dataset.ease, 10) >= ev;
+    const ok = okQ && okA && okE;
+    it.style.display = ok ? '' : 'none';
+    if (ok) shown++;
+  }
+  empty.classList.toggle('hidden', shown > 0);
+  applySort();
+}
+function applySort() {
+  const mode = sort.value;
+  const sorted = items.slice().sort((a, b) => {
+    if (mode === 'ease-desc') return parseInt(b.dataset.ease) - parseInt(a.dataset.ease);
+    if (mode === 'ease-asc') {
+      const ea = parseInt(a.dataset.ease) || 999, eb = parseInt(b.dataset.ease) || 999;
+      return ea - eb;
+    }
+    if (mode === 'code') return a.dataset.code.localeCompare(b.dataset.code);
+    if (mode === 'title') return a.dataset.titleRaw.localeCompare(b.dataset.titleRaw);
+    return 0;
+  });
+  sorted.forEach(el => grid.appendChild(el));
+}
+q.addEventListener('input', apply);
+attr.addEventListener('change', apply);
+ease.addEventListener('change', apply);
+sort.addEventListener('change', applySort);
+
+const params = new URLSearchParams(location.search);
+if (params.get('q')) { q.value = params.get('q'); apply(); }
+</script>
+
+{% endblock %}

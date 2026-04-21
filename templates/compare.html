@@ -1,0 +1,67 @@
+{% extends "base.html" %}
+{% block title %}Compare electives — Electify{% endblock %}
+{% block content %}
+
+<section class="border-b border-line">
+  <div class="max-w-6xl mx-auto px-6 sm:px-8 pt-14 sm:pt-20 pb-10">
+    <div class="pill mb-3">Compare</div>
+    <h1 class="text-4xl sm:text-5xl font-medium tracking-tight leading-[1.05]">Side by side</h1>
+    <p class="mt-3 text-ink-muted">Pick 2–4 courses from any page using the Compare button. They'll show up here.</p>
+  </div>
+</section>
+
+<section>
+  <div class="max-w-6xl mx-auto px-6 sm:px-8 pt-10 pb-24">
+    <div id="cmp-loading" class="text-center text-ink-muted py-12">Loading…</div>
+    <div id="cmp-empty" class="hidden card p-12 text-center border-dashed">
+      <div class="text-xl font-medium">Nothing to compare yet</div>
+      <p class="mt-2 text-ink-muted">Click <span class="mono text-xs">Compare</span> on any course page or card.</p>
+      <a href="{{ rel }}browse.html" class="btn-primary mt-5 inline-flex">Browse</a>
+    </div>
+    <div id="cmp-wrap" class="hidden overflow-x-auto -mx-6 sm:mx-0">
+      <table class="w-full min-w-[720px] text-sm">
+        <tbody id="cmp-body"></tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<script>
+(async function(){
+  const REL = {{ rel | tojson }};
+  const params = new URLSearchParams(location.search);
+  const fromUrl = (params.get('codes') || '').split(',').filter(Boolean);
+  const stored = JSON.parse(localStorage.getItem('electify.compare') || '[]');
+  const codes = fromUrl.length ? fromUrl : stored;
+
+  const loading = document.getElementById('cmp-loading');
+  const empty = document.getElementById('cmp-empty');
+  const wrap = document.getElementById('cmp-wrap');
+  const body = document.getElementById('cmp-body');
+
+  if (!codes.length) { loading.classList.add('hidden'); empty.classList.remove('hidden'); return; }
+  const all = await window.electifyLoadCourses();
+  const map = new Map(all.map(c => [c.code, c]));
+  const picked = codes.map(c => map.get(c)).filter(Boolean);
+  loading.classList.add('hidden');
+  if (!picked.length) { empty.classList.remove('hidden'); return; }
+  wrap.classList.remove('hidden');
+
+  const rows = [
+    { label: 'Course', render: c => `<a href="${REL}course/${c.slug}.html" class="block"><div class="mono text-[11px] tracking-wider text-ink-muted">${c.code}</div><div class="mt-1 font-medium text-ink">${c.title || c.code}</div></a>` },
+    { label: 'Ease', render: c => c.ease ? `<span class="font-semibold tnum">${c.ease}</span><span class="text-ink-muted">/10</span>` : '<span class="text-ink-dim">—</span>' },
+    { label: 'Attributes', render: c => (c.attrs||[]).length ? `<div class="flex flex-wrap gap-1">${c.attrs.map(a => `<span class="pill pill-outline">${a}</span>`).join('')}</div>` : '<span class="text-ink-dim">—</span>' },
+    { label: 'Professors', render: c => (c.profs||[]).length ? c.profs.slice(0,3).map(p => `<div>${p}</div>`).join('') : '<span class="text-ink-dim">—</span>' },
+    { label: 'Grading', render: c => c.grading ? `<span>${c.grading}</span>` : '<span class="text-ink-dim">—</span>' },
+    { label: 'Recommended', render: c => c.recommended === false ? '<span class="text-amber-700">⚠ Heads up</span>' : '<span class="text-ink-soft">Yes</span>' },
+  ];
+
+  body.innerHTML = rows.map(r => `
+    <tr class="border-b border-line align-top">
+      <th class="text-left text-[11px] uppercase tracking-wider text-ink-muted font-medium py-4 pr-4 w-32 align-top">${r.label}</th>
+      ${picked.map(c => `<td class="py-4 px-4 border-l border-line">${r.render(c)}</td>`).join('')}
+    </tr>`).join('');
+})();
+</script>
+
+{% endblock %}
