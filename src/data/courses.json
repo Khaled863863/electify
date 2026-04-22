@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-04-22T14:44:03.366892Z",
+  "generated_at": "2026-04-22T14:52:50.291751+00:00",
   "count": 68,
   "courses": [
     {
@@ -743,8 +743,7 @@
       "grading": "",
       "attributes": [
         "Cultures & Histories",
-        "Human Values",
-        "Writing in the Discipline"
+        "Human Values"
       ],
       "professors": [
         {
@@ -1574,7 +1573,7 @@
     {
       "code": "MUSC 200",
       "slug": "musc-200",
-      "title": "",
+      "title": "Notation, Analysis & Aural Skills",
       "description": "",
       "ease_score": null,
       "grading": "",
