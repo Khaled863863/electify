@@ -2417,25 +2417,6 @@
         "xlsx",
         "master"
       ]
-    },
-    {
-      "code": "STAT 231",
-      "slug": "stat-231",
-      "title": "STAT 231",
-      "description": "",
-      "ease_score": 9,
-      "grading": "Mostly Exams",
-      "attributes": [
-        "Quantitative Reasoning"
-      ],
-      "professors": [],
-      "student_reviews": [],
-      "master_notes": [],
-      "warnings": [],
-      "recommended": true,
-      "sources": [
-        "insight"
-      ]
     }
   ]
 }
