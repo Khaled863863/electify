@@ -1,34 +1,7 @@
 {
-  "generated_at": "2026-04-19T17:00:48",
-  "count": 73,
+  "generated_at": "2026-04-22T14:44:03.366892Z",
+  "count": 68,
   "courses": [
-    {
-      "code": "ACCT 210L",
-      "slug": "acct-210l",
-      "title": "",
-      "description": "",
-      "ease_score": null,
-      "grading": "",
-      "attributes": [],
-      "professors": [
-        {
-          "name": "Bassima Hout",
-          "terms": [
-            "Spring",
-            "Summer"
-          ],
-          "notes": []
-        }
-      ],
-      "student_reviews": [],
-      "master_notes": [],
-      "warnings": [],
-      "recommended": true,
-      "sources": [
-        "ccs_spring",
-        "ccs_summer"
-      ]
-    },
     {
       "code": "AGSC 205",
       "slug": "agsc-205",
@@ -904,25 +877,6 @@
       ]
     },
     {
-      "code": "DCSN 200",
-      "slug": "dcsn-200",
-      "title": "",
-      "description": "",
-      "ease_score": null,
-      "grading": "",
-      "attributes": [],
-      "professors": [],
-      "student_reviews": [],
-      "master_notes": [],
-      "warnings": [
-        "Heavy word problems"
-      ],
-      "recommended": false,
-      "sources": [
-        "master"
-      ]
-    },
-    {
       "code": "ECON 203",
       "slug": "econ-203",
       "title": "",
@@ -1046,51 +1000,6 @@
         "insight",
         "ccs_spring",
         "ccs_summer"
-      ]
-    },
-    {
-      "code": "EDUC 219",
-      "slug": "educ-219",
-      "title": "",
-      "description": "",
-      "ease_score": null,
-      "grading": "",
-      "attributes": [],
-      "professors": [
-        {
-          "name": "Hoda Baytiyeh",
-          "terms": [
-            "Summer"
-          ],
-          "notes": [
-            "Very easy A"
-          ]
-        }
-      ],
-      "student_reviews": [
-        {
-          "professor": "Hoda Baytiyeh",
-          "best_for": null,
-          "prerequisite": "No",
-          "structure": "Exams (Midterm, Final exam), Homework",
-          "tip": "This is a really easy and interesting elective. You learn fun things (e.g. doing an exam on excel) and then there is an assignment for each skill you cover (the assignment would be the same thing as the professor explains in class, and she gives you a full week to do it). It is very easy and doable to maintain an A+ provided you do exactly what the professor expects from you. There was one midterm that we did only last fall, but even then the professor told us that she is planning to remove it as well and keep the whole format of the course as graded assignments, so I don’t know whether there has been some modifications to the course or not."
-        }
-      ],
-      "master_notes": [
-        {
-          "professor": "Hoda Baytiyeh",
-          "best_for": "Practical skills",
-          "prerequisite": "",
-          "structure": "Assignments",
-          "note": "Very easy A"
-        }
-      ],
-      "warnings": [],
-      "recommended": true,
-      "sources": [
-        "ccs_summer",
-        "xlsx",
-        "master"
       ]
     },
     {
@@ -2374,48 +2283,6 @@
       "sources": [
         "ccs_spring",
         "ccs_summer"
-      ]
-    },
-    {
-      "code": "SOAN 246",
-      "slug": "soan-246",
-      "title": "",
-      "description": "",
-      "ease_score": null,
-      "grading": "",
-      "attributes": [],
-      "professors": [
-        {
-          "name": "Alexandra Kassir",
-          "terms": [],
-          "notes": [
-            "Easy grading"
-          ]
-        }
-      ],
-      "student_reviews": [
-        {
-          "professor": "Alexandra Kassir",
-          "best_for": "Students who like reading and discussion.",
-          "prerequisite": "I dont think so, i took it as an elective inmy sophomore fall",
-          "structure": "Exams (Midterm, Final exam), Paper, Group project, Presentation, Participation/ Attendance/ Class discussions",
-          "tip": "The professor is not demanding at all,and she puts high grades as long as you show focus in class and participation in the discussions"
-        }
-      ],
-      "master_notes": [
-        {
-          "professor": "Alexandra Kassir",
-          "best_for": "Reading and discussion",
-          "prerequisite": "",
-          "structure": "Exams + paper + participation",
-          "note": "Easy grading"
-        }
-      ],
-      "warnings": [],
-      "recommended": true,
-      "sources": [
-        "xlsx",
-        "master"
       ]
     }
   ]
