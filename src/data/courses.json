@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-04-22T14:52:50.291751+00:00",
+  "generated_at": "2026-04-22T15:16:19.731158+00:00",
   "count": 68,
   "courses": [
     {
@@ -21,21 +21,19 @@
         {
           "name": "Lina Jaber",
           "terms": [],
-          "notes": [
-            "Easy"
-          ]
+          "notes": []
         }
       ],
       "student_reviews": [
         {
-          "professor": "Lina jaber",
+          "professor": "",
           "best_for": "Students who like presentations",
           "prerequisite": "No but you need to talk to the department to remove the restriction",
           "structure": "Exams (Midterm, Final exam), Group project, Presentation",
           "tip": "There is one exam (7 lectures to study w fi previous byeje metlo) and two presentations one individual w w one with a grp easy game"
         },
         {
-          "professor": "Lina jaber",
+          "professor": "",
           "best_for": "Who likes to present",
           "prerequisite": "No u need to contact the department to remove restriction",
           "structure": "Exams (Midterm, Final exam), Presentation",
@@ -44,7 +42,7 @@
       ],
       "master_notes": [
         {
-          "professor": "Lina Jaber",
+          "professor": "",
           "best_for": "Presentations",
           "prerequisite": "Approval required",
           "structure": "Exam + presentations",
@@ -170,7 +168,7 @@
       "professors": [],
       "student_reviews": [
         {
-          "professor": "-",
+          "professor": "",
           "best_for": "Students with excellent background and Jlede for i3rab and Arabic Grammar",
           "prerequisite": "no",
           "structure": "Exams (Midterm, Final exam)",
@@ -417,14 +415,14 @@
       ],
       "student_reviews": [
         {
-          "professor": "Najah Hawwa Attiyeh",
+          "professor": "",
           "best_for": "Students who love Arabic specifically literature",
           "prerequisite": "No",
           "structure": "Exams (Midterm, Final exam), Homework, Participation/ Attendance/ Class discussions",
           "tip": null
         },
         {
-          "professor": "-",
+          "professor": "",
           "best_for": "Students who like participation in class and have some background in Arabic",
           "prerequisite": "no",
           "structure": "Exams (Midterm, Final exam), Participation/ Attendance/ Class discussions",
@@ -433,7 +431,7 @@
       ],
       "master_notes": [
         {
-          "professor": "Najah Hawwa",
+          "professor": "",
           "best_for": "Arabic literature",
           "prerequisite": "",
           "structure": "Exams + participation",
@@ -500,14 +498,14 @@
       ],
       "student_reviews": [
         {
-          "professor": "Enass Khansa",
+          "professor": "",
           "best_for": "Reading and Discossion",
           "prerequisite": "I don't think so",
           "structure": "Projects, Paper, Homework, Presentation, Participation/ Attendance/ Class discussions, Readings",
           "tip": "The method of teaching the course may have been changed."
         },
         {
-          "professor": "Maher jarrar",
+          "professor": "",
           "best_for": "Students who like reading",
           "prerequisite": "No",
           "structure": "Exams (Midterm, Final exam), Participation/ Attendance/ Class discussions",
@@ -516,7 +514,7 @@
       ],
       "master_notes": [
         {
-          "professor": "Enass Khansa",
+          "professor": "",
           "best_for": "Reading and discussion",
           "prerequisite": "",
           "structure": "Projects + participation",
@@ -550,7 +548,7 @@
       ],
       "student_reviews": [
         {
-          "professor": "Mariam el Ali",
+          "professor": "",
           "best_for": "Students who like discussions",
           "prerequisite": "No",
           "structure": "Exams (Midterm, Final exam), Presentation",
@@ -559,7 +557,7 @@
       ],
       "master_notes": [
         {
-          "professor": "Mariam El Ali",
+          "professor": "",
           "best_for": "Discussion-based students",
           "prerequisite": "",
           "structure": "Midterm + Final + Presentation",
@@ -639,14 +637,12 @@
         {
           "name": "Paul Newson",
           "terms": [],
-          "notes": [
-            "Notes are essential"
-          ]
+          "notes": []
         }
       ],
       "student_reviews": [
         {
-          "professor": "Paul Newson",
+          "professor": "",
           "best_for": "Memorization and discussion",
           "prerequisite": "No",
           "structure": "Exams (Midterm, Final exam), Readings",
@@ -655,7 +651,7 @@
       ],
       "master_notes": [
         {
-          "professor": "Paul Newson",
+          "professor": "",
           "best_for": "Memorization and discussion",
           "prerequisite": "",
           "structure": "Exams",
@@ -683,14 +679,12 @@
         {
           "name": "Paul Newson",
           "terms": [],
-          "notes": [
-            "Light"
-          ]
+          "notes": []
         }
       ],
       "student_reviews": [
         {
-          "professor": "Paul Newson",
+          "professor": "",
           "best_for": "Writing (a bit of memorization included)",
           "prerequisite": "No",
           "structure": "Exams (Midterm, Final exam), Participation/ Attendance/ Class discussions",
@@ -699,7 +693,7 @@
       ],
       "master_notes": [
         {
-          "professor": "Paul Newson",
+          "professor": "",
           "best_for": "Writing",
           "prerequisite": "",
           "structure": "Exams",
@@ -812,14 +806,12 @@
         {
           "name": "Pierre Karam",
           "terms": [],
-          "notes": [
-            "Flexible"
-          ]
+          "notes": []
         }
       ],
       "student_reviews": [
         {
-          "professor": "Pierre karam",
+          "professor": "",
           "best_for": "This course is the best for who is curious how everything work in terms of chemistry.",
           "prerequisite": "Nope",
           "structure": "Participation/ Attendance/ Class discussions, It depends on how the students want and the situation but mostly quizzes and a final",
@@ -828,7 +820,7 @@
       ],
       "master_notes": [
         {
-          "professor": "Pierre Karam",
+          "professor": "",
           "best_for": "Curious students",
           "prerequisite": "",
           "structure": "Participation + quizzes + final",
@@ -889,21 +881,19 @@
         {
           "name": "Maya Kanaan",
           "terms": [],
-          "notes": [
-            "Easier with this professor but not inherently easy"
-          ]
+          "notes": []
         }
       ],
       "student_reviews": [
         {
-          "professor": "Maya",
+          "professor": "",
           "best_for": "Memorization",
           "prerequisite": "No",
           "structure": "Exams (Midterm, Final exam), Homework",
           "tip": null
         },
         {
-          "professor": "Maya Kanaan",
+          "professor": "",
           "best_for": "It is great for students who memorize and analyze",
           "prerequisite": "No",
           "structure": "Exams (Midterm, Final exam), Homework, Participation/ Attendance/ Class discussions",
@@ -912,7 +902,7 @@
       ],
       "master_notes": [
         {
-          "professor": "Maya Kanaan",
+          "professor": "",
           "best_for": "General students",
           "prerequisite": "",
           "structure": "Homework + 3 exams",
@@ -953,7 +943,7 @@
       ],
       "student_reviews": [
         {
-          "professor": "Raja Sabra",
+          "professor": "",
           "best_for": null,
           "prerequisite": "No",
           "structure": "Exams (Midterm, Final exam), Homework",
@@ -1015,14 +1005,12 @@
         {
           "name": "Enja Osman",
           "terms": [],
-          "notes": [
-            "Light workload"
-          ]
+          "notes": []
         }
       ],
       "student_reviews": [
         {
-          "professor": "Enja Osman",
+          "professor": "",
           "best_for": "This course mainly talks about teaching strategies and there is one written exam and everything else is just like small presentations creating a kahoot and the final is just creating a reflection as a ppt or e portfolio and the dr is really nice and understanding",
           "prerequisite": "I don’t know",
           "structure": "Exams (Midterm, Final exam), Projects, Homework, Group project, Presentation, Participation/ Attendance/ Class discussions, Readings",
@@ -1031,7 +1019,7 @@
       ],
       "master_notes": [
         {
-          "professor": "Enja Osman",
+          "professor": "",
           "best_for": "Teaching and presentations",
           "prerequisite": "",
           "structure": "Exams + projects + participation",
@@ -1136,7 +1124,7 @@
       ],
       "student_reviews": [
         {
-          "professor": "DeVan Ard-Keyser",
+          "professor": "",
           "best_for": "Students who like reading and discussion",
           "prerequisite": "ENGL203 might be a pre/co-requisite but i’m not sure",
           "structure": "Projects, Quizzes, Participation/ Attendance/ Class discussions, + a final exam",
@@ -1145,7 +1133,7 @@
       ],
       "master_notes": [
         {
-          "professor": "DeVan Ard-Keyser",
+          "professor": "",
           "best_for": "Reading and discussion",
           "prerequisite": "ENGL 203 maybe",
           "structure": "Projects + quizzes",
@@ -1178,7 +1166,7 @@
       ],
       "student_reviews": [
         {
-          "professor": "Syrine el Hout",
+          "professor": "",
           "best_for": "someone interested in english literature ( not obligatory tho)",
           "prerequisite": "no",
           "structure": "Paper, Quizzes",
@@ -1211,7 +1199,7 @@
       ],
       "student_reviews": [
         {
-          "professor": "Emelye Ard-Keyser",
+          "professor": "",
           "best_for": "Reading + discussion",
           "prerequisite": "ENGL 203",
           "structure": "Exams (Midterm, Final exam), Paper, Quizzes, Participation/ Attendance/ Class discussions, Readings,",
@@ -1220,7 +1208,7 @@
       ],
       "master_notes": [
         {
-          "professor": "Emily Ard-Keyser",
+          "professor": "",
           "best_for": "Discussion and writing",
           "prerequisite": "ENGL 203",
           "structure": "Exams + paper",
@@ -1250,14 +1238,12 @@
           "terms": [
             "Spring"
           ],
-          "notes": [
-            "Easy if focused"
-          ]
+          "notes": []
         }
       ],
       "student_reviews": [
         {
-          "professor": "Christopher nassar",
+          "professor": "",
           "best_for": "Reading and writing",
           "prerequisite": "No",
           "structure": "Exams (Midterm, Final exam)",
@@ -1266,7 +1252,7 @@
       ],
       "master_notes": [
         {
-          "professor": "Christopher Nassar",
+          "professor": "",
           "best_for": "Reading and writing",
           "prerequisite": "",
           "structure": "Exams",
@@ -1485,7 +1471,7 @@
       ],
       "student_reviews": [
         {
-          "professor": "Peter Kitlas",
+          "professor": "",
           "best_for": "Reading, discussion and presentation",
           "prerequisite": "No",
           "structure": "Quizzes, Group project, Presentation, Participation/ Attendance/ Class discussions, Readings",
@@ -1584,14 +1570,12 @@
         {
           "name": "Yasmina Sabbah",
           "terms": [],
-          "notes": [
-            "Fun"
-          ]
+          "notes": []
         }
       ],
       "student_reviews": [
         {
-          "professor": "Yasmina Sabbah",
+          "professor": "",
           "best_for": "students who like logic and thinking, it’s very fun",
           "prerequisite": "no",
           "structure": "Exams (Midterm, Final exam), Participation/ Attendance/ Class discussions",
@@ -1600,7 +1584,7 @@
       ],
       "master_notes": [
         {
-          "professor": "Yasmina Sabbah",
+          "professor": "",
           "best_for": "Logical thinking",
           "prerequisite": "",
           "structure": "Exams + participation",
@@ -1628,15 +1612,13 @@
         {
           "name": "Joelle Garro El Khoury",
           "terms": [],
-          "notes": [
-            "Easy A"
-          ]
+          "notes": []
         }
       ],
       "student_reviews": [],
       "master_notes": [
         {
-          "professor": "Joelle Garro El Khoury",
+          "professor": "",
           "best_for": "Anyone",
           "prerequisite": "Music 200 optional",
           "structure": "Quizzes + homework",
@@ -1668,7 +1650,7 @@
       ],
       "student_reviews": [
         {
-          "professor": "Joelle Khoury",
+          "professor": "",
           "best_for": "Students who enjoy listening to operas, watching opera films, discussing musical terminology",
           "prerequisite": "No",
           "structure": "Paper, Quizzes, Homework, Presentation",
@@ -1677,7 +1659,7 @@
       ],
       "master_notes": [
         {
-          "professor": "Joelle Khoury",
+          "professor": "",
           "best_for": "Music lovers",
           "prerequisite": "",
           "structure": "Paper + quizzes",
@@ -1710,14 +1692,14 @@
       ],
       "student_reviews": [
         {
-          "professor": "Joelle garro el khoury",
+          "professor": "",
           "best_for": "Anyone can take the course, no need to know about music",
           "prerequisite": "Music 200 but if you know a bit in music you can talk to her and skip this course",
           "structure": "Quizzes, Homework",
           "tip": null
         },
         {
-          "professor": "Joelle Garro El Khoury",
+          "professor": "",
           "best_for": "Everyone can take the course, no need to be a musician, easiest A+ ever",
           "prerequisite": "Music 200, but if you know a bit in music you can talk to her and she skips u this course",
           "structure": "Quizzes, Homework",
@@ -1750,7 +1732,7 @@
       ],
       "student_reviews": [
         {
-          "professor": "Maya Maalouf",
+          "professor": "",
           "best_for": "students who are passionate about music or would we interested in learning more about it",
           "prerequisite": "nope",
           "structure": "Paper, Quizzes, Homework, Presentation, Participation/ Attendance/ Class discussions, Readings",
@@ -1912,21 +1894,19 @@
         {
           "name": "Samih Isber",
           "terms": [],
-          "notes": [
-            "MCQ exams"
-          ]
+          "notes": []
         }
       ],
       "student_reviews": [
         {
-          "professor": "Samih isber",
+          "professor": "",
           "best_for": "Students who like astronomy and hate studying",
           "prerequisite": "No",
           "structure": "Exams (Midterm, Final exam), Paper",
           "tip": "Great course for those who hate studying the chapter can be understood using chatgpt in a matter of 10 minutes exams are mcq type questions and computarized.\nPreferably know your professor before taking the course.\nAvoid samih isber !!"
         },
         {
-          "professor": "Ola",
+          "professor": "",
           "best_for": "Curious about the world, some basic physics",
           "prerequisite": "No",
           "structure": "Exams (Midterm, Final exam), Quizzes",
@@ -1935,7 +1915,7 @@
       ],
       "master_notes": [
         {
-          "professor": "Samih Isber",
+          "professor": "",
           "best_for": "Astronomy interest",
           "prerequisite": "",
           "structure": "Exams + paper",
@@ -1976,7 +1956,7 @@
       ],
       "student_reviews": [
         {
-          "professor": "Yeghia Tashjian",
+          "professor": "",
           "best_for": "a bit of memorizing and discussion",
           "prerequisite": "no",
           "structure": "Exams (Midterm, Final exam), Quizzes, Participation/ Attendance/ Class discussions",
@@ -1985,7 +1965,7 @@
       ],
       "master_notes": [
         {
-          "professor": "Yeghia Tashjian",
+          "professor": "",
           "best_for": "Memorization and discussion",
           "prerequisite": "",
           "structure": "Exams + quizzes",
@@ -2021,21 +2001,19 @@
           "terms": [
             "Summer"
           ],
-          "notes": [
-            "Easy but boring"
-          ]
+          "notes": []
         }
       ],
       "student_reviews": [
         {
-          "professor": "Hiba khodeib",
+          "professor": "",
           "best_for": "Reading and listening",
           "prerequisite": "No",
           "structure": "Exams (Midterm, Final exam), Paper",
           "tip": "It's very easy the professor gives like bunch of questions before the exam to study them and from this questions she make an exam but at the same time it's a bit boring class + reading are not obligated"
         },
         {
-          "professor": "Hiba khoder",
+          "professor": "",
           "best_for": "Reading but you can just skip them and memorize summary from ai",
           "prerequisite": "No",
           "structure": "Quizzes, Participation/ Attendance/ Class discussions",
@@ -2044,7 +2022,7 @@
       ],
       "master_notes": [
         {
-          "professor": "Hiba Khodeib",
+          "professor": "",
           "best_for": "Reading and listening",
           "prerequisite": "",
           "structure": "Exams + paper",
@@ -2101,14 +2079,12 @@
         {
           "name": "Tania Haddad",
           "terms": [],
-          "notes": [
-            "Easy grading"
-          ]
+          "notes": []
         }
       ],
       "student_reviews": [
         {
-          "professor": "Tania Haddad",
+          "professor": "",
           "best_for": "Students who like discussions, opinions, and projects",
           "prerequisite": "No",
           "structure": "Projects, Paper, Quizzes, Homework, Presentation, Participation/ Attendance/ Class discussions",
@@ -2117,7 +2093,7 @@
       ],
       "master_notes": [
         {
-          "professor": "Tania Haddad",
+          "professor": "",
           "best_for": "Discussions and projects",
           "prerequisite": "",
           "structure": "Projects + participation",
@@ -2214,21 +2190,21 @@
       ],
       "student_reviews": [
         {
-          "professor": "Jad Al Tayyan",
+          "professor": "",
           "best_for": "Students who want understand how society works",
           "prerequisite": "No",
           "structure": "Exams (Midterm, Final exam), Projects, Group project, Presentation, Participation/ Attendance/ Class discussions",
           "tip": "You have to be active"
         },
         {
-          "professor": "Dr. Rima Rassi",
+          "professor": "",
           "best_for": "Any students",
           "prerequisite": "No",
           "structure": "Exams (Midterm, Final exam), Group project, Presentation, Participation/ Attendance/ Class discussions",
           "tip": "Nothing, just go for it."
         },
         {
-          "professor": "Riman Rassi",
+          "professor": "",
           "best_for": "For students who don't like memorizinh",
           "prerequisite": "No",
           "structure": "Exams (Midterm, Final exam), During this war, she cancelled the midterm because not everyone is able to focus and study and she decided to do an easy paper instead.",
@@ -2237,7 +2213,7 @@
       ],
       "master_notes": [
         {
-          "professor": "Rima Rassi",
+          "professor": "",
           "best_for": "Any student",
           "prerequisite": "",
           "structure": "Exams + project + participation",
