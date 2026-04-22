@@ -91,6 +91,15 @@ def main() -> None:
     featured = [c for c in courses if c["code"] in spring_codes][:6]
 
     existing_codes = sorted({c["code"] for c in courses})
+    existing_courses = {
+        c["code"]: {
+            "slug": c["slug"],
+            "title": c.get("title", ""),
+            "attributes": c.get("attributes", []) or [],
+            "ease": c.get("ease_score") or 0,
+        }
+        for c in courses
+    }
 
     env = Environment(
         loader=FileSystemLoader(str(TPL)),
@@ -116,7 +125,8 @@ def main() -> None:
         rel="", form_embed_url=form_embed_url, count=len(courses),
     ))
     write(DIST / "suggestions.html", env.get_template("suggestions.html").render(
-        rel="", sheet_csv_url=sheet_csv_url, existing_codes=existing_codes,
+        rel="", sheet_csv_url=sheet_csv_url,
+        existing_codes=existing_codes, existing_courses=existing_courses,
     ))
 
     for a, list_ in by_attr.items():
