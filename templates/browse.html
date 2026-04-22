@@ -8,18 +8,12 @@
     <p class="mt-3 text-ink-muted">{{ count }} courses · filter, sort, or search.</p>
 
     <div class="mt-8 grid grid-cols-1 sm:grid-cols-12 gap-3">
-      <input id="q" placeholder="Search code, title, professor…" class="input sm:col-span-5" />
+      <input id="q" placeholder="Search code, title, professor…" class="input sm:col-span-6" />
       <select id="attr" class="input sm:col-span-3 cursor-pointer">
         <option value="">All attributes</option>
         {% for a in attributes %}<option value="{{ a.name }}">{{ a.name }}</option>{% endfor %}
       </select>
-      <select id="ease" class="input sm:col-span-2 cursor-pointer" title="Filter by minimum ease score">
-        <option value="">Min ease · any</option>
-        <option value="9">Min ease · 9</option>
-        <option value="7">Min ease · 7</option>
-        <option value="5">Min ease · 5</option>
-      </select>
-      <select id="sort" class="input sm:col-span-2 cursor-pointer" title="Sort order">
+      <select id="sort" class="input sm:col-span-3 cursor-pointer" title="Sort order">
         <option value="ease-desc">Sort · easiest</option>
         <option value="ease-asc">Sort · hardest</option>
         <option value="code">Sort · code</option>
@@ -47,7 +41,6 @@
 <script>
 const q = document.getElementById('q');
 const attr = document.getElementById('attr');
-const ease = document.getElementById('ease');
 const sort = document.getElementById('sort');
 const grid = document.getElementById('grid');
 const items = [...document.querySelectorAll('.course-item')];
@@ -56,14 +49,12 @@ const empty = document.getElementById('empty');
 function apply() {
   const qv = q.value.trim().toLowerCase();
   const av = attr.value;
-  const ev = parseInt(ease.value || '0', 10);
   let shown = 0;
   for (const it of items) {
     const hay = (it.dataset.code + ' ' + it.dataset.title + ' ' + it.dataset.profs).toLowerCase();
     const okQ = !qv || hay.includes(qv);
     const okA = !av || it.dataset.attrs.includes(av);
-    const okE = !ev || parseInt(it.dataset.ease, 10) >= ev;
-    const ok = okQ && okA && okE;
+    const ok = okQ && okA;
     it.style.display = ok ? '' : 'none';
     if (ok) shown++;
   }
@@ -86,7 +77,6 @@ function applySort() {
 }
 q.addEventListener('input', apply);
 attr.addEventListener('change', apply);
-ease.addEventListener('change', apply);
 sort.addEventListener('change', applySort);
 
 const params = new URLSearchParams(location.search);
