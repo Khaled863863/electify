@@ -9,7 +9,10 @@
         <div class="pill mb-3">Community</div>
         <h1 class="text-4xl sm:text-6xl font-medium tracking-tight leading-[1.05]">Picks from your peers</h1>
         <p class="mt-4 text-ink-soft max-w-2xl leading-relaxed">Live submissions from AUB students. Not yet verified — read them as crowd intel. When 3+ students suggest the same course, it's promoted to the main list.</p>
-        <button id="show-hidden" class="hidden mt-4 text-sm ulink text-ink-muted hover:text-ink">Show hidden (<span id="hidden-count">0</span>)</button>
+        <div id="mine-banner" class="hidden mt-4 inline-flex items-center gap-2 text-sm bg-line-soft rounded-md px-3 py-1.5">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+          <span class="text-ink-soft">You posted <span id="mine-count" class="font-medium text-ink">0</span> suggestion<span id="mine-plural">s</span> · highlighted below</span>
+        </div>
       </div>
       <a href="suggest.html" class="btn-primary">+ Suggest a course</a>
     </div>
@@ -81,7 +84,22 @@ function slugify(code) {
   return code.toLowerCase().replace(/\s+/g, '-');
 }
 
-function card(group, count, isExisting) {
+const MINE_KEY = 'electify-my-submissions';
+function getMine() {
+  try {
+    const list = JSON.parse(localStorage.getItem(MINE_KEY) || '[]');
+    return new Set(list.map(x => x.code));
+  } catch { return new Set(); }
+}
+function removeMine(code) {
+  try {
+    const list = JSON.parse(localStorage.getItem(MINE_KEY) || '[]');
+    const filtered = list.filter(x => x.code !== code);
+    localStorage.setItem(MINE_KEY, JSON.stringify(filtered));
+  } catch {}
+}
+
+function card(group, count, isExisting, isMine) {
   const first = group[0];
   const ease = group.map(g => g.ease).filter(Boolean).map(Number);
   const avg = ease.length ? Math.round(ease.reduce((a,b)=>a+b,0)/ease.length) : null;
@@ -93,49 +111,42 @@ function card(group, count, isExisting) {
   const promoteCta = isExisting
     ? `<span class="text-xs text-ink-soft">In main list →</span>`
     : '';
+  const mineChip = isMine
+    ? `<span class="pill border-transparent" style="background:var(--ink);color:var(--bg);">✓ Yours</span>`
+    : '';
   const trendingChip = count >= 3
     ? `<span class="pill bg-ink text-bg border-transparent">★ Trending · ${count} votes</span>`
     : `<span class="pill pill-outline">${count} vote${count===1?'':'s'}</span>`;
 
+  const mineFooter = isMine
+    ? `<div class="mt-4 pt-4 border-t border-line flex items-center justify-between gap-3">
+         <span class="text-xs text-ink-muted">You posted this</span>
+         <button data-remove-code="${first.code}" class="text-xs ulink text-ink-muted hover:text-ink inline-flex items-center gap-1">
+           <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M3 6h18M8 6V4a2 2 0 012-2h4a2 2 0 012 2v2M19 6l-1 14a2 2 0 01-2 2H8a2 2 0 01-2-2L5 6"/></svg>
+           Remove my submission
+         </button>
+       </div>`
+    : '';
+
   const inner = `
-    <div class="flex items-start justify-between gap-4 pr-8">
+    <div class="flex items-start justify-between gap-4">
       <div class="min-w-0 flex-1">
         <div class="mono text-[11px] tracking-wider text-ink-muted">${first.code}</div>
         <div class="mt-1.5 text-[15px] font-medium leading-snug text-ink">${first.title || first.code}</div>
       </div>
       ${badge}
     </div>
-    <div class="mt-4 flex flex-wrap gap-2 items-center">${trendingChip}${promoteCta}</div>
+    <div class="mt-4 flex flex-wrap gap-2 items-center">${mineChip}${trendingChip}${promoteCta}</div>
     ${profs.length ? `<div class="mt-4 pt-4 border-t border-line text-xs text-ink-muted"><span class="text-ink-dim">Prof ·</span> <span class="text-ink-soft ml-0.5">${profs.join(', ')}</span></div>` : ''}
-    ${tips.length ? `<div class="mt-4 space-y-2.5">${tips.slice(0,3).map(t => `<p class="text-sm text-ink leading-relaxed border-l-2 border-ink/15 pl-3">"${t}"</p>`).join('')}</div>` : ''}`;
+    ${tips.length ? `<div class="mt-4 space-y-2.5">${tips.slice(0,3).map(t => `<p class="text-sm text-ink leading-relaxed border-l-2 border-ink/15 pl-3">"${t}"</p>`).join('')}</div>` : ''}
+    ${mineFooter}`;
 
+  const ringClass = isMine ? ' ring-1 ring-ink/30' : '';
   const body = isExisting
-    ? `<a href="course/${slugify(first.code)}.html" class="card card-link p-5 block group">${inner}</a>`
-    : `<div class="card p-5">${inner}</div>`;
+    ? `<a href="course/${slugify(first.code)}.html" class="card card-link p-5 block group${ringClass}">${inner}</a>`
+    : `<div class="card p-5${ringClass}">${inner}</div>`;
 
-  return `
-    <div class="relative" data-card-code="${first.code}">
-      ${body}
-      <button data-hide-code="${first.code}" title="Hide on this device" aria-label="Hide this suggestion" class="absolute top-3 right-3 w-7 h-7 rounded-md flex items-center justify-center text-ink-muted hover:text-ink hover:bg-line/60 transition z-10">
-        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M18 6L6 18M6 6l12 12"/></svg>
-      </button>
-    </div>`;
-}
-
-const HIDDEN_KEY = 'electify-hidden-suggestions';
-function getHidden() {
-  try { return new Set(JSON.parse(localStorage.getItem(HIDDEN_KEY) || '[]')); }
-  catch { return new Set(); }
-}
-function saveHidden(set) {
-  localStorage.setItem(HIDDEN_KEY, JSON.stringify([...set]));
-}
-function refreshHiddenUI() {
-  const btn = document.getElementById('show-hidden');
-  const count = document.getElementById('hidden-count');
-  const n = getHidden().size;
-  count.textContent = n;
-  btn.classList.toggle('hidden', n === 0);
+  return `<div data-card-code="${first.code}">${body}</div>`;
 }
 
 async function load() {
@@ -169,13 +180,21 @@ async function load() {
     }
     if (!groups.size) { loading.classList.add('hidden'); empty.classList.remove('hidden'); return; }
 
-    const hidden = getHidden();
-    const sorted = [...groups.entries()].sort((a, b) => b[1].length - a[1].length);
+    const mine = getMine();
+    const sorted = [...groups.entries()].sort((a, b) => {
+      // pin user's own submissions first within each section
+      const am = mine.has(a[0]) ? 0 : 1;
+      const bm = mine.has(b[0]) ? 0 : 1;
+      if (am !== bm) return am - bm;
+      return b[1].length - a[1].length;
+    });
     const trending = [], fresh = [];
+    let mineShown = 0;
     for (const [code, group] of sorted) {
-      if (hidden.has(code)) continue;
       const isExisting = EXISTING_CODES.has(code);
-      const html = card(group, group.length, isExisting);
+      const isMine = mine.has(code);
+      if (isMine) mineShown++;
+      const html = card(group, group.length, isExisting, isMine);
       if (group.length >= 3) trending.push(html);
       else fresh.push(html);
     }
@@ -186,7 +205,15 @@ async function load() {
     document.getElementById('new-wrap').classList.toggle('hidden', !fresh.length);
     if (!trending.length && !fresh.length) empty.classList.remove('hidden');
     else empty.classList.add('hidden');
-    refreshHiddenUI();
+
+    const banner = document.getElementById('mine-banner');
+    if (mineShown > 0) {
+      document.getElementById('mine-count').textContent = mineShown;
+      document.getElementById('mine-plural').textContent = mineShown === 1 ? '' : 's';
+      banner.classList.remove('hidden');
+    } else {
+      banner.classList.add('hidden');
+    }
   } catch (e) {
     loading.classList.add('hidden');
     empty.classList.remove('hidden');
@@ -194,16 +221,22 @@ async function load() {
   }
 }
 
-// Hide button (delegated)
+// Remove-my-submission button (delegated). Only appears on cards the user marked as theirs on /suggest.
 document.addEventListener('click', (e) => {
-  const btn = e.target.closest('[data-hide-code]');
+  const btn = e.target.closest('[data-remove-code]');
   if (!btn) return;
   e.preventDefault();
   e.stopPropagation();
-  const code = btn.getAttribute('data-hide-code');
-  const set = getHidden();
-  set.add(code);
-  saveHidden(set);
+  const code = btn.getAttribute('data-remove-code');
+  const ok = confirm(
+    `Remove your "${code}" submission?\n\n` +
+    `This will:\n` +
+    `• Hide it on this device immediately\n` +
+    `• Open an email to the site owner asking them to delete the entry from the public sheet\n\n` +
+    `Real deletion takes a day or two — the data lives in a Google Sheet that only the site owner can edit.`
+  );
+  if (!ok) return;
+  removeMine(code);
   const wrap = btn.closest('[data-card-code]');
   if (wrap) {
     wrap.style.transition = 'opacity .2s, transform .2s';
@@ -211,7 +244,6 @@ document.addEventListener('click', (e) => {
     wrap.style.transform = 'scale(.97)';
     setTimeout(() => {
       wrap.remove();
-      // Hide empty section headers if their grid is now empty
       for (const id of ['trending', 'new']) {
         const grid = document.getElementById(id);
         if (grid && !grid.children.length) {
@@ -221,19 +253,24 @@ document.addEventListener('click', (e) => {
       const anyLeft = document.getElementById('trending').children.length
         + document.getElementById('new').children.length;
       if (!anyLeft) empty.classList.remove('hidden');
-      refreshHiddenUI();
+      // refresh banner count
+      const remaining = getMine().size;
+      const banner = document.getElementById('mine-banner');
+      if (remaining > 0) {
+        document.getElementById('mine-count').textContent = remaining;
+        document.getElementById('mine-plural').textContent = remaining === 1 ? '' : 's';
+      } else {
+        banner.classList.add('hidden');
+      }
     }, 200);
   }
-});
-
-// Show hidden → clear set and reload
-document.getElementById('show-hidden').addEventListener('click', () => {
-  localStorage.removeItem(HIDDEN_KEY);
-  loading.classList.remove('hidden');
-  empty.classList.add('hidden');
-  document.getElementById('trending-wrap').classList.add('hidden');
-  document.getElementById('new-wrap').classList.add('hidden');
-  load();
+  // Open mailto for real deletion
+  const subj = encodeURIComponent(`Submission removal request — ${code}`);
+  const body = encodeURIComponent(
+    `Please remove my "${code}" suggestion from the community sheet.\n\n` +
+    `(Sent from electify.pages.dev — the row was submitted by me from this device.)\n`
+  );
+  window.location.href = `mailto:electify.site@outlook.com?subject=${subj}&body=${body}`;
 });
 
 load();

@@ -359,16 +359,59 @@ tailwind.config = {
     
     
     
-    <div class="card p-7 sm:p-9 text-center">
-      <div class="text-xs uppercase tracking-wider text-ink-muted">Ready when you are</div>
-      <h2 class="mt-3 text-2xl sm:text-3xl font-medium tracking-tight">Open the suggestion form</h2>
-      <p class="mt-3 text-ink-soft max-w-md mx-auto leading-relaxed">Takes about a minute. The form opens in a new tab so you don't lose your place.</p>
-      <a href="https://docs.google.com/forms/d/e/1FAIpQLSfXCkO4eonEIPmgkRL1p7c9I7zr8ZG2dMdxyXMBNOyGF6XrHQ/viewform?hl=en" target="_blank" rel="noopener" class="btn-primary inline-flex items-center gap-2 mt-6 text-base px-6 py-3">
-        Open the form
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M7 7h10v10"/></svg>
-      </a>
-      <p class="mt-5 text-xs text-ink-muted">Hosted on Google Forms · No login required · 5 short questions</p>
+    <div class="card p-7 sm:p-9">
+      <div class="text-center">
+        <div class="text-xs uppercase tracking-wider text-ink-muted">Ready when you are</div>
+        <h2 class="mt-3 text-2xl sm:text-3xl font-medium tracking-tight">Open the suggestion form</h2>
+        <p class="mt-3 text-ink-soft max-w-md mx-auto leading-relaxed">Takes about a minute. The form opens in a new tab so you don't lose your place.</p>
+      </div>
+
+      <div class="mt-7 max-w-md mx-auto">
+        <label for="my-code" class="block text-xs uppercase tracking-wider text-ink-muted mb-2">Course code you're suggesting <span class="text-ink-dim normal-case tracking-normal">(so you can manage it later)</span></label>
+        <input id="my-code" type="text" autocomplete="off" placeholder="e.g. AGSC 205" class="input w-full uppercase mono tracking-wider" />
+        <p id="code-hint" class="hidden mt-2 text-xs text-amber-700 dark:text-amber-400">Type the course code first — it's how we'll let you remove your submission later if you change your mind.</p>
+      </div>
+
+      <div class="mt-5 text-center">
+        <a id="open-form" href="https://docs.google.com/forms/d/e/1FAIpQLSfXCkO4eonEIPmgkRL1p7c9I7zr8ZG2dMdxyXMBNOyGF6XrHQ/viewform?hl=en" target="_blank" rel="noopener" class="btn-primary inline-flex items-center gap-2 text-base px-6 py-3">
+          Open the form
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M7 7h10v10"/></svg>
+        </a>
+        <p class="mt-5 text-xs text-ink-muted">Hosted on Google Forms · No login required · 5 short questions</p>
+      </div>
     </div>
+
+    <script>
+      (function() {
+        const KEY = 'electify-my-submissions';
+        const input = document.getElementById('my-code');
+        const link = document.getElementById('open-form');
+        const hint = document.getElementById('code-hint');
+        function normCode(s) {
+          if (!s) return '';
+          const m = s.toUpperCase().replace(/\u00a0/g, ' ').match(/([A-Z]{3,5})\s*0*([0-9]{2,3}[A-Z]{0,3})/);
+          return m ? `${m[1]} ${m[2]}` : '';
+        }
+        link.addEventListener('click', (e) => {
+          const code = normCode(input.value);
+          if (!code) {
+            e.preventDefault();
+            hint.classList.remove('hidden');
+            input.focus();
+            return;
+          }
+          hint.classList.add('hidden');
+          try {
+            const list = JSON.parse(localStorage.getItem(KEY) || '[]');
+            if (!list.find(x => x.code === code)) {
+              list.push({ code, at: Date.now() });
+              localStorage.setItem(KEY, JSON.stringify(list));
+            }
+          } catch {}
+        });
+        input.addEventListener('input', () => hint.classList.add('hidden'));
+      })();
+    </script>
 
     <div class="mt-10 card p-6">
       <div class="text-xs uppercase tracking-wider text-ink-muted">What makes a good submission</div>
