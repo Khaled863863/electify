@@ -394,10 +394,21 @@ tailwind.config = {
   </div>
 </section>
 
+<div id="modal" class="hidden fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-8" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+  <div id="modal-overlay" class="absolute inset-0 bg-ink/60 backdrop-blur-sm"></div>
+  <div class="relative bg-bg border border-line rounded-2xl shadow-2xl w-full max-w-2xl max-h-[85vh] overflow-y-auto">
+    <button id="modal-close" class="absolute top-4 right-4 w-8 h-8 rounded-md flex items-center justify-center text-ink-muted hover:text-ink hover:bg-line/60 transition z-10" aria-label="Close">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M18 6L6 18M6 6l12 12"/></svg>
+    </button>
+    <div id="modal-body" class="p-6 sm:p-8"></div>
+  </div>
+</div>
+
 <script>
 const SHEET_CSV_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vR2oHVxYdC7qkUeuQX8w9rv13c6zekqaRt4wCcjnlVb10RHHAB-TtHjdE5mBQG8jwo_TX2EBUtnlVh6/pub?gid=937412102\u0026single=true\u0026output=csv";
 const EXISTING_CODES = new Set(["AGSC 205", "AHIS 203", "AHIS 221", "ARAB 202", "ARAB 210A", "ARAB 211", "ARAB 213", "ARAB 215", "ARAB 223", "ARAB 224", "ARAB 231", "ARAB 232", "ARAB 235", "ARAB 237", "ARAB 243", "ARAB 246", "ARAB 247", "ARAB 251", "ARAB 251AW", "ARAB 251W", "AROL 221", "AROL 225", "BIOL 210", "BUSS 215", "BUSS 220", "CHEM 200", "CHLA 212A", "ECON 203", "ECON 211", "ECON 212", "EDUC 230", "EDUC 231", "EDUC 273", "ENGL 203", "ENGL 205", "ENGL 207", "ENGL 212", "ENGL 214", "ENGL 227", "ENGL 233", "GEOL 201", "HIST 214", "HIST 220E", "HIST 227", "HIST 237", "HIST 239", "HIST 258BW", "HPCH 201", "LDEM 267", "MUSC 200", "MUSC 205", "MUSC 230", "MUSIC 205", "MUSIC 221", "PHIL 201", "PHIL 210", "PHIL 211", "PHIL 214", "PHIL 226", "PHYS 200", "PSPA 201", "PSPA 202", "PSPA 210", "PSPA 272", "PSPA 273", "PSPA 277", "SOAN 201", "SOAN 203"]);
 const EXISTING_COURSES = {"AGSC 205": {"attributes": ["Cultures \u0026 Histories"], "ease": 9, "slug": "agsc-205", "title": "The Food Odyssey"}, "AHIS 203": {"attributes": ["Cultures \u0026 Histories"], "ease": 0, "slug": "ahis-203", "title": ""}, "AHIS 221": {"attributes": ["Cultures \u0026 Histories"], "ease": 0, "slug": "ahis-221", "title": ""}, "ARAB 202": {"attributes": ["Understanding Communication"], "ease": 0, "slug": "arab-202", "title": ""}, "ARAB 210A": {"attributes": ["Understanding Communication"], "ease": 0, "slug": "arab-210a", "title": ""}, "ARAB 211": {"attributes": ["Cultures \u0026 Histories"], "ease": 0, "slug": "arab-211", "title": ""}, "ARAB 213": {"attributes": ["Cultures \u0026 Histories"], "ease": 7, "slug": "arab-213", "title": "Introduction to Biblical Hebrew"}, "ARAB 215": {"attributes": ["Cultures \u0026 Histories"], "ease": 10, "slug": "arab-215", "title": "Introductory Syriac"}, "ARAB 223": {"attributes": ["Understanding Communication"], "ease": 9, "slug": "arab-223", "title": "ARAB 223"}, "ARAB 224": {"attributes": ["Cultures \u0026 Histories"], "ease": 9, "slug": "arab-224", "title": "Arabic Stylistics \u0026 Metrics"}, "ARAB 231": {"attributes": ["Cultures \u0026 Histories"], "ease": 9, "slug": "arab-231", "title": "The Ode"}, "ARAB 232": {"attributes": ["Cultures \u0026 Histories"], "ease": 9, "slug": "arab-232", "title": "Arabic Poetry: The Making of the Early Canon"}, "ARAB 235": {"attributes": ["Understanding Communication"], "ease": 8, "slug": "arab-235", "title": "Readers of al-Andalus"}, "ARAB 237": {"attributes": ["Understanding Communication"], "ease": 9, "slug": "arab-237", "title": "Arabic Poetry and Modernity"}, "ARAB 243": {"attributes": ["Understanding Communication"], "ease": 10, "slug": "arab-243", "title": "Arabic Rhetoric"}, "ARAB 246": {"attributes": ["Understanding Communication"], "ease": 7, "slug": "arab-246", "title": "The Lexicon of the Nahda"}, "ARAB 247": {"attributes": ["Cultures \u0026 Histories"], "ease": 0, "slug": "arab-247", "title": ""}, "ARAB 251": {"attributes": ["Understanding Communication", "Cultures \u0026 Histories"], "ease": 0, "slug": "arab-251", "title": ""}, "ARAB 251AW": {"attributes": ["Understanding Communication"], "ease": 0, "slug": "arab-251aw", "title": ""}, "ARAB 251W": {"attributes": ["Understanding Communication"], "ease": 9, "slug": "arab-251w", "title": "Nahda in Periodicals"}, "AROL 221": {"attributes": ["Cultures \u0026 Histories"], "ease": 0, "slug": "arol-221", "title": ""}, "AROL 225": {"attributes": ["Cultures \u0026 Histories"], "ease": 0, "slug": "arol-225", "title": ""}, "BIOL 210": {"attributes": ["Understanding the World"], "ease": 0, "slug": "biol-210", "title": ""}, "BUSS 215": {"attributes": ["Cultures \u0026 Histories", "Human Values"], "ease": 0, "slug": "buss-215", "title": ""}, "BUSS 220": {"attributes": ["Societies \u0026 Individuals"], "ease": 10, "slug": "buss-220", "title": "BUSS 220"}, "CHEM 200": {"attributes": ["Understanding the World"], "ease": 7, "slug": "chem-200", "title": "Basic Chemistry and Applications"}, "CHLA 212A": {"attributes": ["Cultures \u0026 Histories", "History of Ideas"], "ease": 0, "slug": "chla-212a", "title": ""}, "ECON 203": {"attributes": ["Societies \u0026 Individuals"], "ease": 0, "slug": "econ-203", "title": ""}, "ECON 211": {"attributes": ["Societies \u0026 Individuals"], "ease": 8, "slug": "econ-211", "title": "ECON 211"}, "ECON 212": {"attributes": ["Societies \u0026 Individuals"], "ease": 9, "slug": "econ-212", "title": "ECON 212"}, "EDUC 230": {"attributes": ["Societies \u0026 Individuals"], "ease": 0, "slug": "educ-230", "title": ""}, "EDUC 231": {"attributes": ["Societies \u0026 Individuals"], "ease": 0, "slug": "educ-231", "title": ""}, "EDUC 273": {"attributes": ["Understanding the World"], "ease": 8, "slug": "educ-273", "title": "Sciences for Elementary Teachers 1"}, "ENGL 203": {"attributes": ["Understanding Communication"], "ease": 0, "slug": "engl-203", "title": ""}, "ENGL 205": {"attributes": ["Cultures \u0026 Histories"], "ease": 0, "slug": "engl-205", "title": ""}, "ENGL 207": {"attributes": ["Cultures \u0026 Histories"], "ease": 0, "slug": "engl-207", "title": ""}, "ENGL 212": {"attributes": ["Cultures \u0026 Histories"], "ease": 0, "slug": "engl-212", "title": ""}, "ENGL 214": {"attributes": ["Cultures \u0026 Histories"], "ease": 0, "slug": "engl-214", "title": ""}, "ENGL 227": {"attributes": ["Cultures \u0026 Histories"], "ease": 8, "slug": "engl-227", "title": "Introduction to Language"}, "ENGL 233": {"attributes": ["Cultures \u0026 Histories"], "ease": 9, "slug": "engl-233", "title": "Introduction to Translation"}, "GEOL 201": {"attributes": ["Understanding the World"], "ease": 0, "slug": "geol-201", "title": ""}, "HIST 214": {"attributes": ["Cultures \u0026 Histories"], "ease": 8, "slug": "hist-214", "title": "Islamic History: Military Society in the Middle East,"}, "HIST 220E": {"attributes": ["Cultures \u0026 Histories"], "ease": 8, "slug": "hist-220e", "title": "Local Histories: Ottoman Constantinople, from the"}, "HIST 227": {"attributes": ["Cultures \u0026 Histories"], "ease": 9, "slug": "hist-227", "title": "HIST 227"}, "HIST 237": {"attributes": ["Cultures \u0026 Histories"], "ease": 8, "slug": "hist-237", "title": "HIST 237"}, "HIST 239": {"attributes": ["Cultures \u0026 Histories"], "ease": 0, "slug": "hist-239", "title": ""}, "HIST 258BW": {"attributes": ["Social Inequalities"], "ease": 9, "slug": "hist-258bw", "title": "Topics Vary Each Semester, current: ST.Colonial"}, "HPCH 201": {"attributes": ["Societies \u0026 Individuals"], "ease": 0, "slug": "hpch-201", "title": ""}, "LDEM 267": {"attributes": ["Understanding the World"], "ease": 8, "slug": "ldem-267", "title": "Introoduction Restoration Ecology"}, "MUSC 200": {"attributes": ["Quantitative Reasoning"], "ease": 0, "slug": "musc-200", "title": "Notation, Analysis \u0026 Aural Skills"}, "MUSC 205": {"attributes": ["Cultures \u0026 Histories"], "ease": 0, "slug": "musc-205", "title": ""}, "MUSC 230": {"attributes": ["Cultures \u0026 Histories"], "ease": 0, "slug": "musc-230", "title": ""}, "MUSIC 205": {"attributes": ["Cultures \u0026 Histories"], "ease": 0, "slug": "music-205", "title": ""}, "MUSIC 221": {"attributes": ["Cultures \u0026 Histories"], "ease": 0, "slug": "music-221", "title": ""}, "PHIL 201": {"attributes": ["Cultures \u0026 Histories"], "ease": 0, "slug": "phil-201", "title": ""}, "PHIL 210": {"attributes": ["Cultures \u0026 Histories", "Human Values"], "ease": 0, "slug": "phil-210", "title": ""}, "PHIL 211": {"attributes": ["Cultures \u0026 Histories"], "ease": 0, "slug": "phil-211", "title": ""}, "PHIL 214": {"attributes": ["Cultures \u0026 Histories"], "ease": 0, "slug": "phil-214", "title": ""}, "PHIL 226": {"attributes": ["Cultures \u0026 Histories", "Human Values"], "ease": 0, "slug": "phil-226", "title": ""}, "PHYS 200": {"attributes": ["Understanding the World"], "ease": 9, "slug": "phys-200", "title": "Understanding the Universe"}, "PSPA 201": {"attributes": ["Societies \u0026 Individuals"], "ease": 7, "slug": "pspa-201", "title": "PSPA 201"}, "PSPA 202": {"attributes": ["Societies \u0026 Individuals"], "ease": 8, "slug": "pspa-202", "title": "PSPA 202"}, "PSPA 210": {"attributes": ["Cultures \u0026 Histories"], "ease": 0, "slug": "pspa-210", "title": ""}, "PSPA 272": {"attributes": ["Societies \u0026 Individuals"], "ease": 0, "slug": "pspa-272", "title": ""}, "PSPA 273": {"attributes": ["Societies \u0026 Individuals"], "ease": 8, "slug": "pspa-273", "title": "Human Resources and Personnel Administration:"}, "PSPA 277": {"attributes": ["Societies \u0026 Individuals"], "ease": 8, "slug": "pspa-277", "title": "PSPA 277"}, "SOAN 201": {"attributes": ["Social Inequalities", "Societies \u0026 Individuals"], "ease": 8, "slug": "soan-201", "title": "SOAN 201"}, "SOAN 203": {"attributes": ["Cultures \u0026 Histories", "Social Inequalities"], "ease": 0, "slug": "soan-203", "title": ""}};
+const GROUPS_BY_CODE = {}; // code -> array of submission items, populated on load
 
 const loading = document.getElementById('loading');
 const empty = document.getElementById('empty');
@@ -510,9 +521,67 @@ function card(group, count, isExisting, isMine) {
   const ringClass = isMine ? ' ring-1 ring-ink/30' : '';
   const body = isExisting
     ? `<a href="course/${slug}.html" class="card card-link p-5 block group h-full${ringClass}">${inner}</a>`
-    : `<div class="card p-5 h-full${ringClass}">${inner}</div>`;
+    : `<button type="button" data-open-code="${first.code}" class="card card-link p-5 block group h-full w-full text-left${ringClass}">${inner}</button>`;
 
   return `<div data-card-code="${first.code}" class="h-full">${body}</div>`;
+}
+
+function openModal(code) {
+  const group = GROUPS_BY_CODE[code];
+  if (!group) return;
+  const meta = EXISTING_COURSES[code] || null;
+  const title = (meta && meta.title) ? meta.title : (group[0].title || code);
+  const attributes = (meta && meta.attributes) ? meta.attributes : [];
+  const ease = group.map(g => g.ease).filter(Boolean).map(Number);
+  const avg = ease.length ? Math.round(ease.reduce((a,b)=>a+b,0)/ease.length) : null;
+  const profs = [...new Set(group.map(g => g.prof).filter(Boolean))];
+  const tips = group.map(g => ({ tip: g.tip, prof: g.prof, ease: g.ease })).filter(x => x.tip);
+
+  const attrPills = attributes.length
+    ? `<div class="mt-4 flex flex-wrap gap-1.5">${attributes.map(a => `<span class="pill pill-outline">${escHtml(a)}</span>`).join('')}</div>`
+    : '';
+
+  const html = `
+    <div class="mono text-xs tracking-wider text-ink-muted">${escHtml(code)}</div>
+    <h2 id="modal-title" class="mt-2 text-3xl sm:text-4xl font-medium tracking-tight leading-tight">${escHtml(title)}</h2>
+    ${attrPills}
+    <div class="mt-5 flex flex-wrap gap-3 items-center text-sm">
+      ${avg !== null ? `<div class="flex items-baseline gap-1 bg-line/60 rounded-md px-3 py-1.5 tnum"><span class="text-lg font-semibold text-ink">${avg}</span><span class="text-xs text-ink-muted">/10 community avg</span></div>` : ''}
+      <span class="pill pill-outline">${group.length} submission${group.length===1?'':'s'}</span>
+      ${meta ? `<span class="pill pill-outline">In main list</span>` : `<span class="pill pill-outline">Pending verification</span>`}
+    </div>
+
+    ${profs.length ? `
+      <div class="mt-7">
+        <div class="text-xs uppercase tracking-wider text-ink-muted">Professors mentioned</div>
+        <div class="mt-2 flex flex-wrap gap-1.5">${profs.map(p => `<span class="pill">${escHtml(p)}</span>`).join('')}</div>
+      </div>` : ''}
+
+    ${tips.length ? `
+      <div class="mt-7">
+        <div class="text-xs uppercase tracking-wider text-ink-muted">What students said</div>
+        <div class="mt-3 space-y-3">
+          ${tips.map(t => `
+            <div class="card p-4">
+              ${(t.prof || t.ease) ? `<div class="text-xs text-ink-muted mb-2">${t.prof ? `With ${escHtml(t.prof)}` : ''}${t.prof && t.ease ? ' · ' : ''}${t.ease ? `Ease ${escHtml(t.ease)}/10` : ''}</div>` : ''}
+              <p class="text-sm text-ink leading-relaxed border-l-2 border-ink/20 pl-3">"${escHtml(t.tip)}"</p>
+            </div>`).join('')}
+        </div>
+      </div>` : ''}
+
+    <div class="mt-8 pt-6 border-t border-line flex flex-wrap gap-3 items-center justify-between">
+      <p class="text-xs text-ink-muted">Took this course too? Add your take to help promote it.</p>
+      <a href="suggest.html?code=${encodeURIComponent(code)}" class="btn-primary text-sm">Add your review</a>
+    </div>`;
+
+  document.getElementById('modal-body').innerHTML = html;
+  document.getElementById('modal').classList.remove('hidden');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeModal() {
+  document.getElementById('modal').classList.add('hidden');
+  document.body.style.overflow = '';
 }
 
 async function load() {
@@ -545,6 +614,9 @@ async function load() {
       groups.get(code).push(item);
     }
     if (!groups.size) { loading.classList.add('hidden'); empty.classList.remove('hidden'); return; }
+
+    // expose groups so the modal can read full data later
+    for (const [code, group] of groups) GROUPS_BY_CODE[code] = group;
 
     const mine = getMine();
     const sorted = [...groups.entries()].sort((a, b) => {
@@ -586,6 +658,23 @@ async function load() {
     console.error(e);
   }
 }
+
+// Open modal when a pending card is tapped
+document.addEventListener('click', (e) => {
+  const opener = e.target.closest('[data-open-code]');
+  if (!opener) return;
+  // don't trigger if user clicked the inline Remove button
+  if (e.target.closest('[data-remove-code]')) return;
+  e.preventDefault();
+  openModal(opener.getAttribute('data-open-code'));
+});
+
+// Modal close: button, overlay, Escape
+document.getElementById('modal-close').addEventListener('click', closeModal);
+document.getElementById('modal-overlay').addEventListener('click', closeModal);
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape') closeModal();
+});
 
 // Remove-my-submission button (delegated). Only appears on cards the user marked as theirs on /suggest.
 document.addEventListener('click', (e) => {

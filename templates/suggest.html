@@ -58,6 +58,14 @@
         const input = document.getElementById('my-code');
         const link = document.getElementById('open-form');
         const hint = document.getElementById('code-hint');
+
+        // Pre-fill from ?code=PHIL+221 (used by Community → "Add your review")
+        const params = new URLSearchParams(location.search);
+        const preCode = params.get('code');
+        if (preCode) {
+          input.value = preCode;
+          input.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
         function normCode(s) {
           if (!s) return '';
           const m = s.toUpperCase().replace(/\u00a0/g, ' ').match(/([A-Z]{3,5})\s*0*([0-9]{2,3}[A-Z]{0,3})/);
