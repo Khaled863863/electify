@@ -1,11 +1,12 @@
 """
-Sahel — data pipeline.
+Electify — data pipeline.
 
-Reads the Insight Club catalog, CCS Spring/Summer guides, AUB Electives Guide xlsx,
-and the inline Master List, then emits src/data/courses.json.
+Reads several local student-collected guides plus the inline Master List,
+then emits src/data/courses.json. All raw input files live in DOWNLOADS and
+are intentionally not versioned.
 
-Conservative on merging: when sources conflict on ease score or grading, keeps both
-and tags the source — frontend shows a "varies" badge.
+Conservative on merging: when inputs conflict on ease score or grading, keeps
+both and tags accordingly — the frontend shows a "varies" badge.
 """
 from __future__ import annotations
 import json, os, re, sys
@@ -43,9 +44,9 @@ def norm_code(s: str) -> str:
 
 
 # ----------------------------------------------------------------------------
-# Insight Club Catalog
+# Course catalog (PDF)
 # ----------------------------------------------------------------------------
-def parse_insight(path: Path) -> dict[str, dict]:
+def parse_catalog(path: Path) -> dict[str, dict]:
     courses: dict[str, dict] = {}
     current_attr = None
     with pdfplumber.open(path) as pdf:
@@ -104,15 +105,15 @@ def parse_insight(path: Path) -> dict[str, dict]:
                 "ease_score": ease if ease is not None else existing.get("ease_score"),
                 "grading": grading or existing.get("grading", ""),
                 "attributes": sorted(attrs),
-                "insight_prof": prof or existing.get("insight_prof", ""),
+                "catalog_prof": prof or existing.get("catalog_prof", ""),
             }
     return courses
 
 
 # ----------------------------------------------------------------------------
-# CCS guides
+# Term guides (PDF)
 # ----------------------------------------------------------------------------
-def parse_ccs(path: Path, term: str) -> dict[str, list[dict]]:
+def parse_term_guide(path: Path, term: str) -> dict[str, list[dict]]:
     out: dict[str, list[dict]] = defaultdict(list)
     current_attr = None
     with pdfplumber.open(path) as pdf:
@@ -206,17 +207,17 @@ MASTER_LIST = [
 
 
 def main() -> None:
-    insight = parse_insight(DOWNLOADS / "Easy Electives Catalog '25.pdf")
-    ccs_spring = parse_ccs(DOWNLOADS / "Easy_Electives_CCS.pdf", "Spring")
-    ccs_summer = parse_ccs(DOWNLOADS / "Easy_Electives_Summer_25-26.pdf", "Summer")
-    xlsx = parse_xlsx(DOWNLOADS / "AUB Electives Guide.xlsx")
+    catalog = parse_catalog(DOWNLOADS / "catalog.pdf")
+    guide_spring = parse_term_guide(DOWNLOADS / "term_guide_spring.pdf", "Spring")
+    guide_summer = parse_term_guide(DOWNLOADS / "term_guide_summer.pdf", "Summer")
+    xlsx = parse_xlsx(DOWNLOADS / "electives_sheet.xlsx")
 
-    all_codes = set(insight) | set(ccs_spring) | set(ccs_summer) | set(xlsx) | {norm_code(c[0]) for c in MASTER_LIST}
+    all_codes = set(catalog) | set(guide_spring) | set(guide_summer) | set(xlsx) | {norm_code(c[0]) for c in MASTER_LIST}
     all_codes.discard("")
 
     courses = []
     for code in sorted(all_codes):
-        i = insight.get(code, {})
+        i = catalog.get(code, {})
         professors_map: dict[str, dict] = {}
 
         def add_prof(name: str, term: str | None, note: str = ""):
@@ -230,12 +231,12 @@ def main() -> None:
             if note and note not in p["notes"]:
                 p["notes"].append(note)
 
-        if i.get("insight_prof"):
-            add_prof(i["insight_prof"], None)
-        for entry in ccs_spring.get(code, []):
+        if i.get("catalog_prof"):
+            add_prof(i["catalog_prof"], None)
+        for entry in guide_spring.get(code, []):
             for p in entry["professors"]:
                 add_prof(p, "Spring")
-        for entry in ccs_summer.get(code, []):
+        for entry in guide_summer.get(code, []):
             for p in entry["professors"]:
                 add_prof(p, "Summer")
         for r in xlsx.get(code, []):
@@ -282,13 +283,6 @@ def main() -> None:
                     "note": m[5],
                 })
 
-        sources = []
-        if code in insight: sources.append("insight")
-        if code in ccs_spring: sources.append("ccs_spring")
-        if code in ccs_summer: sources.append("ccs_summer")
-        if code in xlsx: sources.append("xlsx")
-        if any(norm_code(m[0]) == code for m in MASTER_LIST): sources.append("master")
-
         courses.append({
             "code": code,
             "slug": code.lower().replace(" ", "-"),
@@ -302,7 +296,6 @@ def main() -> None:
             "master_notes": master_quick,
             "warnings": master_warnings,
             "recommended": False if master_recommended is False else True,
-            "sources": sources,
         })
 
     OUT.parent.mkdir(parents=True, exist_ok=True)

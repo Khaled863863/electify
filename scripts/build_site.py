@@ -87,9 +87,6 @@ def main() -> None:
     rated.sort(key=lambda x: (-(x["ease_score"]), x["code"]))
     top = rated[:6]
 
-    spring_codes = {c["code"] for c in courses if "ccs_spring" in c.get("sources", [])}
-    featured = [c for c in courses if c["code"] in spring_codes][:6]
-
     existing_codes = sorted({c["code"] for c in courses})
     existing_courses = {
         c["code"]: {
@@ -114,7 +111,7 @@ def main() -> None:
         path.write_text(html, encoding="utf-8")
 
     write(DIST / "index.html", env.get_template("index.html").render(
-        rel="", attributes=attributes, count=len(courses), top=top, featured=featured,
+        rel="", attributes=attributes, count=len(courses), top=top,
     ))
     write(DIST / "browse.html", env.get_template("browse.html").render(
         rel="", attributes=attributes, count=len(courses),

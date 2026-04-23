@@ -50,12 +50,7 @@
         }
       ],
       "warnings": [],
-      "recommended": true,
-      "sources": [
-        "insight",
-        "xlsx",
-        "master"
-      ]
+      "recommended": true
     },
     {
       "code": "AHIS 203",
@@ -73,10 +68,7 @@
       "warnings": [
         "Very heavy workload"
       ],
-      "recommended": false,
-      "sources": [
-        "master"
-      ]
+      "recommended": false
     },
     {
       "code": "AHIS 221",
@@ -94,10 +86,7 @@
       "warnings": [
         "Heavy workload"
       ],
-      "recommended": false,
-      "sources": [
-        "master"
-      ]
+      "recommended": false
     },
     {
       "code": "ARAB 202",
@@ -122,11 +111,7 @@
       "student_reviews": [],
       "master_notes": [],
       "warnings": [],
-      "recommended": true,
-      "sources": [
-        "ccs_spring",
-        "ccs_summer"
-      ]
+      "recommended": true
     },
     {
       "code": "ARAB 210A",
@@ -150,10 +135,7 @@
       "student_reviews": [],
       "master_notes": [],
       "warnings": [],
-      "recommended": true,
-      "sources": [
-        "ccs_spring"
-      ]
+      "recommended": true
     },
     {
       "code": "ARAB 211",
@@ -185,11 +167,7 @@
         }
       ],
       "warnings": [],
-      "recommended": true,
-      "sources": [
-        "xlsx",
-        "master"
-      ]
+      "recommended": true
     },
     {
       "code": "ARAB 213",
@@ -213,11 +191,7 @@
       "student_reviews": [],
       "master_notes": [],
       "warnings": [],
-      "recommended": true,
-      "sources": [
-        "insight",
-        "ccs_spring"
-      ]
+      "recommended": true
     },
     {
       "code": "ARAB 215",
@@ -239,10 +213,7 @@
       "student_reviews": [],
       "master_notes": [],
       "warnings": [],
-      "recommended": true,
-      "sources": [
-        "insight"
-      ]
+      "recommended": true
     },
     {
       "code": "ARAB 223",
@@ -264,10 +235,7 @@
       "student_reviews": [],
       "master_notes": [],
       "warnings": [],
-      "recommended": true,
-      "sources": [
-        "insight"
-      ]
+      "recommended": true
     },
     {
       "code": "ARAB 224",
@@ -289,11 +257,7 @@
       "student_reviews": [],
       "master_notes": [],
       "warnings": [],
-      "recommended": true,
-      "sources": [
-        "insight",
-        "ccs_summer"
-      ]
+      "recommended": true
     },
     {
       "code": "ARAB 231",
@@ -315,10 +279,7 @@
       "student_reviews": [],
       "master_notes": [],
       "warnings": [],
-      "recommended": true,
-      "sources": [
-        "insight"
-      ]
+      "recommended": true
     },
     {
       "code": "ARAB 232",
@@ -340,11 +301,7 @@
       "student_reviews": [],
       "master_notes": [],
       "warnings": [],
-      "recommended": true,
-      "sources": [
-        "insight",
-        "ccs_spring"
-      ]
+      "recommended": true
     },
     {
       "code": "ARAB 235",
@@ -366,10 +323,7 @@
       "student_reviews": [],
       "master_notes": [],
       "warnings": [],
-      "recommended": true,
-      "sources": [
-        "insight"
-      ]
+      "recommended": true
     },
     {
       "code": "ARAB 237",
@@ -391,10 +345,7 @@
       "student_reviews": [],
       "master_notes": [],
       "warnings": [],
-      "recommended": true,
-      "sources": [
-        "insight"
-      ]
+      "recommended": true
     },
     {
       "code": "ARAB 243",
@@ -439,12 +390,7 @@
         }
       ],
       "warnings": [],
-      "recommended": true,
-      "sources": [
-        "insight",
-        "xlsx",
-        "master"
-      ]
+      "recommended": true
     },
     {
       "code": "ARAB 246",
@@ -468,11 +414,7 @@
       "student_reviews": [],
       "master_notes": [],
       "warnings": [],
-      "recommended": true,
-      "sources": [
-        "insight",
-        "ccs_spring"
-      ]
+      "recommended": true
     },
     {
       "code": "ARAB 247",
@@ -522,11 +464,7 @@
         }
       ],
       "warnings": [],
-      "recommended": true,
-      "sources": [
-        "xlsx",
-        "master"
-      ]
+      "recommended": true
     },
     {
       "code": "ARAB 251",
@@ -565,11 +503,7 @@
         }
       ],
       "warnings": [],
-      "recommended": true,
-      "sources": [
-        "xlsx",
-        "master"
-      ]
+      "recommended": true
     },
     {
       "code": "ARAB 251AW",
@@ -593,10 +527,7 @@
       "student_reviews": [],
       "master_notes": [],
       "warnings": [],
-      "recommended": true,
-      "sources": [
-        "ccs_spring"
-      ]
+      "recommended": true
     },
     {
       "code": "ARAB 251W",
@@ -618,10 +549,7 @@
       "student_reviews": [],
       "master_notes": [],
       "warnings": [],
-      "recommended": true,
-      "sources": [
-        "insight"
-      ]
+      "recommended": true
     },
     {
       "code": "AROL 221",
@@ -659,11 +587,7 @@
         }
       ],
       "warnings": [],
-      "recommended": true,
-      "sources": [
-        "xlsx",
-        "master"
-      ]
+      "recommended": true
     },
     {
       "code": "AROL 225",
@@ -701,11 +625,7 @@
         }
       ],
       "warnings": [],
-      "recommended": true,
-      "sources": [
-        "xlsx",
-        "master"
-      ]
+      "recommended": true
     },
     {
       "code": "BIOL 210",
@@ -723,10 +643,7 @@
       "warnings": [
         "Requires consistency"
       ],
-      "recommended": false,
-      "sources": [
-        "master"
-      ]
+      "recommended": false
     },
     {
       "code": "BUSS 215",
@@ -751,10 +668,7 @@
       "student_reviews": [],
       "master_notes": [],
       "warnings": [],
-      "recommended": true,
-      "sources": [
-        "ccs_summer"
-      ]
+      "recommended": true
     },
     {
       "code": "BUSS 220",
@@ -778,11 +692,7 @@
       "student_reviews": [],
       "master_notes": [],
       "warnings": [],
-      "recommended": true,
-      "sources": [
-        "insight",
-        "ccs_spring"
-      ]
+      "recommended": true
     },
     {
       "code": "CHEM 200",
@@ -828,14 +738,7 @@
         }
       ],
       "warnings": [],
-      "recommended": true,
-      "sources": [
-        "insight",
-        "ccs_spring",
-        "ccs_summer",
-        "xlsx",
-        "master"
-      ]
+      "recommended": true
     },
     {
       "code": "CHLA 212A",
@@ -861,11 +764,7 @@
       "student_reviews": [],
       "master_notes": [],
       "warnings": [],
-      "recommended": true,
-      "sources": [
-        "ccs_spring",
-        "ccs_summer"
-      ]
+      "recommended": true
     },
     {
       "code": "ECON 203",
@@ -910,11 +809,7 @@
         }
       ],
       "warnings": [],
-      "recommended": true,
-      "sources": [
-        "xlsx",
-        "master"
-      ]
+      "recommended": true
     },
     {
       "code": "ECON 211",
@@ -952,14 +847,7 @@
       ],
       "master_notes": [],
       "warnings": [],
-      "recommended": false,
-      "sources": [
-        "insight",
-        "ccs_spring",
-        "ccs_summer",
-        "xlsx",
-        "master"
-      ]
+      "recommended": false
     },
     {
       "code": "ECON 212",
@@ -984,12 +872,7 @@
       "student_reviews": [],
       "master_notes": [],
       "warnings": [],
-      "recommended": true,
-      "sources": [
-        "insight",
-        "ccs_spring",
-        "ccs_summer"
-      ]
+      "recommended": true
     },
     {
       "code": "EDUC 230",
@@ -1027,11 +910,7 @@
         }
       ],
       "warnings": [],
-      "recommended": true,
-      "sources": [
-        "xlsx",
-        "master"
-      ]
+      "recommended": true
     },
     {
       "code": "EDUC 231",
@@ -1055,10 +934,7 @@
       "student_reviews": [],
       "master_notes": [],
       "warnings": [],
-      "recommended": true,
-      "sources": [
-        "ccs_spring"
-      ]
+      "recommended": true
     },
     {
       "code": "EDUC 273",
@@ -1080,10 +956,7 @@
       "student_reviews": [],
       "master_notes": [],
       "warnings": [],
-      "recommended": true,
-      "sources": [
-        "insight"
-      ]
+      "recommended": true
     },
     {
       "code": "ENGL 203",
@@ -1099,11 +972,7 @@
       "student_reviews": [],
       "master_notes": [],
       "warnings": [],
-      "recommended": true,
-      "sources": [
-        "ccs_spring",
-        "ccs_summer"
-      ]
+      "recommended": true
     },
     {
       "code": "ENGL 205",
@@ -1141,11 +1010,7 @@
         }
       ],
       "warnings": [],
-      "recommended": true,
-      "sources": [
-        "xlsx",
-        "master"
-      ]
+      "recommended": true
     },
     {
       "code": "ENGL 207",
@@ -1175,10 +1040,7 @@
       ],
       "master_notes": [],
       "warnings": [],
-      "recommended": true,
-      "sources": [
-        "xlsx"
-      ]
+      "recommended": true
     },
     {
       "code": "ENGL 212",
@@ -1216,11 +1078,7 @@
         }
       ],
       "warnings": [],
-      "recommended": true,
-      "sources": [
-        "xlsx",
-        "master"
-      ]
+      "recommended": true
     },
     {
       "code": "ENGL 214",
@@ -1260,12 +1118,7 @@
         }
       ],
       "warnings": [],
-      "recommended": true,
-      "sources": [
-        "ccs_spring",
-        "xlsx",
-        "master"
-      ]
+      "recommended": true
     },
     {
       "code": "ENGL 227",
@@ -1289,11 +1142,7 @@
       "student_reviews": [],
       "master_notes": [],
       "warnings": [],
-      "recommended": true,
-      "sources": [
-        "insight",
-        "ccs_spring"
-      ]
+      "recommended": true
     },
     {
       "code": "ENGL 233",
@@ -1317,11 +1166,7 @@
       "student_reviews": [],
       "master_notes": [],
       "warnings": [],
-      "recommended": true,
-      "sources": [
-        "insight",
-        "ccs_spring"
-      ]
+      "recommended": true
     },
     {
       "code": "GEOL 201",
@@ -1346,11 +1191,7 @@
       "student_reviews": [],
       "master_notes": [],
       "warnings": [],
-      "recommended": true,
-      "sources": [
-        "ccs_spring",
-        "ccs_summer"
-      ]
+      "recommended": true
     },
     {
       "code": "HIST 214",
@@ -1372,10 +1213,7 @@
       "student_reviews": [],
       "master_notes": [],
       "warnings": [],
-      "recommended": true,
-      "sources": [
-        "insight"
-      ]
+      "recommended": true
     },
     {
       "code": "HIST 220E",
@@ -1397,10 +1235,7 @@
       "student_reviews": [],
       "master_notes": [],
       "warnings": [],
-      "recommended": true,
-      "sources": [
-        "insight"
-      ]
+      "recommended": true
     },
     {
       "code": "HIST 227",
@@ -1422,10 +1257,7 @@
       "student_reviews": [],
       "master_notes": [],
       "warnings": [],
-      "recommended": true,
-      "sources": [
-        "insight"
-      ]
+      "recommended": true
     },
     {
       "code": "HIST 237",
@@ -1447,10 +1279,7 @@
       "student_reviews": [],
       "master_notes": [],
       "warnings": [],
-      "recommended": true,
-      "sources": [
-        "insight"
-      ]
+      "recommended": true
     },
     {
       "code": "HIST 239",
@@ -1480,10 +1309,7 @@
       ],
       "master_notes": [],
       "warnings": [],
-      "recommended": true,
-      "sources": [
-        "xlsx"
-      ]
+      "recommended": true
     },
     {
       "code": "HIST 258BW",
@@ -1505,10 +1331,7 @@
       "student_reviews": [],
       "master_notes": [],
       "warnings": [],
-      "recommended": true,
-      "sources": [
-        "insight"
-      ]
+      "recommended": true
     },
     {
       "code": "HPCH 201",
@@ -1532,10 +1355,7 @@
       "student_reviews": [],
       "master_notes": [],
       "warnings": [],
-      "recommended": true,
-      "sources": [
-        "ccs_spring"
-      ]
+      "recommended": true
     },
     {
       "code": "LDEM 267",
@@ -1551,10 +1371,7 @@
       "student_reviews": [],
       "master_notes": [],
       "warnings": [],
-      "recommended": true,
-      "sources": [
-        "insight"
-      ]
+      "recommended": true
     },
     {
       "code": "MUSC 200",
@@ -1592,11 +1409,7 @@
         }
       ],
       "warnings": [],
-      "recommended": true,
-      "sources": [
-        "xlsx",
-        "master"
-      ]
+      "recommended": true
     },
     {
       "code": "MUSC 205",
@@ -1626,10 +1439,7 @@
         }
       ],
       "warnings": [],
-      "recommended": true,
-      "sources": [
-        "master"
-      ]
+      "recommended": true
     },
     {
       "code": "MUSC 230",
@@ -1667,11 +1477,7 @@
         }
       ],
       "warnings": [],
-      "recommended": true,
-      "sources": [
-        "xlsx",
-        "master"
-      ]
+      "recommended": true
     },
     {
       "code": "MUSIC 205",
@@ -1708,10 +1514,7 @@
       ],
       "master_notes": [],
       "warnings": [],
-      "recommended": true,
-      "sources": [
-        "xlsx"
-      ]
+      "recommended": true
     },
     {
       "code": "MUSIC 221",
@@ -1741,10 +1544,7 @@
       ],
       "master_notes": [],
       "warnings": [],
-      "recommended": true,
-      "sources": [
-        "xlsx"
-      ]
+      "recommended": true
     },
     {
       "code": "PHIL 201",
@@ -1769,11 +1569,7 @@
       "student_reviews": [],
       "master_notes": [],
       "warnings": [],
-      "recommended": true,
-      "sources": [
-        "ccs_spring",
-        "ccs_summer"
-      ]
+      "recommended": true
     },
     {
       "code": "PHIL 210",
@@ -1799,11 +1595,7 @@
       "student_reviews": [],
       "master_notes": [],
       "warnings": [],
-      "recommended": true,
-      "sources": [
-        "ccs_spring",
-        "ccs_summer"
-      ]
+      "recommended": true
     },
     {
       "code": "PHIL 211",
@@ -1819,10 +1611,7 @@
       "student_reviews": [],
       "master_notes": [],
       "warnings": [],
-      "recommended": true,
-      "sources": [
-        "ccs_summer"
-      ]
+      "recommended": true
     },
     {
       "code": "PHIL 214",
@@ -1840,10 +1629,7 @@
       "warnings": [
         "Requires depth"
       ],
-      "recommended": false,
-      "sources": [
-        "master"
-      ]
+      "recommended": false
     },
     {
       "code": "PHIL 226",
@@ -1862,10 +1648,7 @@
       "warnings": [
         "Strict grading"
       ],
-      "recommended": false,
-      "sources": [
-        "master"
-      ]
+      "recommended": false
     },
     {
       "code": "PHYS 200",
@@ -1923,14 +1706,7 @@
         }
       ],
       "warnings": [],
-      "recommended": true,
-      "sources": [
-        "insight",
-        "ccs_spring",
-        "ccs_summer",
-        "xlsx",
-        "master"
-      ]
+      "recommended": true
     },
     {
       "code": "PSPA 201",
@@ -1973,12 +1749,7 @@
         }
       ],
       "warnings": [],
-      "recommended": true,
-      "sources": [
-        "insight",
-        "xlsx",
-        "master"
-      ]
+      "recommended": true
     },
     {
       "code": "PSPA 202",
@@ -2030,13 +1801,7 @@
         }
       ],
       "warnings": [],
-      "recommended": true,
-      "sources": [
-        "insight",
-        "ccs_summer",
-        "xlsx",
-        "master"
-      ]
+      "recommended": true
     },
     {
       "code": "PSPA 210",
@@ -2060,10 +1825,7 @@
       "student_reviews": [],
       "master_notes": [],
       "warnings": [],
-      "recommended": true,
-      "sources": [
-        "ccs_spring"
-      ]
+      "recommended": true
     },
     {
       "code": "PSPA 272",
@@ -2101,11 +1863,7 @@
         }
       ],
       "warnings": [],
-      "recommended": true,
-      "sources": [
-        "xlsx",
-        "master"
-      ]
+      "recommended": true
     },
     {
       "code": "PSPA 273",
@@ -2127,10 +1885,7 @@
       "student_reviews": [],
       "master_notes": [],
       "warnings": [],
-      "recommended": true,
-      "sources": [
-        "insight"
-      ]
+      "recommended": true
     },
     {
       "code": "PSPA 277",
@@ -2152,10 +1907,7 @@
       "student_reviews": [],
       "master_notes": [],
       "warnings": [],
-      "recommended": true,
-      "sources": [
-        "insight"
-      ]
+      "recommended": true
     },
     {
       "code": "SOAN 201",
@@ -2221,14 +1973,7 @@
         }
       ],
       "warnings": [],
-      "recommended": true,
-      "sources": [
-        "insight",
-        "ccs_spring",
-        "ccs_summer",
-        "xlsx",
-        "master"
-      ]
+      "recommended": true
     },
     {
       "code": "SOAN 203",
@@ -2254,11 +1999,7 @@
       "student_reviews": [],
       "master_notes": [],
       "warnings": [],
-      "recommended": true,
-      "sources": [
-        "ccs_spring",
-        "ccs_summer"
-      ]
+      "recommended": true
     }
   ]
 }

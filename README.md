@@ -2,8 +2,8 @@
 
 A student-built directory of easy general-education electives at the American University of Beirut.
 
-- **73 courses** across 6 AUB GE attributes
-- Aggregates the Insight Club Catalog, CCS Spring + Summer guides, the AUB Electives Guide spreadsheet, and a master list — all student-sourced
+- **68 courses** across the AUB GE attributes
+- Aggregates several student-collected guides and a curated master list — all student-sourced; raw input files are kept private
 - **Live community section** where any student can suggest a course; trending suggestions get promoted to the main list
 
 ## Quick start

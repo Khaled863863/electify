@@ -29,7 +29,7 @@ Design a polished, modern web app called **Electify** — a student-built direct
 - Two CTAs near hero: "+ Suggest an easy elective" and "See what other students suggested →"
 - 6 attribute tiles: Cultures & Histories, Societies & Individuals, Understanding Communication, Understanding the World, Social Inequalities, Quantitative Reasoning — each with a course count
 - "Top picks — easiest reported" — 6 course cards with ease score badges
-- "Featured this semester" — from CCS Spring guide
+- "Featured this semester" — curated picks for the current term
 - Bottom CTA card (red gradient): "Took an easy elective lately? Add it to Electify in 30 seconds."
 
 **2. Course detail page** (e.g., ECON 203)
